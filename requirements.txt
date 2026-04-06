@@ -1,0 +1,9 @@
+# elixir-review
+# All scripts use Python standard library only.
+# No third-party packages required.
+#
+# Standard-library modules used:
+#   csv, json, os, re, ssl, sys, time
+#   urllib.error, urllib.parse, urllib.request
+#   xml.etree.ElementTree
+#   collections, datetime, html, itertools

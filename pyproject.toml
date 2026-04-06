@@ -1,0 +1,30 @@
+[project]
+name = "elixir-review"
+version = "0.1.0"
+description = "PRISMA systematic review of hoarding-related behaviors in digital games"
+readme = "README.md"
+license = "CC-BY-4.0"
+requires-python = ">=3.10"
+authors = [
+    { name = "Jiyeon Yoon", email = "heznpc@gmail.com" },
+]
+keywords = [
+    "hoarding",
+    "video games",
+    "loot boxes",
+    "gacha",
+    "loss aversion",
+    "systematic review",
+    "PRISMA",
+    "virtual possessions",
+]
+
+# All scripts use Python standard library only (csv, json, urllib, xml, etc.)
+dependencies = []
+
+[project.urls]
+Repository = "https://github.com/heznpc/elixir-review"
+
+[build-system]
+requires = ["setuptools>=68.0"]
+build-backend = "setuptools.backends._legacy:_Backend"
