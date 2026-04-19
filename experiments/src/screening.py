@@ -10,11 +10,14 @@ import re
 from collections import Counter, defaultdict
 
 import os as _os
-_DIR = _os.path.dirname(_os.path.abspath(__file__))
-INPUT_CSV = _os.path.join(_DIR, "pubmed_results_v2.csv")
-OUTPUT_CSV = _os.path.join(_DIR, "screening_results.csv")
-SUMMARY_MD = _os.path.join(_DIR, "screening_summary.md")
-SYNTHESIS_MD = _os.path.join(_DIR, "evidence_synthesis.md")
+_SRC_DIR = _os.path.dirname(_os.path.abspath(__file__))
+_EXP_DIR = _os.path.dirname(_SRC_DIR)
+INPUT_CSV = _os.path.join(_EXP_DIR, "data", "raw", "pubmed_results.csv")
+OUTPUT_CSV = _os.path.join(_EXP_DIR, "data", "processed", "screening_results.csv")
+SUMMARY_MD = _os.path.join(_EXP_DIR, "results", "screening_summary.md")
+SYNTHESIS_MD = _os.path.join(_EXP_DIR, "results", "evidence_synthesis.md")
+for _d in (_os.path.dirname(OUTPUT_CSV), _os.path.dirname(SUMMARY_MD)):
+    _os.makedirs(_d, exist_ok=True)
 
 # ---------------------------------------------------------------------------
 # Helper: lowercase search text from title + abstract

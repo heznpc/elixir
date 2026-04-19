@@ -1,19 +1,22 @@
 #!/usr/bin/env python3
 """
-PRISMA Systematic Review Search v2 for the Elixir Paper
+PRISMA Systematic Review Search for the Elixir Paper
 (In-Game Hoarding Behaviors)
 
-KEY FIX over v1: Every result MUST match at least one game-specific term
-AND at least one hoarding/collecting term. This eliminates the massive
-biomedical noise (42,564 hits in v1 were mostly irrelevant clinical studies).
+Every result MUST match at least one game-specific term AND at least one
+hoarding/collecting term. This eliminates biomedical noise from broader
+queries (see archive/ for the earlier single-query baseline).
 
 Uses two complementary queries:
   Q1: (game_terms) AND (hoarding_terms)        -- broad coverage
   Q2: gacha/loot box specific                   -- targeted deep dive
 
-Outputs (all with _v2 suffix):
-  pubmed_results_v2.csv, domain_counts_v2.md, prisma_flow_v2.md,
-  top_papers_v2.md, search_comparison.md
+Outputs:
+  data/raw/pubmed_results.csv
+  results/domain_counts.md
+  results/prisma_flow.md
+  results/top_papers_by_domain.md
+  archive/search_comparison.md
 """
 
 import csv
@@ -35,7 +38,11 @@ from itertools import combinations
 # ---------------------------------------------------------------------------
 # Configuration
 # ---------------------------------------------------------------------------
-OUTPUT_DIR = os.path.dirname(os.path.abspath(__file__))
+_SRC_DIR = os.path.dirname(os.path.abspath(__file__))
+_EXP_DIR = os.path.dirname(_SRC_DIR)
+DATA_RAW_DIR = os.path.join(_EXP_DIR, "data", "raw")
+RESULTS_DIR = os.path.join(_EXP_DIR, "results")
+ARCHIVE_DIR = os.path.join(_EXP_DIR, "archive")
 BASE_URL = "https://eutils.ncbi.nlm.nih.gov/entrez/eutils"
 TOOL = "elixir_review_v2"
 EMAIL = "research@example.com"
@@ -620,8 +627,10 @@ def write_search_comparison(
 # ---------------------------------------------------------------------------
 
 def main() -> None:
-    log("=== PRISMA Systematic Review Search v2 START ===")
-    log(f"Output directory: {OUTPUT_DIR}")
+    log("=== PRISMA Systematic Review Search START ===")
+    log(f"Data dir: {DATA_RAW_DIR} | Results dir: {RESULTS_DIR}")
+    for d in (DATA_RAW_DIR, RESULTS_DIR, ARCHIVE_DIR):
+        os.makedirs(d, exist_ok=True)
 
     # ---- Query 1: Broad game + hoarding terms ----
     log("--- Query 1: Game terms AND Hoarding terms ---")
@@ -702,11 +711,11 @@ def main() -> None:
 
     write_pubmed_csv(
         records,
-        os.path.join(OUTPUT_DIR, "pubmed_results_v2.csv"),
+        os.path.join(DATA_RAW_DIR, "pubmed_results.csv"),
     )
     write_domain_counts(
         records,
-        os.path.join(OUTPUT_DIR, "domain_counts_v2.md"),
+        os.path.join(RESULTS_DIR, "domain_counts.md"),
     )
     write_prisma_flow(
         records,
@@ -716,21 +725,21 @@ def main() -> None:
         q2_fetched=len(q2_pmids),
         combined_before_dedup=combined_before_dedup,
         combined_after_dedup=len(all_pmids),
-        filepath=os.path.join(OUTPUT_DIR, "prisma_flow_v2.md"),
+        filepath=os.path.join(RESULTS_DIR, "prisma_flow.md"),
     )
     write_top_papers(
         records,
-        os.path.join(OUTPUT_DIR, "top_papers_v2.md"),
+        os.path.join(RESULTS_DIR, "top_papers_by_domain.md"),
     )
     write_search_comparison(
         records,
         q1_total=q1_total,
         q2_total=q2_total,
         combined_unique=len(all_pmids),
-        filepath=os.path.join(OUTPUT_DIR, "search_comparison.md"),
+        filepath=os.path.join(ARCHIVE_DIR, "search_comparison.md"),
     )
 
-    log("=== PRISMA Systematic Review Search v2 COMPLETE ===")
+    log("=== PRISMA Systematic Review Search COMPLETE ===")
 
 
 if __name__ == "__main__":

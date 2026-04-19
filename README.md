@@ -12,19 +12,19 @@ This repository contains the PRISMA systematic review, search automation scripts
 
 ```
 elixir/
-  paper/
-    main.tex              # Manuscript source (LaTeX, targeting Games and Culture)
-  experiments/
-    prisma_search.py      # PRISMA search v1 -- PubMed via NCBI Entrez API
-    prisma_search_v2.py   # PRISMA search v2 -- refined dual-query strategy
-    screening_v2.py       # Automated title/abstract screening heuristics
-    pubmed_results.csv    # Raw PubMed results (v1)
-    pubmed_results_v2.csv # Raw PubMed results (v2, 227 records)
-    screening_results.csv # Screening decisions (Include/Maybe/Exclude)
-    *.md                  # Domain counts, PRISMA flow, evidence synthesis
-  manuscript.md           # Full manuscript draft (Markdown)
-  outline.md              # Detailed paper outline with evidence mapping
-  TODO.md                 # Research task tracker
+  paper/                      Domain -- manuscript source of truth
+    main.tex                  Manuscript (LaTeX)
+    figures/                  Final figures
+  experiments/                Application -- evidence generation
+    src/                      prisma_search.py, screening.py
+    data/raw/                 pubmed_results.csv (227 records)
+    data/processed/           screening_results.csv (156 eligible)
+    results/                  Regenerated analyses
+    archive/                  Superseded v1 pipeline (audit trail)
+  literature/                 Reading notes, gap analysis
+  planning/                   TODO, review, decisions log
+    drafts/                   Superseded manuscript.md, outline.md
+  submissions/                Venue-specific adapters (when submitting)
 ```
 
 ## Method: PRISMA Systematic Review
@@ -53,13 +53,13 @@ All scripts use Python standard library only. No third-party packages required.
 
 ```bash
 # Run the PRISMA search (queries PubMed via Entrez E-utilities)
-python experiments/prisma_search_v2.py
+python experiments/src/prisma_search.py
 
 # Run automated screening on the results
-python experiments/screening_v2.py
+python experiments/src/screening.py
 ```
 
-Outputs are written to `experiments/`. The search is deterministic given the same PubMed database state, but results may vary over time as PubMed indexes new publications.
+Raw records land in `experiments/data/raw/`; screening output goes to `data/processed/`; analyses to `results/`. The search is deterministic given the same PubMed database state, but results may vary over time as PubMed indexes new publications.
 
 **Python >= 3.10 required.**
 

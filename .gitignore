@@ -27,6 +27,7 @@ env/
 .env
 
 # LaTeX artifacts
+paper/main.pdf
 *.aux
 *.log
 *.out
