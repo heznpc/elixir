@@ -145,6 +145,7 @@ def main():
     def do_one(rec, tier, model):
         prompt = build_prompt(rec, criteria, tmpl)
         while True:
+            call_started_utc = dt.datetime.now(dt.timezone.utc).isoformat()
             t0 = time.time()
             resp, stderr, rc = call_one(model, prompt)
             lat = time.time()-t0
@@ -154,7 +155,9 @@ def main():
                 rec_out = {"openalex_id":rec["openalex_id"],"tier":tier,"model":model,
                            "verdict":"","domains":[],"reason":"",
                            "parse_error":f"rc={rc}","error":stderr[:200],
-                           "latency_s":round(lat,2),"cost_usd":0.0}
+                           "latency_s":round(lat,2),"cost_usd":0.0,
+                           "call_started_utc": call_started_utc,
+                           "usage": {}}
                 with lock: sf.write(json.dumps(rec_out)+"\n"); sf.flush()
                 return
             text = resp.get("result","") or ""
@@ -165,6 +168,8 @@ def main():
             cost = round(float(resp.get("total_cost_usd",0.0)),6)
             rec_out = {"openalex_id":rec["openalex_id"],"tier":tier,"model":model,
                        **parsed,"latency_s":round(lat,2),"cost_usd":cost,
+                       "call_started_utc": call_started_utc,
+                       "usage": resp.get("usage", {}),
                        "raw":text[:1500]}
             with lock: sf.write(json.dumps(rec_out)+"\n"); sf.flush()
             return
