@@ -55,3 +55,65 @@ Format: `## YYYY-MM-DD — <short title>` followed by **Context**, **Decision**,
 5. **Environment substitution (Critical, emerged during fix-execution)**: `ANTHROPIC_API_KEY` is empty in the Claude Code shell (`printenv ANTHROPIC_API_KEY | wc -c = 1`). Direct Anthropic Messages API call via `urllib.request` is therefore not possible without user intervention. Substituted to `claude --print --no-session-persistence --model <name>` CLI subprocess, which uses the Claude Code OAuth session. **Trade-off**: CLI subprocess does not expose `--temperature`, so the protocol §5 temperature pin (`0.0`) is relaxed to "CLI default". This is an internal-reproducibility downgrade documented in protocol §5b. The audit is reported as IRR-only per §1, which makes the temperature relaxation a tolerable cost. A future re-run via direct API with `temperature=0` is filed as follow-up.
 
 **Why**: The audit is meant to address `review.md` §3.1 (largest reject risk). Front-loading prior art (M-D) caught the PABAK improvement before observation, preventing post-hoc reframing. Multi-model (M-B) eliminates single-model dependency, the second-largest external-validity risk. Pre-registering H0_2025 (M-C) gives contamination a falsifiable test instead of a hand-wave. The CLI substitution is the smallest deviation that lets the experiment actually run today without blocking on env-key provisioning, and is recorded with the precise reason and consequence.
+
+---
+
+## 2026-05-21 (mid-execution) — Sonnet bump from 4.5 to 4.6
+
+**Context**: After the haiku tier finished (κ_w = 0.487, moderate band) and while the sonnet tier was running on `claude-sonnet-4-5`, user flagged "opus 4.7 나왔는데 지금 너무 옛날 모델로만 돌리는 건 아닌지?" Re-probed the endpoint for newer dated aliases.
+
+**Probe result (2026-05-21)**:
+- Opus: 4-7 (newest), 4-6, 4-5 all reachable.
+- Sonnet: **4-6 reachable**, 4-7 does not exist on this endpoint.
+- Haiku: only 4-5 reachable (no 4-6, no 4-7).
+
+**Decision**:
+1. Aborted in-progress sonnet-4-5 run at ~53/227 records. Partial JSONL renamed to `*.aborted-sonnet-4-5` and **not** ingested by `analyze.py` (the JSONL glob is `run_*.jsonl`, suffixed file excluded). Sunk cost ≈ $2 (one-shot, accepted).
+2. Updated `run.py` MODEL_TRY_ORDER so the sonnet tier preferentially resolves to `claude-sonnet-4-6` with `claude-sonnet-4-5` as fallback. Pricing table extended.
+3. Updated protocol §5 model pin list. Haiku stays at 4-5 because no newer dated alias exists.
+
+**Why**: The audit is reported as IRR; if reviewers later read "Sonnet 4.5" and ask "why not 4.6 which was already public on 2026-05-21," the answer must be "we used the latest available at run time." Sonnet 4.5 was outdated by exactly one minor version at run time and the cost of re-running was small. Haiku stays at 4-5 because the endpoint exposes no newer dated alias; this is documented rather than worked around.
+
+---
+
+## 2026-05-21 (post-execution) — Audit results and verbal-claim resolution
+
+**Run summary (all per pre-registered protocol §3 sample = n = 227 PubMed abstracts):**
+
+| Tier | Model | n usable | Weighted κ | 95 % bootstrap CI | PABAK | Cost (USD displayed) |
+|---|---|---|---|---|---|---|
+| haiku  | claude-haiku-4-5  | 225 | 0.487 | [0.404, 0.574] | 0.413 | ≈ $3.9 |
+| sonnet | claude-sonnet-4-6 | 227 | 0.461 | [0.380, 0.545] | 0.352 | $2.93 |
+| opus   | claude-opus-4-7   | 227 | 0.532 | [0.455, 0.606] | 0.399 | $21.25 |
+
+Sunk cost from aborted sonnet-4-5 run: ≈ $2 (one-shot, accepted; partial JSONL renamed `*.aborted-sonnet-4-5`, not ingested by `analyze.py`).
+
+**Pairwise model agreement:** weighted κ between any two of {haiku, sonnet, opus} ∈ [0.81, 0.86]. Substantially higher than heuristic-vs-model agreement. The three models encode something the heuristic does not.
+
+**Pre-registered decision-rule resolution (protocol §4):** all three primary κ values fall in the band 0.40 < κ ≤ 0.60. The verbal claim allowed by the table:
+
+> "Moderate IRR; the disagreement set is flagged for human triage and is enumerated in the supplementary CSV."
+
+This is the only verbal claim that may be made in the paper. Disallowed: "the screening is validated", "two independent reviewers agree", or any claim that the 156-eligible figure has been confirmed by a second reviewer. The paper's §Limitations "Screening methodology" paragraph (lines 587-?) has been amended with the observed κ values, the pairwise-model κ pattern, and the contamination check; it does not upgrade the screening claim.
+
+**Pre-registered H0_2025 resolution (protocol §7):** weighted κ on n=43 post-cutoff subset:
+- haiku: 0.320 (95 % CI [0.175, 0.498])
+- sonnet: 0.342 (95 % CI [0.192, 0.511])
+- opus: 0.317 (95 % CI [0.153, 0.488])
+
+All three: H0_2025 not rejected (κ ≤ 0.40 on the post-cutoff subset). Combined with full-corpus κ in 0.46-0.53, this matches the second protocol §7 branch: "Contamination plausibly inflates the full-corpus number; primary claim downgraded to 'agreement observed but contamination cannot be ruled out.'" The paper's §Limitations paragraph reflects this verbatim (`partly inflated by training-corpus exposure but is not entirely an artifact of it`).
+
+**McNemar-Bowker symmetry test** (protocol §9): all three models show p < 1e-15 — strong systematic asymmetry between heuristic and LLM. The disagreement is not random; both screeners have systematic biases relative to each other. Dominant axis (consistent across all three models): heuristic "Maybe" → LLM "Exclude" (45-46 of 54 papers).
+
+**0 % malformed-output rate** across 681 calls (3 tiers × 227 papers). Protocol §11.2 (>5% malformed) never triggered. Total wall time across the three live tiers: ≈ 11 minutes.
+
+**Artefacts committed to git in this PR:**
+- `experiments/llm_second_reviewer/run_*_haiku.jsonl` (the 2-paper smoke-test JSONL is retained as `run_20260520T175555Z_haiku.jsonl`; the canonical run is `run_20260520T175705Z_haiku.jsonl`)
+- `experiments/llm_second_reviewer/run_20260520T181323Z_sonnet.jsonl`
+- `experiments/llm_second_reviewer/run_20260520T181323Z_sonnet.jsonl.aborted-sonnet-4-5` (sunk-cost partial run, excluded from analysis but retained for reproducibility audit)
+- `experiments/llm_second_reviewer/run_20260520T181629Z_opus.jsonl`
+- `experiments/data/processed/llm_second_reviewer_results.csv` (merged across all 3 tiers, 681 rows)
+- `experiments/results/llm_second_reviewer_summary.md`
+- `experiments/results/llm_second_reviewer_confusion.csv`
+
+**Outstanding (deferred per protocol §8)**: human-gold n=30 subset is not yet labelled. Until it is, the audit remains IRR-only.

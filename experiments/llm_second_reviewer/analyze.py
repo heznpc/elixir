@@ -181,10 +181,49 @@ def mcnemar_bowker_p(obs: list[list[int]]) -> float | None:
 def load_data():
     with HEUR_CSV.open() as f:
         heur = {r["PMID"]: r["Screening_Decision"] for r in csv.DictReader(f)}
-    llm_rows = []
-    if LLM_CSV.exists():
-        with LLM_CSV.open() as f:
-            llm_rows = list(csv.DictReader(f))
+    # Aggregate across ALL run_*_<tier>.jsonl in the experiment dir; per-tier de-dup keeps the
+    # most recent run's verdict.
+    llm_rows: list[dict] = []
+    seen: dict[tuple[str, str], dict] = {}
+    jsonls = sorted(SCRIPT_DIR.glob("run_*.jsonl"))
+    for path in jsonls:
+        with path.open() as f:
+            for line in f:
+                if not line.strip():
+                    continue
+                rec = __import__("json").loads(line)
+                if rec.get("_header"):
+                    continue
+                tier = rec.get("tier", "")
+                pmid = rec.get("pmid", "")
+                if not tier or not pmid:
+                    continue
+                key = (pmid, tier)
+                seen[key] = {
+                    "pmid":  pmid,
+                    "tier":  tier,
+                    "model": rec.get("model", ""),
+                    "llm_verdict": rec.get("verdict", ""),
+                    "llm_domains": "|".join(rec.get("domains") or []),
+                    "parse_error": rec.get("parse_error") or "",
+                    "error":       (rec.get("error") or "")[:200],
+                    "latency_s":   rec.get("latency_s", ""),
+                    "cost_usd":    rec.get("cost_usd", ""),
+                }
+    llm_rows = list(seen.values())
+    # Materialise the merged CSV for downstream consumers
+    if llm_rows:
+        LLM_CSV.parent.mkdir(parents=True, exist_ok=True)
+        with LLM_CSV.open("w", newline="") as f:
+            w = csv.writer(f)
+            w.writerow(["pmid","tier","model","heuristic_verdict","llm_verdict",
+                        "llm_domains","agreement","parse_error","error","latency_s","cost_usd"])
+            for r in llm_rows:
+                hv = heur.get(r["pmid"], "")
+                lv = r["llm_verdict"]
+                agreement = "yes" if hv == lv and hv else ("no" if (hv and lv) else "missing")
+                w.writerow([r["pmid"], r["tier"], r["model"], hv, lv, r["llm_domains"],
+                            agreement, r["parse_error"], r["error"], r["latency_s"], r["cost_usd"]])
     years = {}
     with RAW_CSV.open() as f:
         for r in csv.DictReader(f):
