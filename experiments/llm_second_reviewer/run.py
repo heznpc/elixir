@@ -277,6 +277,8 @@ def resolve_model(api_key: str, tier: str) -> str | None:
 # ---------------------------------------------------------------------------
 def run_one(api_key: str, model: str, paper: dict, criteria: str, prompt_template: str) -> dict:
     body, prompt_hash, criteria_hash = build_request_body(model, paper, criteria, prompt_template)
+    import datetime as _dt
+    call_started_utc = _dt.datetime.now(_dt.timezone.utc).isoformat()
     t0 = time.time()
     resp, err = call_anthropic(api_key, body)
     latency = time.time() - t0
@@ -292,6 +294,7 @@ def run_one(api_key: str, model: str, paper: dict, criteria: str, prompt_templat
         "prompt_hash": prompt_hash,
         "criteria_hash": criteria_hash,
         "latency_s": round(latency, 2),
+        "call_started_utc": call_started_utc,
         "error": err,
     }
     if not resp:
@@ -334,6 +337,7 @@ def build_cli_prompt(paper: dict, criteria: str, prompt_template: str) -> str:
 
 
 def run_one_cli(model: str, paper: dict, criteria: str, prompt_template: str) -> dict:
+    import datetime as _dt
     prompt_hash   = sha256(prompt_template)
     criteria_hash = sha256(criteria)
     prompt = build_cli_prompt(paper, criteria, prompt_template)
@@ -346,11 +350,13 @@ def run_one_cli(model: str, paper: dict, criteria: str, prompt_template: str) ->
         "--disable-slash-commands",
         prompt,
     ]
+    call_started_utc = _dt.datetime.now(_dt.timezone.utc).isoformat()
     rec = {
         "pmid": paper["pmid"],
         "model": model,
         "prompt_hash": prompt_hash,
         "criteria_hash": criteria_hash,
+        "call_started_utc": call_started_utc,
     }
     t0 = time.time()
     try:

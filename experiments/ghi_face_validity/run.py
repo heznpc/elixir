@@ -230,6 +230,7 @@ def main():
     def do_one(item, criterion, tier, model):
         prompt = build_prompt(item, criterion, criteria_text, template)
         while True:
+            call_started_utc = dt.datetime.now(dt.timezone.utc).isoformat()
             t0 = time.time()
             resp, stderr, rc = call_cli_once(model, prompt)
             latency = time.time() - t0
@@ -240,7 +241,8 @@ def main():
                        "prompt_hash": prompt_hash, "criteria_hash": criteria_hash,
                        "verdict": "", "reason": "", "parse_error": f"call_failed:rc={rc}",
                        "error": stderr[:200], "latency_s": round(latency,2),
-                       "cost_usd": 0.0, "raw": ""}
+                       "cost_usd": 0.0, "raw": "",
+                       "call_started_utc": call_started_utc, "usage": {}}
                 write_state(rec)
                 return
             text = resp.get("result", "") or ""
@@ -255,7 +257,8 @@ def main():
                        "parse_error": "is_error_true",
                        "error": json.dumps(err_obj)[:200],
                        "latency_s": round(latency,2),
-                       "cost_usd": float(resp.get("total_cost_usd",0.0)), "raw": text[:500]}
+                       "cost_usd": float(resp.get("total_cost_usd",0.0)), "raw": text[:500],
+                       "call_started_utc": call_started_utc, "usage": resp.get("usage", {})}
                 write_state(rec)
                 return
             parsed = parse_verdict(text, criterion)
@@ -267,7 +270,8 @@ def main():
                    "latency_s": round(latency,2),
                    "cost_usd": cost,
                    "usage": resp.get("usage", {}),
-                   "raw": text[:1500]}
+                   "raw": text[:1500],
+                   "call_started_utc": call_started_utc}
             write_state(rec, cost_delta=cost)
             return
 
