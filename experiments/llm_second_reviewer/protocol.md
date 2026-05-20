@@ -53,10 +53,10 @@ Per-domain κ is reported only as a descriptive table. No domain-level claim is 
 
 **Multi-model run (amended 2026-05-21 per design-review M-B):** all three currently-stable Claude 4.x tiers are run in parallel against the same 227-paper corpus, giving three κ statistics (heuristic↔each model) plus pairwise κ between models.
 
-- **Models pinned (verified reachable on this endpoint on 2026-05-21):**
-  - `claude-opus-4-7` — highest capability tier
-  - `claude-sonnet-4-5` — mid tier
-  - `claude-haiku-4-5` — fastest, cheapest tier
+- **Models pinned (verified reachable on this endpoint on 2026-05-21 via probe; updated mid-execution per user concern about model recency):**
+  - `claude-opus-4-7` — highest capability tier (latest Opus)
+  - `claude-sonnet-4-6` — mid tier (latest Sonnet; `claude-sonnet-4-7` does not exist; `claude-sonnet-4-5` deprecated for this run)
+  - `claude-haiku-4-5` — fastest, cheapest tier (latest Haiku; `claude-haiku-4-6` / `claude-haiku-4-7` do not exist)
 - **Invocation method:** `claude --print --no-session-persistence --model <name> --max-budget-usd 7 --output-format json` as a subprocess. The Anthropic Messages API via direct `urllib.request` is the preferred long-term path, but `ANTHROPIC_API_KEY` is not exposed to this shell at run time (verified empty: `printenv ANTHROPIC_API_KEY | wc -c = 1`). The CLI subprocess uses the Claude Code OAuth session and is acknowledged as a reproducibility trade-off (see §5b below).
 - **Temperature:** Claude CLI default (not pinned at 0). Acknowledged deviation from a stricter API-based design; documented in §5b. Re-run with `temperature=0` via direct API is filed as a follow-up amendment in `planning/decisions.md`.
 - **Max output tokens:** capped by `--max-budget-usd 7` total across all calls.

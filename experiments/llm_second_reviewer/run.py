@@ -64,8 +64,10 @@ MODELS = [
     "claude-haiku-4-5",
 ]
 MODEL_TRY_ORDER = {
-    "opus":   ["claude-opus-4-7",   "claude-opus-4-5"],
-    "sonnet": ["claude-sonnet-4-5"],
+    # Updated 2026-05-21 after endpoint probe: opus-4-7 + sonnet-4-6 are newest reachable.
+    # haiku-4-6/4-7 do not exist yet; haiku-4-5 is the latest haiku.
+    "opus":   ["claude-opus-4-7",   "claude-opus-4-6",   "claude-opus-4-5"],
+    "sonnet": ["claude-sonnet-4-6", "claude-sonnet-4-5"],
     "haiku":  ["claude-haiku-4-5"],
 }
 
@@ -82,7 +84,9 @@ COST_CEILING   = 7.00      # USD, protocol §11
 PRICE_PER_MTOK = {
     # input, cached_read, output  (USD)
     "claude-opus-4-7":   (15.0,  1.50, 75.0),
+    "claude-opus-4-6":   (15.0,  1.50, 75.0),
     "claude-opus-4-5":   (15.0,  1.50, 75.0),
+    "claude-sonnet-4-6": ( 3.0,  0.30, 15.0),
     "claude-sonnet-4-5": ( 3.0,  0.30, 15.0),
     "claude-haiku-4-5": ( 1.0,  0.10,  5.0),
 }
@@ -309,6 +313,85 @@ def run_one(api_key: str, model: str, paper: dict, criteria: str, prompt_templat
 
 
 # ---------------------------------------------------------------------------
+# CLI subprocess path (no API key needed; uses Claude Code OAuth)
+# ---------------------------------------------------------------------------
+import subprocess
+
+CLI_SYSTEM_PROMPT = (
+    "You output exactly one JSON object and nothing else. "
+    "No prose, no preamble, no markdown code fence, no internal reasoning. "
+    "Minimize tokens."
+)
+
+def build_cli_prompt(paper: dict, criteria: str, prompt_template: str) -> str:
+    return (prompt_template
+            .replace("<<CRITERIA_VERBATIM>>", criteria)
+            .replace("<<PMID>>",     paper["pmid"])
+            .replace("<<YEAR>>",     paper["year"])
+            .replace("<<JOURNAL>>",  paper["journal"])
+            .replace("<<TITLE>>",    paper["title"])
+            .replace("<<ABSTRACT>>", paper.get("abstract", "")[:1800]))
+
+
+def run_one_cli(model: str, paper: dict, criteria: str, prompt_template: str) -> dict:
+    prompt_hash   = sha256(prompt_template)
+    criteria_hash = sha256(criteria)
+    prompt = build_cli_prompt(paper, criteria, prompt_template)
+    cmd = [
+        "claude", "--print", "--no-session-persistence",
+        "--model", model,
+        "--output-format", "json",
+        "--system-prompt", CLI_SYSTEM_PROMPT,
+        "--tools", "",
+        "--disable-slash-commands",
+        prompt,
+    ]
+    rec = {
+        "pmid": paper["pmid"],
+        "model": model,
+        "prompt_hash": prompt_hash,
+        "criteria_hash": criteria_hash,
+    }
+    t0 = time.time()
+    try:
+        r = subprocess.run(cmd, capture_output=True, text=True, timeout=PER_CALL_TO)
+        latency = time.time() - t0
+        rec["latency_s"] = round(latency, 2)
+        if r.returncode != 0:
+            rec.update(verdict="", domains=[], reason="",
+                       parse_error=f"cli_returncode={r.returncode}",
+                       error=r.stderr[:300], cost_usd=0.0, raw="", usage={})
+            return rec
+        try:
+            j = json.loads(r.stdout)
+        except json.JSONDecodeError as e:
+            rec.update(verdict="", domains=[], reason="",
+                       parse_error=f"cli_json_decode:{e}",
+                       error=r.stdout[:300], cost_usd=0.0, raw=r.stdout[:1000], usage={})
+            return rec
+        text = j.get("result", "") or ""
+        usage = j.get("usage", {})
+        cost = float(j.get("total_cost_usd", 0.0))
+        parsed = parse_verdict(text)
+        rec.update(parsed)
+        rec["cost_usd"] = round(cost, 6)
+        rec["usage"]    = usage
+        rec["raw"]      = text[:2000]
+        rec["error"]    = None
+        return rec
+    except subprocess.TimeoutExpired:
+        rec.update(verdict="", domains=[], reason="", parse_error="timeout",
+                   error="subprocess.TimeoutExpired", cost_usd=0.0, raw="", usage={},
+                   latency_s=PER_CALL_TO)
+        return rec
+    except Exception as e:
+        rec.update(verdict="", domains=[], reason="", parse_error=f"{type(e).__name__}",
+                   error=str(e)[:300], cost_usd=0.0, raw="", usage={},
+                   latency_s=time.time() - t0)
+        return rec
+
+
+# ---------------------------------------------------------------------------
 # Orchestration
 # ---------------------------------------------------------------------------
 def main():
@@ -316,6 +399,12 @@ def main():
     ap.add_argument("--dry-run", action="store_true", help="Parse inputs, print plan, do not call API.")
     ap.add_argument("--tier", choices=["opus","sonnet","haiku","all"], default="all")
     ap.add_argument("--limit", type=int, default=0, help="Process first N papers only.")
+    ap.add_argument("--via", choices=["api","cli"], default="api",
+                    help="api = direct Anthropic Messages API (needs ANTHROPIC_API_KEY). "
+                         "cli = `claude --print` subprocess (uses Claude Code OAuth).")
+    ap.add_argument("--cost-ceiling", type=float, default=COST_CEILING,
+                    help="USD ceiling for total displayed cost; protocol §11.4")
+    ap.add_argument("--concurrency", type=int, default=CONCURRENCY)
     args = ap.parse_args()
 
     # Load inputs
@@ -347,20 +436,24 @@ def main():
                 print(f"[dry-run] msg part {i} cache={'yes' if cc else 'no'} bytes={len(c.get('text',''))}")
         return
 
-    api_key = resolve_api_key()
-    if not api_key:
-        print("[stop §11.1] no API key resolvable", file=sys.stderr)
-        sys.exit(2)
-
-    # Resolve actual model dated alias per tier
-    resolved = {}
-    for t in tiers:
-        m = resolve_model(api_key, t)
-        if not m:
-            print(f"[stop] could not resolve any model for tier={t}", file=sys.stderr)
+    api_key = None
+    if args.via == "api":
+        api_key = resolve_api_key()
+        if not api_key:
+            print("[stop §11.1] no API key resolvable; switch with --via cli to use Claude Code OAuth", file=sys.stderr)
             sys.exit(2)
-        resolved[t] = m
-    print(f"[plan] resolved models: {resolved}")
+        # Resolve actual model dated alias per tier
+        resolved = {}
+        for t in tiers:
+            m = resolve_model(api_key, t)
+            if not m:
+                print(f"[stop] could not resolve any model for tier={t}", file=sys.stderr)
+                sys.exit(2)
+            resolved[t] = m
+    else:
+        # CLI path uses the first preferred dated alias per tier directly
+        resolved = {t: MODEL_TRY_ORDER[t][0] for t in tiers}
+    print(f"[plan] via={args.via}  resolved models: {resolved}")
 
     ts = time.strftime("%Y%m%dT%H%M%SZ", time.gmtime())
     total_cost  = 0.0
@@ -385,10 +478,13 @@ def main():
                 "concurrency":   CONCURRENCY,
                 "started_utc":   ts,
             }
+            header["via"] = args.via
             jf.write(json.dumps(header) + "\n")
-            with cf.ThreadPoolExecutor(max_workers=CONCURRENCY) as pool:
-                futs = {pool.submit(run_one, api_key, model, p, criteria, prompt_template): p["pmid"]
-                        for p in papers}
+            worker = (lambda p: run_one(api_key, model, p, criteria, prompt_template)) \
+                     if args.via == "api" else \
+                     (lambda p: run_one_cli(model, p, criteria, prompt_template))
+            with cf.ThreadPoolExecutor(max_workers=args.concurrency) as pool:
+                futs = {pool.submit(worker, p): p["pmid"] for p in papers}
                 done_count = 0
                 for fut in cf.as_completed(futs):
                     rec = fut.result()
@@ -405,8 +501,8 @@ def main():
                               f"cost=${total_cost:.3f}  malformed={malformed}  "
                               f"elapsed={elapsed:.0f}s")
                     # Stop checks per protocol §11
-                    if total_cost > COST_CEILING:
-                        print(f"[stop §11.4] cost ceiling exceeded: ${total_cost:.2f}", file=sys.stderr)
+                    if total_cost > args.cost_ceiling:
+                        print(f"[stop §11.4] cost ceiling exceeded: ${total_cost:.2f} > ${args.cost_ceiling}", file=sys.stderr)
                         pool.shutdown(wait=False, cancel_futures=True)
                         break
                     if time.time() - started > WALL_BUDGET_S:
