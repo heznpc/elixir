@@ -1,0 +1,552 @@
+pmid,tier,model,sample_idx,verdict,domains,reason,parse_error,error,latency_s,cost_usd
+32106893,haiku,claude-haiku-4-5,0,Exclude,,"Gaming disorder prevalence study lacking focus on target behaviors: item hoarding, loot boxes, inventory management, completionism, or backlog accumulation.",,,16.87,0.014099
+32106893,haiku,claude-haiku-4-5,1,Exclude,,"Survey of gaming disorder prevalence; does not examine hoarding, gacha, inventory, completionism, or backlog behaviors.",,,15.76,0.011124
+32106893,haiku,claude-haiku-4-5,2,Maybe,D3,Mentions microtransactions and gaming disorder; full-text review needed to determine if collecting behavior is explicitly examined.,,,26.1,0.018229
+32106893,sonnet,claude-sonnet-4-6,0,Exclude,,"Focuses on gaming disorder prevalence and motives without examining hoarding, collecting, inventory, or loss-aversion behaviors.",,,2.73,0.014222
+32106893,sonnet,claude-sonnet-4-6,1,Exclude,,"Focuses on gaming disorder prevalence and motivations; no behavioral or psychological measures of hoarding, collecting, or loss aversion in games.",,,2.94,0.001768
+32106893,sonnet,claude-sonnet-4-6,2,Exclude,,"Focuses on gaming disorder prevalence and motives without examining hoarding, collecting, or loss-aversion behaviors in game contexts.",,,3.23,0.001738
+32106893,opus,claude-opus-4-7,0,Maybe,D3,Survey mentions microtransaction use among Irish gamers but focuses on gaming disorder generally; full-text needed to assess loot-box/collecting content.,,,4.39,0.103875
+32106893,opus,claude-opus-4-7,1,Maybe,D3,Survey includes microtransaction use among Irish gamers but focuses on gaming disorder generally; full-text needed to assess loot box/gacha behavioral content.,,,3.64,0.014118
+32106893,opus,claude-opus-4-7,2,Maybe,D3,Survey includes microtransaction use among gaming-disorder measures but lacks behavioral/psychological depth on loot boxes; full-text needed.,,,3.12,0.013743
+38603322,haiku,claude-haiku-4-5,0,Exclude,,Examines pandemic-era mobile gaming and spending preferences; lacks connection to hoarding or related psychological constructs.,,,21.21,0.014599
+38603322,haiku,claude-haiku-4-5,1,Exclude,,"Examines pandemic impact on locative gaming spending preferences, not hoarding, loss aversion, or compulsive-buying constructs.",,,21.5,0.014264
+38603322,haiku,claude-haiku-4-5,2,Exclude,,"Addresses pandemic locative gaming and revenue model adaptation; no hoarding, loot box, or behavioral domain match.",,,13.19,0.009904
+38603322,sonnet,claude-sonnet-4-6,0,Exclude,,"Focuses on pandemic mobility and microtransaction spending behavior without examining hoarding, collecting, or psychological ownership constructs.",,,3.17,0.014151
+38603322,sonnet,claude-sonnet-4-6,1,Exclude,,"Focuses on COVID-19 impacts on locative gaming and social behavior; microtransaction mention is economic context, not behavioral/psychological hoarding measure.",,,2.83,0.001823
+38603322,sonnet,claude-sonnet-4-6,2,Exclude,,"Focuses on pandemic impacts on locative gaming mobility; no behavioral/psychological measures of hoarding, collecting, or loss aversion.",,,3.19,0.001733
+38603322,opus,claude-opus-4-7,0,Exclude,,"Study examines mobile locative gaming behavior during COVID-19 without measuring hoarding, loss aversion, or collecting constructs relevant to the review.",,,3.15,0.103537
+38603322,opus,claude-opus-4-7,1,Exclude,,"Study examines mobile locative gaming behavior during COVID-19 with microtransaction spending as context, but no hoarding, collecting, or loss-aversion measures.",,,3.36,0.013959
+38603322,opus,claude-opus-4-7,2,Exclude,,"Study examines mobile locative gaming behavior during COVID-19; microtransactions discussed only as revenue model, not as hoarding, collecting, or loss-aversion behavior.",,,3.51,0.014334
+41140132,haiku,claude-haiku-4-5,0,Exclude,,Editorial without original empirical data; protocol excludes editorials per criterion 4.,,,13.54,0.010311
+41140132,haiku,claude-haiku-4-5,1,Exclude,,Editorial without original data explicitly excluded per exclusion criterion 4.,,,14.96,0.010581
+41140132,sonnet,claude-sonnet-4-6,0,Exclude,,Editorial opinion piece without original data; excluded per exclusion criterion 4.,,,2.9,0.013408
+41140132,sonnet,claude-sonnet-4-6,2,Exclude,,Editorial without original data; excluded per exclusion criterion 4 (editorials without original data).,,,2.91,0.013483
+41140132,sonnet,claude-sonnet-4-6,1,Exclude,,"Editorial without original data; primarily opinion/commentary on regulation, not an empirical study of game behavior.",,,3.3,0.013499
+41140132,haiku,claude-haiku-4-5,2,Exclude,,"Editorial commentary without original data, excluded per PRISMA exclusion criterion 4.",,,14.74,0.011551
+41140132,opus,claude-opus-4-7,1,Exclude,,"Editorial/opinion piece without original data, excluded per criterion 4 despite topical relevance to loot boxes.",,,3.25,0.098456
+41140132,opus,claude-opus-4-7,0,Exclude,,"Editorial/opinion piece without original data, excluded per criterion 4 despite discussing loot box mechanics.",,,3.38,0.098381
+41140132,opus,claude-opus-4-7,2,Exclude,,"Editorial/commentary without original data, excluded per criterion 4 despite topical relevance to loot boxes.",,,3.14,0.098306
+41140132,sonnet,claude-sonnet-4-6,0,Exclude,,Editorial commentary without original data; excluded per exclusion criterion 4.,,,3.97,0.001491
+41140132,sonnet,claude-sonnet-4-6,1,Exclude,,Editorial without original data; excluded per exclusion criterion 4 (editorials without original data).,,,2.72,0.001581
+41140132,haiku,claude-haiku-4-5,2,Exclude,,Editorial opinion piece without original data; exclusion criterion #4 applies.,,,13.51,0.010636
+41140132,sonnet,claude-sonnet-4-6,2,Exclude,,Editorial opinion piece without original data; excluded per exclusion criterion 4.,,,5.29,0.001506
+40211461,sonnet,claude-sonnet-4-6,0,Exclude,,"Focuses on LGBTQ+ representation and homocapitalism critique; no behavioral or psychological measures of hoarding, collecting, or loss aversion.",,,3.38,0.013525
+41140132,opus,claude-opus-4-7,0,Exclude,,"Editorial/opinion piece without original data, excluded per criterion 4 despite topical relevance to loot boxes.",,,3.17,0.012431
+40211461,sonnet,claude-sonnet-4-6,1,Exclude,,"Focuses on identity commodification and homocapitalism critique; no behavioral or psychological measures of hoarding, collecting, or loss aversion.",,,2.75,0.001719
+40211461,haiku,claude-haiku-4-5,0,Exclude,,"Critical/theoretical analysis of LGBTQ+ representation and gaming capitalism; no empirical study of hoarding, inventory, or item retention behaviors.",,,14.82,0.011105
+41140132,opus,claude-opus-4-7,1,Exclude,,"Editorial/commentary without original data, excluded per criterion 4 despite topical relevance to loot boxes.",,,3.25,0.01228
+40211461,sonnet,claude-sonnet-4-6,2,Exclude,,"Focuses on LGBTQ+ identity commodification and capitalism critique; no behavioral or psychological measures of hoarding, collecting, or loss aversion.",,,3.58,0.001734
+40211461,haiku,claude-haiku-4-5,2,Exclude,,"Focuses on LGBTQ+ representation and commodification driving consumerism; no measurement of hoarding behaviors, loss aversion, or collecting constructs.",,,17.64,0.01079
+41140132,opus,claude-opus-4-7,2,Exclude,,Editorial/opinion piece without original data; excluded per criterion 4 despite topical relevance to loot boxes.,,,3.06,0.012431
+40211461,opus,claude-opus-4-7,0,Exclude,,Critical/cultural analysis of LGBTQ+ commodification via microtransactions; lacks behavioral or psychological measures and no hoarding/collecting construct linkage.,,,4.19,0.098119
+40211461,haiku,claude-haiku-4-5,1,Exclude,,"Critiques LGBTQ+ cosmetic commodification; does not examine hoarding, loss aversion, or retention behaviors.",,,19.64,0.013825
+40211461,opus,claude-opus-4-7,1,Exclude,,Critical theory paper on LGBTQ+ commodification via microtransactions; focuses on monetization economics without behavioral/psychological measures of hoarding or collecting.,,,3.11,0.013633
+40211461,opus,claude-opus-4-7,2,Exclude,,Critical analysis of LGBTQ+ commodification via microtransactions; focuses on monetization economics and identity politics without behavioral or psychological measures of hoarding.,,,3.95,0.013633
+32306232,sonnet,claude-sonnet-4-6,0,Maybe,D3,"Covers monetary gaming and microtransactions but focuses on community/social factors, not collecting or hoarding behavior directly.",,,4.2,0.014061
+32306232,sonnet,claude-sonnet-4-6,1,Maybe,D3,"Covers microtransactions and monetary gaming communities but focuses on social dynamics, not collecting/hoarding behavior directly; full-text needed.",,,3.06,0.001784
+32306232,sonnet,claude-sonnet-4-6,2,Maybe,D3,"Covers monetary gaming and microtransactions but focuses on virtual communities and social influence, not collecting or hoarding behavior directly.",,,3.41,0.001739
+40211461,haiku,claude-haiku-4-5,0,Exclude,,Analyzes representation and capitalism without empirical study of hoarding or inventory behaviors.,,,17.61,0.012395
+32306232,opus,claude-opus-4-7,0,Maybe,D3,"Systematic review of online gambling/gaming communities touches microtransactions and purchase intentions but focus is community influence, not hoarding behaviors directly.",,,3.77,0.103594
+32306232,opus,claude-opus-4-7,1,Maybe,D3,Systematic review of online gambling/gaming communities touches microtransactions and purchase intentions but focuses on community influence rather than hoarding behaviors directly.,,,3.51,0.014027
+32306232,opus,claude-opus-4-7,2,Maybe,D3,Systematic review of online gambling/gaming communities touches microtransactions and purchase intentions but focuses on community influence rather than hoarding behaviors directly.,,,3.49,0.014027
+40211461,haiku,claude-haiku-4-5,1,Exclude,,"Focuses on LGBTQ+ representation commodification, not hoarding, inventory, collecting, or game behavior constructs.",,,14.21,0.010855
+32306232,haiku,claude-haiku-4-5,1,Maybe,D3|Cross-domain,Reviews gaming with monetary features and behavioral outcomes; full-text needed to verify studies examine hoarding/loss-aversion domains.,,,41.75,0.028452
+32306232,haiku,claude-haiku-4-5,0,Maybe,D3,Mixed review of gambling and gaming; loot box inclusion relevant but full-text needed to assess scope.,,,47.96,0.030312
+36998766,haiku,claude-haiku-4-5,0,Exclude,,Regulatory labeling compliance audit; does not examine hoarding-related behaviors or psychological game mechanics impacts.,,,23.65,0.015696
+36998766,sonnet,claude-sonnet-4-6,0,Exclude,,Focuses on regulatory label compliance and monetization policy without behavioral or psychological measures of player behavior.,,,2.82,0.014331
+36998766,sonnet,claude-sonnet-4-6,1,Exclude,,Focuses on regulatory label compliance and monetization policy without behavioral or psychological measures of loot box behavior.,,,3.2,0.001665
+36998766,sonnet,claude-sonnet-4-6,2,Exclude,,"Focuses on regulatory label compliance and industry self-regulation, not behavioral or psychological measures of loot box collecting.",,,3.12,0.001695
+40211461,haiku,claude-haiku-4-5,2,Exclude,,Cultural critique of LGBTQ+ commodification; no empirical examination of hoarding or collecting behaviors.,,,26.26,0.015595
+32306232,haiku,claude-haiku-4-5,2,Maybe,D3,Systematic review on gaming communities with monetary features; may discuss gacha/loot box communities; requires full-text assessment of behavioral focus.,,,57.73,0.039872
+36998766,opus,claude-opus-4-7,0,Exclude,,"Study examines industry compliance with loot box warning labels, not player behavior or psychological measures of hoarding/collecting.",,,3.22,0.103519
+40211461,sonnet,claude-sonnet-4-6,0,Exclude,,Focuses on LGBTQ+ identity commodification and monetization economics without behavioral or psychological hoarding measures.,,,2.9,0.001614
+36998766,haiku,claude-haiku-4-5,1,Exclude,,"Compliance audit of loot box warning label accuracy; does not measure player behavior, collecting patterns, or psychological constructs.",,,18.13,0.010561
+36998766,opus,claude-opus-4-7,1,Exclude,,"Study examines industry compliance with loot box warning labels, not player behavioral or psychological measures related to hoarding constructs.",,,3.39,0.012979
+36998766,opus,claude-opus-4-7,2,Exclude,,"Study examines industry compliance with loot box warning labels, not player behavior or psychological measures related to hoarding constructs.",,,3.14,0.012904
+40211461,sonnet,claude-sonnet-4-6,1,Exclude,,Focuses on LGBTQ+ commodification critique and monetization economics without behavioral or psychological measures of hoarding-related constructs.,,,3.2,0.001689
+36998766,haiku,claude-haiku-4-5,2,Exclude,,Examines regulatory compliance of loot box labeling without measuring player hoarding behavior or psychology.,,,18.81,0.014236
+40211461,sonnet,claude-sonnet-4-6,2,Exclude,,Focuses on LGBTQ+ identity commodification and homocapitalism critique; no behavioral or psychological hoarding/collecting measures examined.,,,3.1,0.001719
+41556971,sonnet,claude-sonnet-4-6,0,Exclude,,Commentary without original data; excluded per criterion E4 (editorials/opinion pieces without original empirical data).,,,3.1,0.014012
+41556971,sonnet,claude-sonnet-4-6,1,Exclude,,Commentary without original data; excluded per exclusion criterion 4 (editorial/opinion piece without original empirical data).,,,2.92,0.00168
+41556971,haiku,claude-haiku-4-5,0,Exclude,,Commentary without original data calling for future research. Excluded per exclusion criterion 4.,,,13.44,0.01179
+41556971,sonnet,claude-sonnet-4-6,2,Exclude,,"Commentary without original data; focuses on gaming disorder classification, not hoarding-related in-game behaviors or virtual item accumulation.",,,2.66,0.00171
+41556971,haiku,claude-haiku-4-5,1,Exclude,,Commentary piece without original empirical data or systematic review; proposes studying non-digital gaming rather than investigating behaviors.,,,14.29,0.01094
+41556971,opus,claude-opus-4-7,0,Exclude,,"Commentary/opinion piece without original data, excluded per criterion 4.",,,3.81,0.1002
+41556971,opus,claude-opus-4-7,1,Exclude,,"Commentary/opinion piece without original data, excluded per criterion 4.",,,2.93,0.1002
+40211461,opus,claude-opus-4-7,0,Exclude,,Critical theory paper on LGBTQ+ commodification via microtransactions; focuses on monetization economics and identity politics without behavioral or psychological hoarding measures.,,,12.17,0.013633
+41556971,opus,claude-opus-4-7,2,Exclude,,Commentary/opinion piece without original data; excluded per criterion 4 despite discussing loot-box-like monetization in non-digital games.,,,3.22,0.013179
+41556971,haiku,claude-haiku-4-5,2,Exclude,,Excludes commentary without original data (protocol criterion 4). Speculates on non-digital games without empirical evidence.,,,17.6,0.01297
+40211461,opus,claude-opus-4-7,1,Exclude,,Critical/cultural analysis of LGBTQ+ representation and monetization without behavioral or psychological measures of hoarding-related game behaviors.,,,3.21,0.013109
+40569695,sonnet,claude-sonnet-4-6,0,Exclude,,"Studies loot-box advertising compliance, not behavioral or psychological measures of collecting or hoarding behavior.",,,2.8,0.014132
+40211461,opus,claude-opus-4-7,2,Exclude,,Critical analysis of LGBTQ+ commodification via microtransactions; focuses on monetization economics and identity politics without behavioral or psychological measures of hoarding.,,,4.31,0.013633
+40569695,haiku,claude-haiku-4-5,2,Exclude,,Regulatory compliance study on loot box advertising disclosure; does not examine player hoarding or collecting behaviors.,,,15.32,0.011369
+40569695,haiku,claude-haiku-4-5,1,Exclude,,"Advertising compliance audit; lacks behavioral/psychological measures of player hoarding, collecting, or loss aversion.",,,17.49,0.013004
+40569695,sonnet,claude-sonnet-4-6,1,Exclude,,"Focuses on advertising regulation and legal compliance, not behavioral or psychological measures of loot box collecting behavior.",,,13.21,0.001648
+40569695,haiku,claude-haiku-4-5,0,Exclude,,"Examines loot box advertising compliance and regulatory enforcement, not player hoarding behaviors or psychological constructs.",,,19.32,0.013689
+40569695,sonnet,claude-sonnet-4-6,2,Exclude,,"Focuses on advertising compliance and regulation policy, not behavioral or psychological measures of loot box collecting behavior.",,,2.98,0.001648
+40569695,opus,claude-opus-4-7,0,Exclude,,"Study analyzes loot box advertising compliance and regulation, not player hoarding/collecting behavior or psychological measures.",,,3.29,0.10275
+40569695,opus,claude-opus-4-7,1,Exclude,,"Study examines advertising compliance and regulation for loot boxes, not player behavioral or psychological measures of collecting/hoarding.",,,3.14,0.102975
+40569695,opus,claude-opus-4-7,2,Exclude,,"Study examines advertising compliance and regulation of loot boxes, not player behavior, psychology, or hoarding-related constructs.",,,5.56,0.013062
+35954678,sonnet,claude-sonnet-4-6,0,Exclude,,"Policy/regulatory commentary without original behavioral or psychological data; focused on legislation, not empirical game behavior study.",,,3.28,0.013814
+35954678,sonnet,claude-sonnet-4-6,1,Exclude,,Policy/regulatory commentary on loot boxes without empirical behavioral or psychological data; no original data collected.,,,2.79,0.00162
+35954678,sonnet,claude-sonnet-4-6,2,Exclude,,Policy/regulatory commentary on loot boxes without behavioral or psychological measures; no original empirical data on hoarding-related behavior.,,,3.04,0.001695
+35954678,haiku,claude-haiku-4-5,2,Exclude,,Policy commentary on game regulation without original empirical data on player hoarding or collecting behavior.,,,11.68,0.009226
+35954678,haiku,claude-haiku-4-5,0,Exclude,,Policy commentary on regulation without empirical study or original behavioral data.,,,14.49,0.010621
+35954678,haiku,claude-haiku-4-5,1,Exclude,,Commentary on regulation without original empirical data on hoarding-related game behaviors.,,,15.53,0.011816
+35954678,opus,claude-opus-4-7,0,Exclude,,Policy/regulatory commentary on video game legislation without original empirical data or behavioral measures.,,,2.88,0.099469
+35954678,opus,claude-opus-4-7,2,Exclude,,Policy/regulatory commentary on video game legislation and loot boxes without original empirical data or behavioral measures.,,,3.29,0.099919
+35954678,opus,claude-opus-4-7,1,Exclude,,Policy/regulatory commentary on video game legislation without original empirical data or behavioral measures.,,,6.76,0.012028
+40730840,sonnet,claude-sonnet-4-6,0,Exclude,,"Examines psychological ownership in environmental serious games, not virtual item hoarding or game-behavior hoarding constructs.",,,2.85,0.013836
+40730840,sonnet,claude-sonnet-4-6,1,Exclude,,"Examines pro-environmental behavior via serious games, not in-game hoarding, collecting, or related behavioral domains.",,,2.7,0.001679
+32306232,haiku,claude-haiku-4-5,0,Maybe,D3,"Systematic review of monetary gaming communities; explicitly mentions loot boxes, but primary focus on social influence mechanisms rather than hoarding-related behavioral outcomes.",,,38.48,0.025452
+40730840,haiku,claude-haiku-4-5,1,Exclude,,"Studies environmental behavior through serious games; no hoarding, item collecting, inventory management, or virtual possession examined.",,,12.07,0.010814
+40730840,sonnet,claude-sonnet-4-6,2,Exclude,,"Studies psychological ownership of the environment via serious games, not virtual item ownership or hoarding in game contexts.",,,3.23,0.001619
+40730840,haiku,claude-haiku-4-5,2,Exclude,,"Environmental serious game study; no focus on in-game hoarding, gacha, inventory paralysis, or virtual possession.",,,12.58,0.010439
+40730840,haiku,claude-haiku-4-5,0,Exclude,,"Environmental behavior intervention; no examination of game-item hoarding, gacha, inventory, or disorder constructs.",,,15.66,0.012284
+40730840,opus,claude-opus-4-7,0,Exclude,,"Studies psychological ownership of environmental behavior via serious games, not virtual item hoarding or game-item ownership relevant to review domains.",,,3.93,0.102188
+40730840,opus,claude-opus-4-7,1,Exclude,,"Studies psychological ownership in environmental serious games for pro-environmental behavior, not virtual item hoarding or game-context accumulation behaviors.",,,3.57,0.102488
+40730840,opus,claude-opus-4-7,2,Exclude,,"Environmental serious game intervention on pro-environmental behavior; psychological ownership is environmental, not virtual game items, outside hoarding scope.",,,4.08,0.013437
+41115014,sonnet,claude-sonnet-4-6,0,Exclude,,Terminological/taxonomy review of internet disorders without game-specific behavioral or psychological data on any target domain.,,,2.99,0.013784
+41115014,sonnet,claude-sonnet-4-6,1,Exclude,,Conceptual/terminological systematic review without game-specific behavioral or psychological data; digital hoarding mentioned only as a subcategory label.,,,4.82,0.001738
+41115014,sonnet,claude-sonnet-4-6,2,Exclude,,Terminology/taxonomy review of internet disorders; digital hoarding mentioned without game component; no behavioral or psychological game-behavior data.,,,3.12,0.001693
+41115014,opus,claude-opus-4-7,0,Maybe,Cross-domain,Umbrella review of problematic internet use mentioning gaming and digital hoarding subcategories; full-text needed to confirm game-specific hoarding content.,,,3.44,0.101025
+32306232,haiku,claude-haiku-4-5,1,Maybe,D3,Systematic review on gaming communities and monetization; may discuss loot box/gacha but needs full-text to confirm.,,,25.09,0.016777
+41115014,opus,claude-opus-4-7,1,Exclude,,Terminological review of problematic internet usage subcategories; not focused on in-game hoarding behaviors or related constructs.,,,4.09,0.012591
+41115014,opus,claude-opus-4-7,2,Exclude,,"Umbrella terminology review of problematic internet use subcategories; no specific focus on game hoarding, loot boxes, or behavioral domains of interest.",,,3.48,0.013416
+41115014,haiku,claude-haiku-4-5,0,Exclude,,"Terminology review of PUI broadly; does not examine in-game behaviors (loot boxes, inventory, completionism). Digital hoarding likely non-gaming.",,,24.21,0.014968
+41115014,haiku,claude-haiku-4-5,2,Exclude,,"Broad PUI terminological review; does not examine in-game hoarding, loot boxes, gacha, or game-specific behavioral constructs.",,,28.61,0.020143
+41115014,haiku,claude-haiku-4-5,1,Exclude,,Broad PUI terminology review without focus on game-specific hoarding behaviors or clinical connections.,,,30.52,0.018328
+36748997,sonnet,claude-sonnet-4-6,0,Exclude,,Studies loss aversion via fMRI in gambling contexts with no game mechanic or virtual item component.,,,3.08,0.013926
+36748997,sonnet,claude-sonnet-4-6,1,Exclude,,Loss aversion study uses gambling paradigm in social decision-making context with no game mechanic component.,,,2.56,0.00163
+36748997,haiku,claude-haiku-4-5,0,Exclude,,Gambling task in non-game context; falls under pure gambling exclusion criterion without game mechanics.,,,14.17,0.010825
+36748997,sonnet,claude-sonnet-4-6,2,Exclude,,"fMRI study of loss aversion in gamble tasks with no game mechanic, inventory, or hoarding component.",,,3.09,0.00169
+36748997,haiku,claude-haiku-4-5,1,Exclude,,Pure gambling task in fMRI without game mechanics or game context; excluded per criterion #3.,,,15.94,0.01248
+36748997,opus,claude-opus-4-7,0,Exclude,,fMRI study of loss aversion in monetary gambles for self versus others; no game or gaming context.,,,3.78,0.100238
+36748997,opus,claude-opus-4-7,1,Exclude,,Neuroimaging study of loss aversion in mixed gambles for self/others; no game context or game-related behavior.,,,3.13,0.012534
+36748997,opus,claude-opus-4-7,2,Exclude,,fMRI study of loss aversion in mixed gambles for self versus others; no game context or game-related hoarding behavior.,,,3.22,0.012684
+36748997,haiku,claude-haiku-4-5,2,Exclude,,Pure gambling/decision-making study without game mechanics or gaming context; per Exclusion Criterion 3.,,,14.79,0.01082
+34857367,sonnet,claude-sonnet-4-6,0,Exclude,,Examines gambling and behavioral addictions in treatment-seeking patients without any game mechanic or virtual item component.,,,3.01,0.014177
+34857367,sonnet,claude-sonnet-4-6,1,Exclude,,Focuses on gambling and internet addiction prevalence in clinical patients; no game mechanic or loot box component.,,,3.3,0.001678
+32306232,haiku,claude-haiku-4-5,2,Maybe,,Systematic review on monetary gaming and online communities; requires full-text to confirm hoarding-behavioral domain focus.,,,35.05,0.024137
+34857367,sonnet,claude-sonnet-4-6,2,Exclude,,Examines gambling and internet addictions in clinical patients without any game mechanic or loot box component.,,,4.7,0.001663
+34857367,opus,claude-opus-4-7,0,Exclude,,"General addiction prevalence study on gambling and internet use; no loot box, gacha, or game-specific hoarding behavioral measures.",,,3.66,0.10275
+34857367,haiku,claude-haiku-4-5,0,Exclude,,"Published in French, not English/Japanese. Examines general gambling/Internet addictions, not game hoarding behaviors.",,,18.84,0.012519
+32306232,sonnet,claude-sonnet-4-6,0,Maybe,D3,"Covers microtransactions and monetary gaming communities but focuses on social influence, not collecting or hoarding behavior directly.",,,6.28,0.001709
+34857367,opus,claude-opus-4-7,1,Exclude,,"General addiction prevalence study on gambling and internet use; no loot box, gacha, or game hoarding behavior examined.",,,3.71,0.012819
+34857367,haiku,claude-haiku-4-5,1,Exclude,,"French publication (protocol requires English/Japanese); addresses general gaming disorder prevalence, not specific in-game hoarding behaviors.",,,20.09,0.013364
+34857367,opus,claude-opus-4-7,2,Exclude,,General gambling/addiction prevalence study without loot box or gacha game mechanic focus.,,,3.45,0.012069
+34857367,haiku,claude-haiku-4-5,2,Exclude,,Studies behavioral addictions broadly; no specific focus on in-game hoarding or accumulation behaviors.,,,35.65,0.023564
+26500478,haiku,claude-haiku-4-5,1,Exclude,,"Focuses on tDCS treatment for behavioral addictions, not in-game hoarding behaviors or psychological constructs.",,,16.29,0.012292
+26500478,sonnet,claude-sonnet-4-6,1,Exclude,,"Focuses on tDCS brain stimulation for behavioral addictions without examining in-game hoarding, inventory, or collecting behaviors.",,,3.64,0.013986
+26500478,sonnet,claude-sonnet-4-6,0,Exclude,,"Focuses on tDCS brain stimulation for behavioral addictions; no game mechanics, hoarding, or virtual item behavior examined.",,,3.82,0.013986
+26500478,sonnet,claude-sonnet-4-6,2,Exclude,,tDCS neurostimulation review; no game behavioral domains examined; video game addiction only mentioned as a category without relevant data.,,,3.31,0.001718
+26500478,opus,claude-opus-4-7,0,Exclude,,"tDCS treatment review for behavioral addictions; no measurement of game hoarding, loot boxes, completionism, or related accumulation behaviors.",,,3.63,0.101794
+26500478,haiku,claude-haiku-4-5,2,Exclude,,"Reviews tDCS treatment for behavioral addictions, not the in-game hoarding and item retention behaviors we study.",,,23.24,0.014292
+26500478,opus,claude-opus-4-7,2,Exclude,,"tDCS treatment review for behavioral addictions; no measurement of in-game hoarding, loot boxes, completionism, or virtual item behaviors.",,,3.11,0.013531
+26500478,opus,claude-opus-4-7,1,Exclude,,"tDCS treatment review for behavioral addictions; no measurement of in-game hoarding, loot boxes, completionism, or loss aversion behaviors.",,,3.6,0.013607
+34992568,haiku,claude-haiku-4-5,0,Exclude,,"Paper concerns organizational knowledge hiding, not game-related hoarding behaviors. No game context present.",,,8.51,0.007575
+34992568,haiku,claude-haiku-4-5,1,Exclude,,"Organizational knowledge hiding study; no game mechanics, behaviors, or game-related constructs examined.",,,10.81,0.00957
+34992568,sonnet,claude-sonnet-4-6,0,Exclude,,"Study examines knowledge hiding in organizations, not game behavior or hoarding-related constructs in digital games.",,,4.42,0.013885
+34992568,sonnet,claude-sonnet-4-6,1,Exclude,,"Study examines knowledge hiding in organizations, not game behavior or hoarding-related constructs in digital games.",,,2.84,0.001641
+34992568,sonnet,claude-sonnet-4-6,2,Exclude,,"Study examines knowledge hiding in organizations; no game component, virtual items, or relevant behavioral domains.",,,2.71,0.001611
+34992568,haiku,claude-haiku-4-5,2,Exclude,,"No game context, gaming behaviors, or game-related constructs examined. Study focuses on knowledge hiding in organizations. Out of scope.",,,13.74,0.011885
+34992568,opus,claude-opus-4-7,0,Exclude,,"Study examines knowledge hiding in workplace organizations, not game behavior or hoarding-related constructs in digital games.",,,3.3,0.100856
+34992568,opus,claude-opus-4-7,2,Exclude,,"Study examines knowledge hiding and personality traits in workplace organizations, with no game component or hoarding-related game behavior.",,,3.19,0.100931
+34992568,opus,claude-opus-4-7,1,Exclude,,"Study examines knowledge hiding in organizational contexts, not games or any hoarding-related game behavior.",,,3.71,0.100481
+26500478,haiku,claude-haiku-4-5,0,Exclude,,"Treats behavioral addiction via tDCS; focuses on eating disorders, not game-specific hoarding or collecting behavior characterization.",,,46.99,0.033112
+36495471,sonnet,claude-sonnet-4-6,0,Exclude,,Focuses on internet-based interventions for behavioral addictions; no game-specific hoarding or collecting behavior examined.,,,2.84,0.01411
+36495471,sonnet,claude-sonnet-4-6,1,Exclude,,Systematic review of internet-based interventions for behavioral addictions; no game-specific hoarding or virtual item behavior examined.,,,2.5,0.001716
+36495471,sonnet,claude-sonnet-4-6,2,Exclude,,Systematic review of internet-based interventions for behavioral addictions; no game-specific hoarding or collecting behavior examined.,,,3.13,0.001701
+36495471,opus,claude-opus-4-7,0,Exclude,,"Review of internet-based interventions for behavioral addictions; no focus on in-game hoarding, loot boxes, or collecting behaviors.",,,6.69,0.103481
+36495471,opus,claude-opus-4-7,1,Exclude,,Systematic review of internet-based interventions for behavioral addictions; not focused on in-game hoarding behaviors or relevant domains.,,,3.89,0.013235
+36495471,opus,claude-opus-4-7,2,Exclude,,Review of internet-based interventions for behavioral addictions; not focused on in-game hoarding behaviors or the review's target domains.,,,3.42,0.013085
+36495471,haiku,claude-haiku-4-5,2,Exclude,,Systematic review of interventions for behavioral addictions; not focused on in-game hoarding behaviors or game-behavior-to-hoarding connections.,,,37.39,0.027267
+36495471,haiku,claude-haiku-4-5,0,Maybe,,Systematic review of behavioral addiction interventions mentioning gaming and hoarding disorder; requires full-text review to assess game-specific hoarding relevance.,,,38.59,0.026557
+39851819,haiku,claude-haiku-4-5,0,Exclude,,"General problematic gaming scale; no focus on item hoarding, loot boxes, inventory, loss aversion, or hoarding-construct linkage.",,,14.31,0.010366
+36495471,haiku,claude-haiku-4-5,1,Exclude,,Systematic review of interventions for behavioral addictions; lacks focus on in-game hoarding behaviors or mechanisms.,,,40.69,0.026817
+39851819,sonnet,claude-sonnet-4-6,0,Exclude,,"Scale development for general problematic gaming; no hoarding, collecting, loot box, completionism, or virtual item behavior examined.",,,3.51,0.013832
+39851819,sonnet,claude-sonnet-4-6,1,Exclude,,"Validates a general problematic gaming scale; no behavioral domains related to hoarding, loot boxes, completionism, or virtual items.",,,3.15,0.013847
+39851819,sonnet,claude-sonnet-4-6,2,Exclude,,"Scale development for general problematic gaming; no connection to hoarding, collecting, loot boxes, or any targeted behavioral domain.",,,2.52,0.00169
+39851819,opus,claude-opus-4-7,0,Exclude,,"Scale development for general problematic gaming; no focus on hoarding, loot boxes, completionism, or accumulation behaviors.",,,3.66,0.099806
+39851819,opus,claude-opus-4-7,1,Exclude,,"Scale development for general problematic gaming; no hoarding, loot box, completionism, or loss aversion content.",,,3.26,0.01229
+39851819,haiku,claude-haiku-4-5,2,Exclude,,"Measures general problematic gaming consequences (school disruption, interpersonal effects) rather than hoarding-related or accumulation behaviors.",,,10.36,0.008931
+39851819,opus,claude-opus-4-7,2,Exclude,,"Scale development for general problematic gaming; no focus on hoarding, loot boxes, completionism, or loss aversion constructs.",,,3.8,0.012814
+39851819,haiku,claude-haiku-4-5,1,Exclude,,"Scale measures general problematic gaming consequences, not hoarding-specific behaviors in games.",,,19.91,0.010131
+40219036,sonnet,claude-sonnet-4-6,0,Exclude,,"Studies food addiction and behavioral addictions clinically; no game-item hoarding, virtual inventory, or loot box behavior examined.",,,3.28,0.014443
+40219036,haiku,claude-haiku-4-5,0,Exclude,,"Food addiction comorbidity study; doesn't examine in-game hoarding, loot box behavior, inventory management, completionism, or psychological ownership of virtual items.",,,12.66,0.010219
+40219036,sonnet,claude-sonnet-4-6,1,Exclude,,Examines food addiction and behavioral addictions clinically; no game-specific hoarding or virtual item behavior examined.,,,3.84,0.001709
+40219036,sonnet,claude-sonnet-4-6,2,Exclude,,"Studies behavioral addictions and food addiction in clinical patients; no game item retention, loot box, or hoarding-in-game behavioral domain.",,,3.27,0.001799
+40219036,haiku,claude-haiku-4-5,1,Exclude,,Food addiction study in behavioral addictions patients; no examination of game-specific hoarding or collecting.,,,16.6,0.013194
+40219036,haiku,claude-haiku-4-5,2,Exclude,,Food addiction study across behavioral addictions; no game mechanics or hoarding behaviors examined.,,,16.04,0.012124
+40219036,opus,claude-opus-4-7,1,Exclude,,"Study on food addiction across behavioral addictions; gaming disorder mentioned only as comorbidity, no hoarding/collecting/loss-aversion game behaviors examined.",,,3.74,0.105769
+40219036,opus,claude-opus-4-7,0,Exclude,,"Study on food addiction across behavioral addictions; gaming disorder mentioned but no examination of hoarding, loot boxes, or in-game accumulation behaviors.",,,4.01,0.105544
+40219036,opus,claude-opus-4-7,2,Exclude,,"Study on food addiction across behavioral addictions; gaming disorder is included only as a comorbidity context, no hoarding-related game behavior examined.",,,3.91,0.105019
+36814178,sonnet,claude-sonnet-4-6,0,Exclude,,Studies compulsive buying and gaming disorder only as behavioral addiction aggregates; no game-specific hoarding or inventory behavior examined.,,,3.36,0.01405
+36814178,sonnet,claude-sonnet-4-6,1,Exclude,,"Examines behavioral addictions broadly via trauma/dissociation; no game-specific hoarding, inventory, gacha, or virtual-item construct.",,,3.39,0.001799
+36814178,sonnet,claude-sonnet-4-6,2,Exclude,,Study examines childhood trauma and dissociation as predictors of behavioral addictions with no game-specific behavioral or item-hoarding component.,,,3.73,0.001754
+36814178,opus,claude-opus-4-7,0,Exclude,,"Study examines behavioral addictions broadly via childhood trauma and dissociation; no focus on hoarding, loot boxes, inventory, or collecting behaviors in games.",,,3.91,0.102319
+36814178,opus,claude-opus-4-7,1,Exclude,,"Study examines behavioral addictions broadly (gambling, IGD, social media, exercise, compulsive buying) without specific focus on hoarding-related game behaviors.",,,5.99,0.0139
+36814178,opus,claude-opus-4-7,2,Exclude,,"Study examines behavioral addictions broadly via childhood trauma and dissociation, without focus on hoarding, loot boxes, or in-game accumulation behaviors.",,,4.44,0.0139
+36814178,haiku,claude-haiku-4-5,1,Maybe,,"Includes internet gaming disorder and compulsive buying as outcomes, but abstract does not explicitly address game-specific item hoarding or loot-box behaviors.",,,26.58,0.018613
+36814178,haiku,claude-haiku-4-5,0,Exclude,,"Studies behavioral addictions including internet gaming, but not game-hoarding, loot-box, inventory, or completionism behaviors.",,,30.37,0.022108
+36814178,haiku,claude-haiku-4-5,2,Maybe,,Mentions internet gaming disorder and compulsive buying but lacks specificity about gaming-related hoarding behaviors; full text needed.,,,32.6,0.022333
+41037849,sonnet,claude-sonnet-4-6,0,Maybe,D3,Examines in-game microtransaction overspending and gaming disorder but focuses on spending behavior and financial harm rather than collecting/hoarding constructs.,,,3.35,0.014207
+41037849,sonnet,claude-sonnet-4-6,1,Maybe,D3,Covers in-game purchases and overspending but focuses on gaming disorder economics; full text needed to confirm behavioral/psychological measures.,,,3.23,0.001756
+41037849,sonnet,claude-sonnet-4-6,2,Maybe,D3,Covers in-game microtransaction overspending and gaming disorder but focuses on financial harm rather than collecting or hoarding behavior.,,,3.13,0.001771
+41037849,opus,claude-opus-4-7,0,Maybe,D3,"Examines gaming disorder and overspending including in-game microtransactions, tangentially relevant to loot box/gacha collecting; full-text needed to confirm behavioral measures.",,,4.05,0.102356
+41037849,haiku,claude-haiku-4-5,2,Include,D3|Cross-domain,Peer-reviewed empirical study linking in-game overspending and microtransactions to gaming disorder across age groups.,,,19.91,0.013189
+41037849,opus,claude-opus-4-7,1,Maybe,D3,"Examines gaming disorder and overspending including in-game microtransactions, tangentially relevant to loot box/gacha collecting; full-text needed to confirm behavioral measures.",,,3.78,0.01433
+41037849,opus,claude-opus-4-7,2,Maybe,D3,Examines overspending on in-game microtransactions and gaming disorder; touches loot box/gacha-adjacent spending but focuses on monetization rather than hoarding/collecting behavior.,,,3.86,0.01463
+36941849,haiku,claude-haiku-4-5,0,Exclude,,"Behavioral addiction study; no evidence of focus on game-specific hoarding, loot boxes, gacha, inventory, or completionism mechanics.",,,13.89,0.009369
+41037849,haiku,claude-haiku-4-5,0,Maybe,D3,Paper studies game overspending linked to gaming disorder; may involve gacha/loot boxes; full-text review needed.,,,40.15,0.027139
+36941849,sonnet,claude-sonnet-4-6,0,Exclude,,Study examines behavioral addictions and sedative use in young adults with no game-specific hoarding or virtual item behavior.,,,3.4,0.01402
+36941849,haiku,claude-haiku-4-5,1,Exclude,,"Examines general behavioral addictions, not game-specific hoarding, item retention, loot boxes, gacha, inventory, or completionism behaviors.",,,17.07,0.012264
+36941849,sonnet,claude-sonnet-4-6,1,Exclude,,"Study examines behavioral addictions linked to sedative use; no game hoarding, loot box, or relevant game mechanic component.",,,3.74,0.001738
+36941849,sonnet,claude-sonnet-4-6,2,Exclude,,"Study examines behavioral addictions linked to sedative use; no game hoarding, loot box, or virtual item behavior addressed.",,,3.42,0.001723
+36941849,opus,claude-opus-4-7,0,Exclude,,"Study examines non-medical sedative use and general behavioral addictions, with no focus on game hoarding, loot boxes, or relevant in-game behaviors.",,,3.47,0.102431
+36941849,opus,claude-opus-4-7,1,Exclude,,"Study examines sedative/hypnotic use and behavioral addictions broadly; no focus on hoarding, loot boxes, or game-specific accumulation behaviors.",,,3.75,0.102731
+36941849,opus,claude-opus-4-7,2,Exclude,,"Study examines sedative/hypnotic use and behavioral addictions broadly; no focus on in-game hoarding, loot boxes, or relevant accumulation behaviors.",,,3.98,0.014096
+36941849,haiku,claude-haiku-4-5,2,Exclude,,Examines behavioral addictions in NMUSH context but lacks focus on game-specific hoarding mechanisms.,,,18.34,0.012409
+41037849,haiku,claude-haiku-4-5,1,Include,D3|Cross-domain,Empirical study linking Gaming Disorder to in-game purchase overspending; meets compulsive buying criterion.,,,57.96,0.041639
+41822430,sonnet,claude-sonnet-4-6,0,Exclude,,"Studies behavioral addictions and food addiction comorbidity with no game item hoarding, loot box, or virtual possession component.",,,3.21,0.0142
+41822430,sonnet,claude-sonnet-4-6,1,Exclude,,Network analysis of food addiction and behavioral addictions in clinical patients; no game mechanic or virtual item behavior examined.,,,3.58,0.001676
+41822430,sonnet,claude-sonnet-4-6,2,Exclude,,"Network analysis of behavioral addictions and food addiction comorbidity; no game mechanics, items, or hoarding constructs examined.",,,3.52,0.001721
+41822430,opus,claude-opus-4-7,0,Exclude,,"Study examines food addiction comorbidity with behavioral addictions broadly; no focus on in-game hoarding, loot boxes, or game-specific accumulation behaviors.",,,3.02,0.103969
+41822430,haiku,claude-haiku-4-5,0,Exclude,,"Gaming disorder mentioned but paper focuses on food addiction comorbidity, not in-game hoarding, loot boxes, gacha, or game-specific collecting behaviors.",,,21.34,0.015573
+41822430,haiku,claude-haiku-4-5,1,Exclude,,Clinical comorbidity study of food addiction and behavioral addictions; gaming disorder mentioned but game-specific hoarding/collecting constructs not examined.,,,21.24,0.014593
+41822430,opus,claude-opus-4-7,2,Exclude,,"Study examines food addiction comorbidity with behavioral addictions broadly; no focus on hoarding, loot boxes, inventory, or game-specific accumulation behaviors.",,,3.81,0.014258
+41822430,opus,claude-opus-4-7,1,Exclude,,"Study of food addiction comorbidity with behavioral addictions; no examination of in-game hoarding, loot boxes, or virtual item behaviors.",,,5.85,0.013583
+41822430,haiku,claude-haiku-4-5,2,Exclude,,"Examines gaming disorder comorbidity with food addiction, but does not investigate in-game item-hoarding, gacha, or inventory mechanics.",,,25.63,0.016728
+38197896,sonnet,claude-sonnet-4-6,0,Maybe,D3,"Examines in-game purchases and loot box charges in relation to gaming disorder, but focuses on GD severity rather than hoarding/collecting behavior.",,,4.22,0.014222
+38197896,sonnet,claude-sonnet-4-6,1,Maybe,D3,"Examines in-game purchases and loot box charges in relation to Gaming Disorder; tangential to D3 but focused on disorder severity, not collecting behavior.",,,5.09,0.001878
+38197896,sonnet,claude-sonnet-4-6,2,Maybe,D3,"Examines in-game purchases and loot box charges in relation to gaming disorder, tangentially touching D3 but primary focus is GD severity.",,,3.8,0.001833
+38197896,haiku,claude-haiku-4-5,2,Maybe,D3,"Empirical study examining loot box charges and in-game purchases, but primary focus is Gaming Disorder epidemiology rather than hoarding constructs specifically.",,,20.25,0.014082
+38197896,opus,claude-opus-4-7,0,Maybe,D3,"Examines in-game purchases and loot box charges related to gaming disorder, but focus is GD rather than hoarding/collecting constructs.",,,3.64,0.102262
+38197896,opus,claude-opus-4-7,1,Include,D3,Large-scale empirical study examining in-game purchases and loot box charges in relation to gaming disorder among Japanese adults.,,,3.42,0.012975
+38197896,haiku,claude-haiku-4-5,1,Include,D3,Peer-reviewed study explicitly examining loot box collecting behavior and gaming disorder in Japanese adults.,,,31.01,0.021407
+38197896,opus,claude-opus-4-7,2,Maybe,D3,"Examines in-game purchases including loot box charges and gaming disorder, but focus is on GD broadly rather than hoarding/collecting behavior specifically.",,,11.54,0.013875
+36864740,haiku,claude-haiku-4-5,0,Exclude,,Debate piece about research methodology; no original empirical data on game hoarding behaviors.,,,11.99,0.009295
+36864740,sonnet,claude-sonnet-4-6,0,Exclude,,Editorial commentary on research ethics and industry collaboration; no original empirical data on game hoarding behaviors.,,,3.76,0.014005
+36864740,sonnet,claude-sonnet-4-6,1,Exclude,,Editorial commentary on research methodology and industry collaboration; no original empirical data on game hoarding behaviors.,,,2.66,0.001623
+38197896,haiku,claude-haiku-4-5,0,Include,D3,Peer-reviewed empirical study explicitly examining loot box charges and in-game purchases in relation to gaming disorder; matches D3 directly.,,,45.57,0.032007
+36864740,haiku,claude-haiku-4-5,1,Exclude,,Commentary on research ethics without original behavioral data; meets exclusion criterion #4.,,,14.4,0.01093
+36864740,sonnet,claude-sonnet-4-6,2,Exclude,,Editorial commentary on research ethics and industry collaboration; no original behavioral or psychological data on game hoarding constructs.,,,3.04,0.001653
+36864740,haiku,claude-haiku-4-5,2,Exclude,,"Debate piece without original empirical data; discusses research ethics, not hoarding game behaviors.",,,14.22,0.009065
+36864740,opus,claude-opus-4-7,0,Exclude,,Opinion/debate piece on industry-academic collaboration without original empirical data on loot box behavior.,,,4.03,0.100837
+36864740,opus,claude-opus-4-7,1,Exclude,,Opinion/debate piece on research collaboration ethics without original empirical data on loot box behavior.,,,3.57,0.100763
+36864740,opus,claude-opus-4-7,2,Exclude,,Opinion/debate piece on research ethics regarding industry collaboration; no original empirical data on hoarding-related game behaviors.,,,3.06,0.101587
+28918416,sonnet,claude-sonnet-4-6,0,Exclude,,"National addiction survey methodology paper; no game-specific hoarding, inventory, or loot box behavioral constructs examined.",,,2.95,0.014496
+28918416,sonnet,claude-sonnet-4-6,1,Exclude,,"National addiction survey methodology paper; no game item hoarding, virtual inventory, or loot box behavioral focus.",,,5.16,0.001687
+28918416,sonnet,claude-sonnet-4-6,2,Exclude,,"National addiction survey methodology paper; no game item hoarding, inventory, or virtual possession behavioral content.",,,3.12,0.001657
+28918416,haiku,claude-haiku-4-5,0,Exclude,,"Methodological survey of general addictions including gaming. Focuses on problematic online gaming disorder, not game-specific hoarding or accumulation behaviors.",,,13.62,0.01046
+28918416,haiku,claude-haiku-4-5,2,Exclude,,Methodology paper on general addiction survey; does not examine game-specific hoarding behaviors or domains.,,,13.86,0.010425
+28918416,opus,claude-opus-4-7,0,Exclude,,"Methodology paper describing a national addiction survey; no specific focus on game hoarding, loot boxes, or relevant behavioral domains.",,,4.07,0.105038
+28918416,opus,claude-opus-4-7,1,Exclude,,"General addiction survey methodology paper without specific focus on game hoarding, loot boxes, or relevant behavioral domains.",,,3.19,0.104662
+28918416,opus,claude-opus-4-7,2,Exclude,,"Methodology paper on Hungarian addiction survey; no focus on game hoarding, loot boxes, or relevant accumulation behaviors.",,,3.5,0.01359
+28918416,haiku,claude-haiku-4-5,1,Exclude,,"Methodological paper on addiction survey; measures gaming broadly but not game-specific hoarding behaviors (gacha, loot boxes, inventory paralysis, completionism).",,,19.1,0.01023
+33028074,sonnet,claude-sonnet-4-6,0,Exclude,,"Meta-analysis on gaming disorder prevalence lacks focus on hoarding, collecting, or loss-aversion behaviors in game contexts.",,,3.09,0.01429
+33028074,sonnet,claude-sonnet-4-6,1,Exclude,,"Meta-analysis on gaming disorder prevalence; no examination of hoarding, collecting, inventory, or loss-aversion game behaviors.",,,3.34,0.001743
+33028074,sonnet,claude-sonnet-4-6,2,Exclude,,"Meta-analysis covers gaming disorder prevalence broadly, with no focus on hoarding, collecting, inventory, or loot-box behaviors.",,,3.17,0.001758
+33028074,opus,claude-opus-4-7,0,Exclude,,"Meta-analysis of gaming disorder prevalence; does not address hoarding, loot boxes, completionism, or any target behavioral domain.",,,3.62,0.10425
+33028074,opus,claude-opus-4-7,1,Exclude,,"General gaming disorder prevalence meta-analysis without focus on hoarding, loot boxes, collecting, completionism, or any specified behavioral domain.",,,3.87,0.013815
+33028074,opus,claude-opus-4-7,2,Exclude,,"Meta-analysis of general gaming disorder prevalence; does not address hoarding, loot boxes, completionism, or any of the five behavioral domains.",,,3.55,0.01374
+33028074,haiku,claude-haiku-4-5,0,Exclude,,"Studies gaming disorder prevalence broadly, not specific hoarding-related game behaviors mapped to protocol domains.",,,29.77,0.019877
+26690622,haiku,claude-haiku-4-5,0,Exclude,,Study of exercise dependence at fitness centers; pathological gaming found in 0% of sample; no game-specific hoarding behaviors examined.,,,12.57,0.011247
+33028074,haiku,claude-haiku-4-5,1,Exclude,,"Gaming disorder prevalence meta-analysis; does not examine hoarding-related game behaviors, item retention, or collection mechanics.",,,36.53,0.024672
+26690622,sonnet,claude-sonnet-4-6,0,Exclude,,Study examines exercise dependence and addictive behaviors in fitness center clients; no game hoarding or virtual item constructs.,,,3.77,0.01444
+26690622,sonnet,claude-sonnet-4-6,1,Exclude,,Study examines exercise dependence and addictive behaviors in fitness clients; no game-specific hoarding or virtual item behavior.,,,2.99,0.00174
+26690622,haiku,claude-haiku-4-5,1,Exclude,,"Exercise dependence study with incidental gaming measure (zero cases). No game-specific hoarding, loot box, inventory, or completionism constructs examined.",,,16.7,0.013047
+26690622,sonnet,claude-sonnet-4-6,2,Exclude,,"Study examines exercise dependence and behavioral addictions without any game-specific hoarding, loot box, or virtual item component.",,,5.27,0.001755
+26690622,opus,claude-opus-4-7,0,Exclude,,"Study on exercise dependence and addictive behaviors; pathological gaming included but no hoarding, loot box, or collecting construct examined.",,,3.97,0.104925
+26690622,haiku,claude-haiku-4-5,2,Exclude,,"Paper measures generic pathological video gaming unrelated to specific hoarding-domain behaviors (loot boxes, gacha, inventory, completionism, backlog, item retention).",,,16.11,0.012032
+26690622,opus,claude-opus-4-7,2,Exclude,,"Study on exercise dependence and addictive behaviors; pathological gaming measured but no hoarding, loot box, or accumulation construct examined.",,,3.72,0.013581
+26690622,opus,claude-opus-4-7,1,Exclude,,"Study of exercise dependence and addictive behaviors in fitness clients; no examination of hoarding, loot boxes, or in-game accumulation.",,,5.42,0.013656
+33028074,haiku,claude-haiku-4-5,2,Maybe,,Prevalence study of gaming disorder; unclear whether hoarding-specific behaviors or constructs are addressed without full-text review.,,,53.94,0.034852
+41454725,sonnet,claude-sonnet-4-6,0,Exclude,,"National addiction epidemiology survey with no game-item hoarding, inventory, or loot box behavioral component.",,,3.25,0.014342
+41454725,sonnet,claude-sonnet-4-6,1,Exclude,,"National addiction epidemiology survey with no game-specific hoarding, inventory, loot box, or virtual item behavioral measures.",,,3.04,0.001736
+41454725,sonnet,claude-sonnet-4-6,2,Exclude,,"National addiction epidemiology survey with no game-specific hoarding, inventory, or virtual item behavioral focus.",,,3.24,0.001676
+41454725,haiku,claude-haiku-4-5,1,Exclude,,"Broad addiction survey including gaming disorder, but no focus on specific in-game hoarding behaviors (loot boxes, inventory, completionism).",,,13.54,0.009873
+41454725,opus,claude-opus-4-7,0,Exclude,,General epidemiological survey methodology paper on addictions; no specific focus on game hoarding behaviors or relevant domains.,,,3.32,0.103875
+41454725,haiku,claude-haiku-4-5,0,Exclude,,"General addiction epidemiology survey; gaming disorder mentioned but lacks focus on in-game hoarding behaviors, item retention, loot boxes, or hoarding-construct links.",,,16.22,0.012093
+41454725,opus,claude-opus-4-7,2,Exclude,,"General addiction epidemiology survey methodology paper; no specific focus on game hoarding, loot boxes, or any target behavioral domain.",,,3.61,0.013377
+41454725,opus,claude-opus-4-7,1,Exclude,,"General population addiction epidemiology survey methodology; no specific focus on game hoarding, loot boxes, or relevant behavioral domains.",,,5.07,0.013377
+41454725,haiku,claude-haiku-4-5,2,Maybe,,Methodological paper on addiction survey including gaming disorder; full text needed to assess hoarding-behavior relevance.,,,22.14,0.014393
+35855504,sonnet,claude-sonnet-4-6,0,Exclude,,Narrative review of broad internet addictions without game-specific behavioral or psychological measures tied to hoarding constructs.,,,2.84,0.013982
+35855504,sonnet,claude-sonnet-4-6,1,Exclude,,"Narrative review of internet addictions broadly; no game-specific hoarding, inventory, gacha, completionism, or virtual possession constructs examined.",,,2.76,0.001782
+35855504,haiku,claude-haiku-4-5,0,Exclude,,"Narrative review without empirical data; lacks specific focus on in-game hoarding, gacha, or inventory behaviors.",,,15.38,0.011827
+35855504,haiku,claude-haiku-4-5,1,Exclude,,"Narrative review, not empirical/systematic. Does not examine specific game hoarding, loot box, or inventory behaviors in scope.",,,12.73,0.010212
+35855504,sonnet,claude-sonnet-4-6,2,Exclude,,"Narrative review of internet addictions broadly; no focus on game-specific hoarding, loot boxes, or virtual item behavior.",,,2.86,0.001722
+35855504,opus,claude-opus-4-7,0,Exclude,,Narrative review of broad internet-based addictions during COVID-19; not peer-reviewed empirical study on game hoarding behaviors specifically.,,,4.16,0.102525
+35855504,opus,claude-opus-4-7,1,Exclude,,Narrative review of broad internet-based addictions during COVID-19; not peer-reviewed empirical study of game hoarding behaviors.,,,3.85,0.1023
+35855504,opus,claude-opus-4-7,2,Exclude,,Narrative review of internet-based addictions during COVID-19; not peer-reviewed empirical study of in-game hoarding behaviors or relevant constructs.,,,3.85,0.102825
+35855504,haiku,claude-haiku-4-5,2,Exclude,,Narrative review of internet addictions; does not specifically examine game-hoarding behaviors or connect game behavior to hoarding constructs.,,,16.79,0.012952
+36606732,sonnet,claude-sonnet-4-6,0,Maybe,D3,"Covers loot box purchase and skin betting with psychological measures, but primary focus is general gambling severity without game mechanic emphasis.",,,4.48,0.014657
+36606732,sonnet,claude-sonnet-4-6,1,Maybe,D3,"Includes loot box purchase and skin betting as gambling-like game mechanics, but focus is primarily pure gambling severity without game-behavioral measures.",,,3.25,0.00183
+36606732,sonnet,claude-sonnet-4-6,2,Maybe,D3,Includes loot box and skin betting as gambling-like game mechanics but focuses primarily on problem gambling severity without game-behavioral hoarding measures.,,,3.83,0.00183
+36606732,opus,claude-opus-4-7,0,Maybe,D3,"Includes loot box purchase and skin betting as gambling activities linked to PGSI, but primary focus is gambling forms; full-text review needed.",,,3.21,0.105881
+36606732,opus,claude-opus-4-7,1,Maybe,D3,"Includes skin betting and loot box purchase as gambling activities, but framed as gambling study; full-text needed to assess game-mechanic relevance.",,,3.97,0.013928
+36606732,opus,claude-opus-4-7,2,Maybe,D3,"Includes skin betting and loot box purchase as gambling activities linked to PGSI, but primarily a gambling study; full-text review needed.",,,3.26,0.013703
+36606732,haiku,claude-haiku-4-5,2,Maybe,D3,Paper examines loot boxes in games but primarily studies problem gambling; full-text needed to assess relevance to hoarding behaviors.,,,35.68,0.021737
+36606732,haiku,claude-haiku-4-5,0,Maybe,D3,"Explicitly examines loot box purchase and skin betting in games linked to problem gambling severity, but primary focus is gambling severity across all modalities.",,,37.34,0.025107
+34375360,haiku,claude-haiku-4-5,0,Exclude,,"Studies excessive video gaming as general dysregulated behavior linked to cannabis use, not specific in-game hoarding, loot boxes, or item collection behaviors.",,,16.12,0.011698
+34375360,sonnet,claude-sonnet-4-6,0,Exclude,,"Studies cannabis abuse associations with dysregulated behaviors; no focus on game-specific hoarding, loot boxes, inventory, or related constructs.",,,3.15,0.014372
+34375360,sonnet,claude-sonnet-4-6,1,Exclude,,"Studies cannabis-behavior co-occurrence without examining game-specific hoarding, collecting, or loss-aversion constructs; no relevant domain coverage.",,,3.25,0.00179
+36606732,haiku,claude-haiku-4-5,1,Maybe,D3,Includes loot box purchase among studied gambling activities but primarily measures problem gambling severity; full-text review needed.,,,47.29,0.030782
+34375360,sonnet,claude-sonnet-4-6,2,Exclude,,"Studies cannabis-gaming co-occurrence without examining hoarding, collecting, inventory, loss aversion, or completionism behavioral domains.",,,3.01,0.00173
+34375360,opus,claude-opus-4-7,0,Exclude,,"Study on cannabis abuse associations with problematic video gaming and other behaviors; no hoarding, loot box, or collecting constructs examined.",,,3.46,0.1044
+34375360,haiku,claude-haiku-4-5,2,Exclude,,"General epidemiological study of cannabis and dysregulated behaviors; measures video gaming broadly, not game hoarding mechanics.",,,14.79,0.010673
+34375360,opus,claude-opus-4-7,1,Exclude,,"Studies cannabis use associations with problematic video gaming generally; no focus on hoarding, loot boxes, completionism, or inventory behaviors.",,,3.59,0.013677
+34375360,opus,claude-opus-4-7,2,Exclude,,"Study on cannabis abuse and problematic video gaming/behavioral addictions; no focus on hoarding, loot boxes, inventory, or collecting constructs.",,,3.37,0.014052
+34375360,haiku,claude-haiku-4-5,1,Exclude,,"Examines problematic gaming generally, not specific in-game hoarding, collecting, inventory, or completionism behaviors required by protocol.",,,21.38,0.016593
+27199853,sonnet,claude-sonnet-4-6,0,Exclude,,Clinical comorbidity study of compulsive buying and gambling disorder with no game mechanic or virtual item component.,,,2.81,0.014432
+27199853,sonnet,claude-sonnet-4-6,1,Exclude,,Clinical study of CBB and gambling disorder comorbidity with no game mechanic or virtual item behavior component.,,,3.07,0.001683
+27199853,sonnet,claude-sonnet-4-6,2,Exclude,,Clinical comorbidity study of compulsive buying and gambling disorder with no game mechanic or virtual item component.,,,2.66,0.001698
+27199853,haiku,claude-haiku-4-5,1,Exclude,,Pure gambling and compulsive buying study; no game-specific mechanics or loot-box connection.,,,14.13,0.012057
+27199853,haiku,claude-haiku-4-5,0,Exclude,,Examines gambling disorder without game mechanics; matches exclusion criterion 3.,,,16.68,0.011982
+27199853,opus,claude-opus-4-7,0,Exclude,,Study examines compulsive buying and gambling disorder comorbidity in clinical patients without game mechanic or loot box/gacha component.,,,3.57,0.104325
+27199853,opus,claude-opus-4-7,1,Exclude,,"Study examines comorbidity of compulsive buying and gambling disorder in clinical patients without game mechanic, loot box, or gacha component.",,,3.13,0.104475
+27199853,opus,claude-opus-4-7,2,Exclude,,Studies compulsive buying and gambling disorder comorbidity in clinical patients without game mechanics or loot box/gacha component.,,,4.39,0.013239
+27199853,haiku,claude-haiku-4-5,2,Exclude,,Pure gambling/compulsive buying comorbidity study; no game mechanic or gaming context evident.,,,21.97,0.015677
+33835041,sonnet,claude-sonnet-4-6,0,Exclude,,National addiction survey with no game-specific behavioral domains; gaming mentioned only as generic problematic internet use.,,,3.27,0.014264
+33835041,sonnet,claude-sonnet-4-6,1,Exclude,,"National addiction survey with no game-specific hoarding, inventory, loot box, or virtual item behavioral measures.",,,3.36,0.001687
+33835041,haiku,claude-haiku-4-5,0,Exclude,,Methodological survey covering addiction broadly; no focus on hoarding-related game behaviors.,,,16.31,0.011
+33835041,haiku,claude-haiku-4-5,1,Exclude,,"Methodological paper describing survey design and measurement tools; does not examine in-game hoarding, item retention, loot boxes, or behavioral domains.",,,19.56,0.01409
+33835041,opus,claude-opus-4-7,0,Exclude,,General population addiction survey methodology paper; no specific examination of game hoarding behaviors or domains of interest.,,,3.4,0.103313
+33835041,sonnet,claude-sonnet-4-6,2,Exclude,,"National addiction survey with no game-item hoarding, loot box, inventory, or completionism component; gaming mentioned only as general behavioral addiction.",,,7.41,0.001792
+33835041,opus,claude-opus-4-7,1,Exclude,,"General population addiction survey methodology paper without specific focus on game hoarding, loot boxes, or in-game accumulation behaviors.",,,4.05,0.013212
+33835041,opus,claude-opus-4-7,2,Exclude,,"General population addiction survey methodology paper; no specific focus on game hoarding, loot boxes, or related behavioral domains.",,,4.93,0.012987
+33835041,haiku,claude-haiku-4-5,2,Exclude,,"National addiction survey includes problematic gaming, but lacks game-specific hoarding, gacha, inventory, completionism, backlog, or psychological-ownership measures.",,,30.78,0.02202
+34904959,haiku,claude-haiku-4-5,2,Exclude,,"Measures gaming frequency during COVID as addictive behavior; does not examine game-specific hoarding, gacha, inventory, or completionism constructs.",,,12.35,0.009559
+34904959,sonnet,claude-sonnet-4-6,0,Exclude,,"Gaming measured only as frequency of addictive behavior; no game-specific hoarding, inventory, loot box, or collecting constructs examined.",,,3.09,0.014282
+34904959,haiku,claude-haiku-4-5,1,Exclude,,"Treats gaming as one of eight generic pandemic-era behaviors; no examination of in-game hoarding, loot boxes, inventory mechanics, or hoarding-construct links.",,,14.12,0.010854
+34904959,sonnet,claude-sonnet-4-6,1,Exclude,,"Measures gaming as addictive behavior broadly; no examination of in-game item retention, hoarding, loot boxes, or related constructs.",,,3.0,0.001798
+34904959,haiku,claude-haiku-4-5,0,Exclude,,"Gaming measured only as frequency in behavioral addiction survey; no specific hoarding, loot box, or inventory mechanisms examined.",,,20.6,0.015104
+34904959,opus,claude-opus-4-7,0,Exclude,,Studies general addictive behaviors during COVID-19 including gaming and compulsive buying but does not examine hoarding-related game mechanics or behavioral domains.,,,4.03,0.103069
+34904959,sonnet,claude-sonnet-4-6,2,Exclude,,"Measures gaming frequency as addictive behavior broadly; no game-specific hoarding, loot box, inventory, or collecting constructs examined.",,,6.25,0.001783
+34904959,opus,claude-opus-4-7,1,Exclude,,"Study examines general addictive behaviors during COVID-19 without focus on game-specific hoarding, loot boxes, or accumulation constructs.",,,3.69,0.013384
+34904959,opus,claude-opus-4-7,2,Exclude,,"General addictive behaviors study during Covid-19; no specific focus on hoarding, loot boxes, completionism, or in-game accumulation constructs.",,,3.59,0.013534
+27378999,sonnet,claude-sonnet-4-6,0,Exclude,,"Compares behavioral addictions clinically; no game-specific hoarding, loot box, or virtual item behavioral measures present.",,,3.14,0.01357
+27378999,sonnet,claude-sonnet-4-6,1,Exclude,,Compares CBB to other behavioral addictions clinically but includes no game-specific behavioral or psychological measures.,,,3.99,0.001625
+27378999,sonnet,claude-sonnet-4-6,2,Exclude,,"Compares behavioral addictions clinically but has no game mechanic, virtual item, or game-specific behavioral component.",,,3.54,0.001654
+27378999,haiku,claude-haiku-4-5,0,Exclude,,Compares behavioral addictions clinically; does not examine game-mechanic-driven compulsive buying.,,,16.3,0.012081
+27378999,opus,claude-opus-4-7,0,Exclude,,"Compares compulsive buying with behavioral addictions including gaming disorder, but does not examine in-game hoarding, loot boxes, or virtual item behaviors.",,,4.16,0.099544
+27378999,opus,claude-opus-4-7,1,Exclude,,"Clinical comparison of compulsive buying with other behavioral addictions; no game-specific hoarding, loot box, or virtual item behavior examined.",,,3.07,0.013247
+27378999,haiku,claude-haiku-4-5,2,Exclude,,Studies compulsive buying disorder clinically; does not examine game-specific hoarding behaviors or connect CBB to gaming contexts.,,,19.31,0.013941
+27378999,opus,claude-opus-4-7,2,Exclude,,"Compares compulsive buying with other behavioral addictions clinically; no focus on in-game hoarding, loot boxes, or virtual item collecting behaviors.",,,3.3,0.013547
+27378999,haiku,claude-haiku-4-5,1,Exclude,,"General clinical comparison of compulsive buying disorder; does not examine game-specific hoarding, item retention, loot boxes, or inventory mechanics.",,,20.07,0.015736
+40248688,sonnet,claude-sonnet-4-6,0,Exclude,,"Validates a reward-deficiency questionnaire across behavioral addictions; no game-specific hoarding, inventory, gacha, or loss-aversion measures.",,,3.47,0.014432
+40248688,sonnet,claude-sonnet-4-6,1,Exclude,,"Validates a reward-deficiency questionnaire; no game-specific hoarding, inventory, gacha, or collecting behavior examined.",,,4.92,0.001746
+40248688,sonnet,claude-sonnet-4-6,2,Exclude,,"Validates a neurobiological questionnaire for addictive behaviors; no game-item hoarding, loot box, or in-game collecting behavior examined.",,,3.65,0.001836
+40248688,opus,claude-opus-4-7,0,Exclude,,"Validation of a reward deficiency syndrome questionnaire; no focus on in-game hoarding, loot boxes, completionism, or virtual item retention.",,,3.47,0.104606
+40248688,haiku,claude-haiku-4-5,2,Exclude,,"Validates general reward deficiency syndrome scale across addictions; does not examine specific in-game hoarding, loot-box, or completionism behaviors.",,,19.65,0.014337
+40248688,opus,claude-opus-4-7,1,Exclude,,"Psychometric validation of a reward deficiency syndrome questionnaire; does not examine hoarding, loot boxes, completionism, or virtual item retention behaviors.",,,6.22,0.014195
+40248688,opus,claude-opus-4-7,2,Exclude,,"Psychometric validation of a reward deficiency questionnaire; does not examine in-game hoarding, loot boxes, completionism, or virtual item behaviors.",,,4.27,0.01397
+40291985,haiku,claude-haiku-4-5,1,Exclude,,Narrative review without empirical data; protocol requires empirical studies or systematic reviews.,,,15.05,0.01107
+40291985,haiku,claude-haiku-4-5,0,Exclude,,Narrative review on spirituality and behavioral addictions broadly; does not specifically examine game-hoarding behaviors or their connections.,,,20.21,0.014245
+40291985,sonnet,claude-sonnet-4-6,0,Exclude,,"Narrative review on spirituality and behavioural addictions; no game-specific hoarding, inventory, or collecting behavior examined.",,,3.55,0.013341
+40248688,haiku,claude-haiku-4-5,0,Maybe,,Examines IGD and compulsive buying but no specific game hoarding/collecting behaviors analyzed.,,,48.08,0.032457
+40291985,sonnet,claude-sonnet-4-6,1,Exclude,,"Narrative review on spirituality and behavioral addictions; no game-specific hoarding, inventory, or collecting behavioral measures.",,,3.38,0.001636
+40291985,sonnet,claude-sonnet-4-6,2,Exclude,,"Narrative review on spirituality and behavioral addictions; no game-specific hoarding, inventory, loot box, or completionism behavioral measures.",,,3.51,0.001711
+40291985,opus,claude-opus-4-7,0,Exclude,,"Narrative review of spirituality and behavioural addictions broadly; no focus on hoarding, loot boxes, or in-game accumulation behaviors.",,,3.53,0.096919
+40248688,haiku,claude-haiku-4-5,1,Maybe,Cross-domain,Examines gaming disorder and compulsive buying connection via reward deficiency; specific link to game-hoarding behaviors unclear.,,,53.32,0.037292
+40291985,opus,claude-opus-4-7,1,Exclude,,"Narrative review on spirituality and behavioural addictions broadly; no focus on hoarding, loot boxes, completionism, or virtual item accumulation.",,,3.89,0.096994
+40291985,haiku,claude-haiku-4-5,2,Exclude,,"Narrative review on spirituality and behavioral addictions; not an empirical study, systematic review, or meta-analysis per protocol.",,,17.95,0.01269
+40291985,opus,claude-opus-4-7,2,Exclude,,"Narrative review on spirituality and behavioural addictions broadly; no focus on hoarding, loot boxes, completionism, or game-item accumulation behaviors.",,,3.92,0.013436
+26165928,sonnet,claude-sonnet-4-6,0,Exclude,,"Studies video game addiction and personality/compulsive buying without examining in-game hoarding, inventory, gacha, or related behavioral domains.",,,3.03,0.014185
+26165928,sonnet,claude-sonnet-4-6,1,Exclude,,"Studies general behavioral addictions and personality traits; no game-specific hoarding, virtual items, loot boxes, or related constructs examined.",,,3.46,0.001761
+26165928,sonnet,claude-sonnet-4-6,2,Exclude,,"Studies video game addiction and compulsive buying via personality traits, not in-game hoarding or collecting behaviors.",,,3.58,0.001671
+26165928,opus,claude-opus-4-7,0,Exclude,,"Study on personality traits and behavioral addictions broadly; no focus on hoarding, loot boxes, inventory, or specific game accumulation behaviors.",,,4.11,0.103688
+26165928,haiku,claude-haiku-4-5,0,Exclude,,"Empirical study of behavioral addictions and personality; does not examine game-specific hoarding, loot boxes, inventory management, or achievement behaviors.",,,19.86,0.014102
+26165928,opus,claude-opus-4-7,1,Exclude,,"Study examines personality correlates of behavioral addictions including video game addiction broadly, without addressing hoarding, collecting, or any specific accumulation behavior.",,,3.86,0.013821
+26165928,opus,claude-opus-4-7,2,Exclude,,"General study of behavioral addictions and personality; no focus on hoarding, loot boxes, inventory, completionism, or loss aversion in games.",,,3.66,0.013371
+26165928,haiku,claude-haiku-4-5,1,Exclude,,Study measures generic video game addiction and personality; lacks specific hoarding-related game behaviors or OCD connections.,,,24.65,0.017702
+35722786,haiku,claude-haiku-4-5,0,Exclude,,Editorial response without original empirical data; excluded per exclusion criterion 4.,,,13.39,0.00967
+26165928,haiku,claude-haiku-4-5,2,Exclude,,General behavioral addiction study; lacks focus on game-specific hoarding behaviors targeted by review.,,,32.56,0.022117
+35722786,sonnet,claude-sonnet-4-6,0,Exclude,,Commentary/response piece with no original data; meets exclusion criterion 4 (editorial without original data).,,,3.82,0.012835
+35722786,sonnet,claude-sonnet-4-6,1,Exclude,,Commentary/response letter with no original data; meets exclusion criterion 4 (editorial without original data).,,,3.64,0.012835
+35722786,haiku,claude-haiku-4-5,2,Exclude,,Response/commentary piece without original empirical data; excluded by criterion 4.,,,14.87,0.010585
+35722786,haiku,claude-haiku-4-5,1,Exclude,,Response/commentary piece on loot box definition; lacks original empirical data per exclusion criterion #4.,,,17.76,0.012055
+35722786,sonnet,claude-sonnet-4-6,2,Exclude,,Commentary/response piece without original data; falls under exclusion criterion 4 (editorials and opinion pieces).,,,3.37,0.001572
+35722786,opus,claude-opus-4-7,1,Exclude,,"Commentary/response letter without original data, excluded per criterion 4.",,,3.2,0.09135
+35722786,opus,claude-opus-4-7,0,Exclude,,Commentary/response letter without original data on loot box definitions; excluded as opinion piece per exclusion criterion 4.,,,3.91,0.092625
+35722786,opus,claude-opus-4-7,2,Exclude,,"Commentary/response letter without original empirical data, failing peer-reviewed empirical study requirement.",,,3.89,0.011508
+18710846,sonnet,claude-sonnet-4-6,0,Exclude,,"Study examines ethnic stereotypes in medical education; no game behavior, hoarding, or related constructs.",,,4.63,0.014091
+18710846,haiku,claude-haiku-4-5,0,Exclude,,"Medical education study on ethnic stereotypes; no connection to digital games, gaming behaviors, or hoarding constructs.",,,9.63,0.007865
+18710846,sonnet,claude-sonnet-4-6,1,Exclude,,Medical education study on ethnic stereotypes; no game behavior or hoarding constructs involved.,,,3.31,0.001597
+18710846,haiku,claude-haiku-4-5,2,Exclude,,"Examines ethnic stereotypes in medical education with no connection to games, hoarding, or digital contexts.",,,10.09,0.008025
+18710846,haiku,claude-haiku-4-5,1,Exclude,,Unrelated to digital games; concerns medical education and stereotype threat in medical school.,,,12.23,0.00866
+18710846,opus,claude-opus-4-7,0,Exclude,,Qualitative study on ethnic stereotypes in medical education; no game or hoarding component.,,,3.35,0.102169
+18710846,opus,claude-opus-4-7,1,Exclude,,Qualitative study on ethnic stereotypes and medical student underachievement; unrelated to games or hoarding behaviors.,,,3.1,0.102994
+18710846,sonnet,claude-sonnet-4-6,2,Exclude,,"Study concerns ethnic stereotypes in medical education; no game behavior, hoarding, or virtual item constructs.",,,5.31,0.001657
+18710846,opus,claude-opus-4-7,2,Exclude,,Qualitative study on ethnic stereotypes and medical student underachievement; no game or hoarding component.,,,4.02,0.012476
+30427931,sonnet,claude-sonnet-4-6,0,Exclude,,"Behavioral addiction typology study with no game-specific hoarding, inventory, gacha, or completionism behavioral measures.",,,3.36,0.014091
+30427931,sonnet,claude-sonnet-4-6,1,Exclude,,"General behavioral addiction typology study; no game-specific hoarding, inventory, loot box, or virtual item behavioral measures examined.",,,4.79,0.001729
+30427931,haiku,claude-haiku-4-5,0,Exclude,,"Paper studies clinical typologies of behavioral addictions broadly. Does not examine game-specific hoarding behaviors: loot boxes, gacha, inventory management, completionism, or item retention.",,,14.6,0.011013
+30427931,sonnet,claude-sonnet-4-6,2,Exclude,,"Behavioral addiction typology study; includes videogame use but no game-specific hoarding, collecting, or inventory behavior measures.",,,3.91,0.001729
+30427931,opus,claude-opus-4-7,0,Exclude,,"Clinical typology study of behavioral addictions including videogame use, but no focus on hoarding, collecting, or accumulation behaviors in games.",,,3.51,0.102994
+30427931,opus,claude-opus-4-7,1,Exclude,,"Broad behavioral addictions typology study; videogame use included but no focus on hoarding, loot boxes, completionism, or relevant constructs.",,,4.16,0.102994
+30427931,haiku,claude-haiku-4-5,1,Maybe,,"Studies behavioral addictions including excessive videogame use, but abstract does not specify hoarding-related in-game behaviors; requires full-text review.",,,20.77,0.015343
+30427931,haiku,claude-haiku-4-5,2,Maybe,,"Examines behavioral addiction typologies including excessive gaming and compulsive buying, but abstract doesn't clarify game-specific hoarding measurement.",,,23.93,0.016458
+30427931,opus,claude-opus-4-7,2,Exclude,,"Clinical typology study of behavioral addictions and eating disorders; videogame use included but no hoarding, loot box, or accumulation behavior examined.",,,6.78,0.013565
+31387459,sonnet,claude-sonnet-4-6,0,Exclude,,"Study examines SEO optimization ethics, not digital games or any hoarding-related game behavior.",,,3.22,0.01387
+31387459,haiku,claude-haiku-4-5,0,Exclude,,"Study examines web search engine optimization practices, not digital games or hoarding-related game behavior.",,,10.29,0.009084
+31387459,sonnet,claude-sonnet-4-6,1,Exclude,,"Paper concerns SEO and web search optimization ethics, with no connection to games, hoarding, or any included behavioral domains.",,,4.17,0.001687
+31387459,sonnet,claude-sonnet-4-6,2,Exclude,,"Study examines SEO optimization practices, not digital games or any hoarding-related game behavior.",,,3.41,0.001612
+31387459,haiku,claude-haiku-4-5,1,Exclude,,"Ethnographic study of SEO practices, not digital games or hoarding behaviors. Fails inclusion criteria 3 and 4.",,,12.96,0.011229
+31387459,opus,claude-opus-4-7,0,Exclude,,SEO ethics study on web search engines; no game component or hoarding-related behavior.,,,3.29,0.099619
+31387459,haiku,claude-haiku-4-5,2,Exclude,,"Studies web search optimization practices, not digital games. 'Gaming the system' is metaphorical; unrelated to game mechanics or hoarding.",,,11.01,0.008854
+31387459,opus,claude-opus-4-7,1,Exclude,,SEO ethics study on web search engines; no game component or hoarding-related behavior.,,,3.55,0.099619
+31387459,opus,claude-opus-4-7,2,Exclude,,"SEO ethics study about web search engines, unrelated to digital games or hoarding behaviors.",,,5.05,0.012065
+34860130,sonnet,claude-sonnet-4-6,0,Exclude,,"Examines loss aversion in health gamification (step goals), not in digital game item/inventory behavior contexts.",,,6.76,0.014335
+34860130,sonnet,claude-sonnet-4-6,1,Exclude,,"Examines loss aversion in health gamification (step goals), not digital game item behaviors or virtual inventory contexts.",,,4.22,0.001704
+34860130,haiku,claude-haiku-4-5,1,Exclude,,"Gamification for fitness with loss aversion; not about hoarding, collecting, or item retention in digital games.",,,16.37,0.011327
+34860130,sonnet,claude-sonnet-4-6,2,Exclude,,"Studies loss aversion in health gamification (step goals), not in-game item retention or any targeted game behavior domain.",,,3.45,0.001719
+34860130,opus,claude-opus-4-7,0,Exclude,,"Loss aversion in a gamified physical activity intervention, not in a digital game context with in-game items or hoarding behaviors.",,,4.27,0.103087
+34860130,opus,claude-opus-4-7,1,Exclude,,"Loss aversion in a gamified physical-activity intervention, not in a digital game context; outside scope of game-based behavioral domains.",,,3.53,0.103237
+34860130,opus,claude-opus-4-7,2,Exclude,,"Loss aversion in a pedometer gamification health trial, not in a digital game context with the relevant hoarding/collecting behaviors.",,,3.63,0.013233
+34860130,haiku,claude-haiku-4-5,2,Maybe,D1,Loss aversion in gamification meets criteria but lacks hoarding focus and game context.,,,34.37,0.023347
+40987326,haiku,claude-haiku-4-5,0,Exclude,,"Study examines cooperation and joint commitment in a hunting game, not hoarding-related behaviors in any domain.",,,13.88,0.012824
+40987326,haiku,claude-haiku-4-5,1,Exclude,,"Studies cooperation mechanisms in game task, not hoarding, item-retention, accumulation, or loss-aversion behaviors.",,,13.92,0.009469
+40987326,sonnet,claude-sonnet-4-6,0,Exclude,,"Studies cooperative hunting game mechanics and joint commitment theory with no hoarding, collecting, or inventory behavior constructs.",,,3.32,0.01375
+40987326,sonnet,claude-sonnet-4-6,1,Exclude,,"Studies cooperative hunting game mechanics and joint commitment theory; no hoarding, collecting, loot box, or related behavioral constructs.",,,3.31,0.00169
+40987326,opus,claude-opus-4-7,0,Exclude,,"Cooperative hunting game study on joint commitment; no relevance to hoarding, loot boxes, completionism, or any reviewed behavioral domain.",,,6.2,0.101119
+40987326,sonnet,claude-sonnet-4-6,2,Exclude,,"Studies cooperative hunting behavior and joint commitment theory; no connection to hoarding, collecting, loot boxes, or any target behavioral domain.",,,10.4,0.001705
+40987326,opus,claude-opus-4-7,1,Exclude,,"Study of cooperative hunting and joint commitment in a multi-player game; no relevance to hoarding, loot boxes, or any behavioral domain.",,,3.03,0.013397
+40987326,opus,claude-opus-4-7,2,Exclude,,"Study of joint commitment in cooperative hunting game; no relevance to hoarding, collecting, loss aversion, or any target domain.",,,3.93,0.013022
+40987326,haiku,claude-haiku-4-5,2,Exclude,,"Game study of cooperation, not hoarding, item collecting, inventory management, completionism, backlog accumulation, or related psychological-dysfunction measures.",,,19.25,0.017649
+34860130,haiku,claude-haiku-4-5,0,Include,D1,Peer-reviewed empirical study directly examining loss aversion in gamified level system; explicitly within inclusion criteria scope for loss aversion in game contexts.,,,57.5,0.037677
+41860608,sonnet,claude-sonnet-4-6,0,Exclude,,"Population-level screening tool for addictive behaviours; gaming is incidental with no hoarding, collecting, or inventory behavioral measures.",,,6.1,0.014522
+41860608,sonnet,claude-sonnet-4-6,1,Exclude,,"Population-level addictive behaviour screening tool; no examination of in-game hoarding, virtual items, or game-specific constructs.",,,3.18,0.001789
+41860608,haiku,claude-haiku-4-5,0,Exclude,,"General problematic gaming prevalence study; does not examine specific hoarding, gacha, inventory, or completionism behaviors required.",,,16.94,0.011471
+41860608,haiku,claude-haiku-4-5,1,Exclude,,"Screening tool validation for general problematic gaming; lacks examination of specific in-game hoarding behaviors (item retention, gacha, completionism, backlog, inventory paralysis).",,,17.06,0.011451
+41860608,sonnet,claude-sonnet-4-6,2,Exclude,,"Population-level addiction screening tool; no focus on game-specific hoarding, virtual items, loot boxes, or related behavioral domains.",,,3.89,0.001775
+41860608,opus,claude-opus-4-7,0,Exclude,,"General problematic-behaviour screening scale covering gaming/gambling broadly, with no focus on hoarding, loot boxes, inventory, or collecting behaviors.",,,3.92,0.105787
+41860608,haiku,claude-haiku-4-5,2,Exclude,,"Generic internet-use-disorder screening tool; no examination of specific in-game hoarding, collecting, inventory, or loss-aversion behaviors.",,,18.09,0.012916
+41860608,opus,claude-opus-4-7,1,Exclude,,"General addictive-behaviour screening scale covering gaming/gambling broadly; no focus on hoarding, loot boxes, inventory, completionism, or loss aversion.",,,3.78,0.014265
+41860608,opus,claude-opus-4-7,2,Exclude,,"General addictive-behaviour screening scale covering gaming/gambling broadly; no focus on hoarding, loot boxes, inventory, completionism, or backlog accumulation.",,,3.89,0.014415
+19839446,sonnet,claude-sonnet-4-6,0,Exclude,,"Business performance measurement article with no game component, virtual items, or hoarding-related behavioral constructs.",,,3.67,0.013907
+19839446,haiku,claude-haiku-4-5,0,Exclude,,"Business metrics commentary without game context, behavioral hoarding, or original empirical data.",,,8.64,0.007655
+19839446,haiku,claude-haiku-4-5,2,Exclude,,"Business performance measurement practitioner article; no relevance to game behavior, hoarding, or any domain.",,,8.92,0.007715
+19839446,sonnet,claude-sonnet-4-6,1,Exclude,,"Business performance measurement paper with no game, hoarding, or psychological behavior component.",,,4.68,0.001554
+19839446,haiku,claude-haiku-4-5,1,Exclude,,"Entirely about corporate performance measurement; contains no gaming, hoarding, or behavioral gaming content.",,,11.01,0.00833
+19839446,sonnet,claude-sonnet-4-6,2,Exclude,,"Business performance measurement article with no game component, virtual items, or hoarding-related behavioral constructs.",,,3.68,0.001629
+19839446,opus,claude-opus-4-7,0,Exclude,,Business performance measurement article unrelated to digital games or hoarding behaviors.,,,3.27,0.099844
+19839446,opus,claude-opus-4-7,1,Exclude,,Business article on corporate performance measurement; no game context or hoarding-related behavior.,,,3.43,0.099919
+19839446,opus,claude-opus-4-7,2,Exclude,,Business article on corporate performance measurement; no game or hoarding behavior content.,,,3.32,0.099769
+40422088,sonnet,claude-sonnet-4-6,0,Exclude,,"AI swarm algorithm for game terrain; no behavioral, psychological, or hoarding-related constructs studied.",,,5.1,0.013731
+40422088,sonnet,claude-sonnet-4-6,1,Exclude,,"Swarm AI algorithm for game terrain; no behavioral, psychological, or hoarding-related constructs examined.",,,2.66,0.001643
+40422088,sonnet,claude-sonnet-4-6,2,Exclude,,"AI swarm algorithm for game terrain; no hoarding, collecting, loss aversion, or psychological ownership content.",,,3.3,0.001643
+40422088,haiku,claude-haiku-4-5,0,Exclude,,"Focuses on game AI algorithm design, not player hoarding, item retention, collecting, inventory, achievement, or backlog behaviors.",,,14.97,0.011904
+40422088,haiku,claude-haiku-4-5,2,Exclude,,"Studies swarm AI algorithm optimization for combat, not hoarding-related behaviors, item retention, or loss aversion.",,,13.89,0.010409
+40422088,haiku,claude-haiku-4-5,1,Exclude,,"Technical algorithm paper for game combat mechanics; no examination of hoarding, collecting, or loss aversion.",,,14.6,0.010874
+40422088,opus,claude-opus-4-7,0,Exclude,,"Swarm AI algorithm for game agents; no hoarding, collecting, or psychological behavior measures.",,,3.23,0.10065
+40422088,opus,claude-opus-4-7,1,Exclude,,"Swarm AI algorithm for game agents; no hoarding, collecting, or psychological measures relevant to review scope.",,,4.24,0.012699
+40422088,opus,claude-opus-4-7,2,Exclude,,"Swarm AI algorithm for game agents; no hoarding, collecting, or psychological measures relevant to review domains.",,,4.4,0.012699
+31366420,sonnet,claude-sonnet-4-6,0,Exclude,,Editorial overview of gaming disorder without original empirical data or focus on hoarding/collecting behavioral domains.,,,3.38,0.013247
+31366420,sonnet,claude-sonnet-4-6,1,Exclude,,"Editorial/overview article on gaming disorder with no original empirical data on hoarding, inventory, or collecting behaviors.",,,3.36,0.001607
+31366420,haiku,claude-haiku-4-5,1,Exclude,,Narrative review of clinical gaming disorder diagnosis; lacks empirical data and does not target specific in-game behavioral domains.,,,16.83,0.012273
+31366420,haiku,claude-haiku-4-5,0,Exclude,,Clinical review of gaming disorder without empirical data or focus on specific hoarding-related behaviors.,,,20.21,0.015473
+31366420,opus,claude-opus-4-7,0,Exclude,,"General overview of gaming disorder and treatment; no focus on hoarding, loot boxes, completionism, or loss aversion behaviors.",,,3.65,0.097087
+31366420,sonnet,claude-sonnet-4-6,2,Exclude,,"Editorial/clinical overview of gaming disorder without empirical data on hoarding, collecting, or inventory behaviors.",,,10.85,0.001577
+31366420,opus,claude-opus-4-7,1,Exclude,,"General overview of gaming disorder without focus on hoarding, loot boxes, completionism, or any specified behavioral domain.",,,3.52,0.012429
+31366420,opus,claude-opus-4-7,2,Exclude,,Opinion/review article on gaming disorder classification and treatment without original data or focus on hoarding-related behaviors.,,,3.83,0.012279
+31366420,haiku,claude-haiku-4-5,2,Exclude,,Discusses gaming disorder characteristics and treatment; does not examine specific behavioral domains or connect to hoarding/OCD/collecting constructs.,,,24.17,0.017873
+26441749,sonnet,claude-sonnet-4-6,0,Exclude,,Shopping addiction scale validation with no game component; no in-game behavior or virtual item construct examined.,,,3.66,0.014384
+26441749,sonnet,claude-sonnet-4-6,1,Exclude,,Shopping addiction scale validation study with no game component or virtual item behavior.,,,3.09,0.001563
+26441749,haiku,claude-haiku-4-5,2,Exclude,,"Examines shopping addiction generally, not game-related hoarding behaviors or game mechanics.",,,11.18,0.008981
+26441749,haiku,claude-haiku-4-5,0,Exclude,,Shopping addiction scale for real-world consumer behavior; no game component or game-related behavioral measures examined.,,,14.46,0.009556
+26441749,sonnet,claude-sonnet-4-6,2,Exclude,,"Shopping addiction scale validation study; no game component, virtual items, or game-related behavioral measures.",,,3.18,0.001653
+26441749,haiku,claude-haiku-4-5,1,Exclude,,"Studies shopping addiction generally, not game-related hoarding. No gaming context or mechanics examined.",,,14.66,0.010776
+26441749,opus,claude-opus-4-7,1,Exclude,,"Validation of a general shopping addiction scale; no game, loot box, or virtual item component.",,,2.98,0.103706
+26441749,opus,claude-opus-4-7,0,Exclude,,"General shopping addiction scale validation with no game, loot box, or virtual item component.",,,3.15,0.103481
+26441749,opus,claude-opus-4-7,2,Exclude,,"Validation of a general shopping addiction scale; no game, loot box, or virtual item component.",,,3.02,0.103706
+36107949,sonnet,claude-sonnet-4-6,0,Exclude,,Compulsive buying study with no game mechanic or digital game component; no relevant behavioral domain covered.,,,3.16,0.014323
+36107949,sonnet,claude-sonnet-4-6,1,Exclude,,Studies compulsive buying in a COVID context with no game mechanic or virtual item component.,,,2.7,0.001631
+36107949,sonnet,claude-sonnet-4-6,2,Exclude,,Compulsive buying study with no game component; purely pandemic/COVID distress context without any game mechanic.,,,3.26,0.001706
+36107949,haiku,claude-haiku-4-5,0,Exclude,,"Examines real-world compulsive buying during COVID, not game-specific hoarding, item retention, or game mechanics.",,,11.99,0.009382
+36107949,opus,claude-opus-4-7,0,Exclude,,"Compulsive buying during COVID-19 with no game, loot box, or virtual item component.",,,3.21,0.101738
+36107949,haiku,claude-haiku-4-5,2,Exclude,,"Examines compulsive buying in pandemic context without any game behavior, virtual items, or game mechanics component.",,,13.66,0.011177
+36107949,haiku,claude-haiku-4-5,1,Exclude,,Real-world compulsive buying study with no game component; outside scope of game-behavior systematic review.,,,14.61,0.011827
+36107949,opus,claude-opus-4-7,2,Exclude,,"Compulsive buying study unrelated to games; no game mechanic, virtual item, or gaming behavior component examined.",,,3.31,0.012747
+36107949,opus,claude-opus-4-7,1,Exclude,,"Compulsive buying study in general consumer context during COVID-19, no game mechanic or virtual item component.",,,7.51,0.012447
+26236023,sonnet,claude-sonnet-4-6,0,Exclude,,"Cyberball is a social exclusion paradigm; no connection to hoarding, collecting, inventory, or loss aversion in games.",,,3.69,0.014027
+26236023,haiku,claude-haiku-4-5,0,Exclude,,"Study examines social exclusion and expectancy violation in virtual ball-tossing game, not item hoarding, collecting, inventory management, or loss aversion.",,,10.07,0.008875
+26236023,haiku,claude-haiku-4-5,1,Exclude,,"Cyberball social exclusion study; no examination of item hoarding, accumulation, or possession behaviors.",,,10.91,0.009005
+26236023,sonnet,claude-sonnet-4-6,1,Exclude,,"Cyberball is a social exclusion paradigm; no hoarding, collecting, loot box, inventory, or loss aversion game behavior studied.",,,3.03,0.001794
+26236023,sonnet,claude-sonnet-4-6,2,Exclude,,"Cyberball paradigm studies social exclusion via ERP; no hoarding, inventory, gacha, or game-behavioral constructs in scope.",,,3.37,0.001794
+26236023,haiku,claude-haiku-4-5,2,Exclude,,"Paper examines neural responses to social exclusion; no relevance to hoarding, loot boxes, inventory, completionism, or loss aversion behaviors.",,,10.92,0.01125
+26236023,opus,claude-opus-4-7,0,Exclude,,"Cyberball social exclusion ERP study; no hoarding, loot box, inventory, completionism, or loss aversion content in games.",,,3.32,0.100594
+26236023,opus,claude-opus-4-7,1,Exclude,,"Neuroscience study of social exclusion via Cyberball paradigm; unrelated to hoarding, collecting, or accumulation behaviors in games.",,,3.53,0.101119
+26236023,opus,claude-opus-4-7,2,Exclude,,"Neuroscience study of social exclusion via Cyberball paradigm; unrelated to hoarding, loot boxes, completionism, or any target behavioral domain.",,,3.71,0.013772
+41567349,sonnet,claude-sonnet-4-6,0,Exclude,,"Screening tool for general internet/device addiction; no game-specific hoarding, inventory, loot box, or completionism behavioral measures.",,,2.87,0.014447
+41567349,sonnet,claude-sonnet-4-6,1,Exclude,,"Screening tool for internet/digital addiction broadly; no game-specific hoarding, inventory, loot box, or completionism behavioral measures.",,,3.08,0.001782
+41567349,sonnet,claude-sonnet-4-6,2,Exclude,,"Screening tool validation study for internet/digital addictions; no game-specific hoarding, inventory, or collecting behavior examined.",,,3.43,0.001737
+41567349,opus,claude-opus-4-7,0,Exclude,,"General screening tool for behavioral addictions including gaming/gambling but not specific to hoarding, loot boxes, or any target domain.",,,3.27,0.104437
+41567349,opus,claude-opus-4-7,1,Exclude,,"Generic screening tool for addictive behaviors (gaming, gambling, social media, etc.); no focus on hoarding, loot boxes, or accumulation behaviors.",,,3.43,0.014229
+41567349,haiku,claude-haiku-4-5,1,Exclude,,Broad internet/digital addiction screening tool. Gaming included but not focused on game-specific hoarding or accumulation behaviors.,,,19.44,0.013507
+41567349,haiku,claude-haiku-4-5,2,Exclude,,"Broad digital addiction screening tool; does not focus on game hoarding, loot boxes, inventory, or completionism.",,,20.75,0.011412
+41567349,opus,claude-opus-4-7,2,Exclude,,"General screening tool for addictive behaviors including gaming/gambling broadly, without focus on hoarding, loot boxes, completionism, or item retention.",,,3.82,0.013704
+41567349,haiku,claude-haiku-4-5,0,Exclude,,General internet addiction screening tool; does not specifically examine hoarding-related gaming behaviors or constructs.,,,23.52,0.016297
+38571884,sonnet,claude-sonnet-4-6,0,Maybe,D3,"Examines monetization strategy (F2P vs P2P) and GD symptoms but focuses on disorder severity, not collecting or hoarding behaviors specifically.",,,3.1,0.014219
+38571884,sonnet,claude-sonnet-4-6,1,Maybe,D3,"Examines monetization strategy (F2P/gacha-adjacent) and GD symptoms but lacks direct focus on collecting, hoarding, or loot box behavior.",,,3.24,0.001892
+38571884,sonnet,claude-sonnet-4-6,2,Maybe,D3,"Examines monetization strategies and GD symptoms in adolescents; loot box/gacha behavioral measures not explicit, requiring full-text review.",,,3.68,0.001832
+38571884,opus,claude-opus-4-7,0,Maybe,D3,Examines monetization strategy (F2P vs P2P) and gaming disorder symptoms but lacks explicit loot box/gacha behavioral measures; full-text needed.,,,3.33,0.103481
+38571884,haiku,claude-haiku-4-5,1,Exclude,,"Examines gaming disorder symptoms and game characteristics generally, not in-game hoarding, item retention, loot box collecting, or related constructs.",,,15.04,0.011827
+38571884,opus,claude-opus-4-7,1,Maybe,D3,Examines F2P monetization (including loot box/gacha-adjacent models) and gaming disorder symptoms; full-text needed to confirm loot box/gacha behavioral measures.,,,3.49,0.014576
+38571884,opus,claude-opus-4-7,2,Maybe,D3,"Examines F2P monetization (including loot box/gacha-adjacent models) and gaming disorder symptoms, but focus is genre/monetization broadly rather than collecting behavior specifically.",,,3.81,0.0148
+38571884,haiku,claude-haiku-4-5,0,Exclude,,"Links game characteristics to gaming disorder, not to hoarding, collecting, or loss-aversion constructs.",,,20.68,0.015892
+38571884,haiku,claude-haiku-4-5,2,Exclude,,"Examines gaming disorder and genre/monetization generally, not hoarding-related behaviors, item retention, or explicit hoarding/OCD/loss-aversion links.",,,19.21,0.011277
+32500211,sonnet,claude-sonnet-4-6,0,Exclude,,Studies loss aversion in addiction/SUD context with no game mechanic or virtual item component.,,,3.94,0.01447
+32500211,sonnet,claude-sonnet-4-6,1,Exclude,,Studies addictive disorder and impulsive decision-making without any game mechanic or virtual item behavioral component.,,,2.81,0.001705
+32500211,sonnet,claude-sonnet-4-6,2,Exclude,,Studies loss aversion in substance/addictive disorders with no game mechanic or virtual item component.,,,2.87,0.001675
+32500211,haiku,claude-haiku-4-5,0,Exclude,,"Examines substance-use and addiction broadly, not in-game hoarding, loss aversion, or game-related behaviors.",,,12.92,0.010514
+32500211,opus,claude-opus-4-7,0,Exclude,,Study on impulsive decision-making in substance/addictive disorders with no game component or hoarding-related construct.,,,4.2,0.103613
+32500211,haiku,claude-haiku-4-5,2,Exclude,,"Examines loss aversion in substance-use disorders, not games; lacks required game-context component.",,,15.11,0.011474
+32500211,opus,claude-opus-4-7,1,Exclude,,"Study on substance/addictive disorders and impulsive decision-making with no game, loot box, or virtual item context.",,,4.64,0.103688
+32500211,opus,claude-opus-4-7,2,Exclude,,Study on substance/addictive disorders and impulsive decision-making; no game context or hoarding behavior examined.,,,3.11,0.012711
+32500211,haiku,claude-haiku-4-5,1,Exclude,,No gaming context or mechanics mentioned; substance-use and addiction-disorder study.,,,18.36,0.012929
+23604411,sonnet,claude-sonnet-4-6,0,Exclude,,Conceptual/nosological piece on behavioral addiction without game-specific behavioral or psychological data on hoarding-related constructs.,,,4.31,0.013161
+23604411,sonnet,claude-sonnet-4-6,1,Exclude,,Conceptual/nosological piece on behavioral addiction categories; no game-specific behavioral or psychological data on hoarding-related constructs.,,,3.22,0.001668
+23604411,sonnet,claude-sonnet-4-6,2,Exclude,,Conceptual/nosological piece on behavioral addiction with no game-specific behavioral or psychological data relevant to review domains.,,,3.45,0.001608
+23604411,opus,claude-opus-4-7,0,Exclude,,"Conceptual discussion of behavioral addiction nosology without empirical data on game hoarding, loot boxes, or related domain behaviors.",,,3.82,0.095738
+23604411,haiku,claude-haiku-4-5,1,Exclude,,German journal (not English/Japanese); conceptual discussion without empirical data; no game-behavior specificity.,,,17.62,0.011741
+23604411,opus,claude-opus-4-7,1,Exclude,,"Conceptual discussion of behavioral addiction nosology without empirical data on game hoarding, loot boxes, or related domains.",,,5.58,0.012465
+23604411,opus,claude-opus-4-7,2,Exclude,,Conceptual commentary on behavioral addiction nosology without original data on game hoarding behaviors.,,,4.96,0.01179
+23604411,haiku,claude-haiku-4-5,0,Exclude,,"Conceptual discussion of behavioral addiction, not empirical research. Matches exclusion criterion 4 (opinion without original data).",,,24.7,0.018876
+23604411,haiku,claude-haiku-4-5,2,Exclude,,Conceptual discussion of behavioral addiction; not game-specific empirical research on game hoarding behaviors.,,,22.7,0.016771
+27100787,sonnet,claude-sonnet-4-6,0,Exclude,,"Cyberball social exclusion ERP study; no connection to hoarding, collecting, inventory, or loot box behaviors.",,,4.12,0.014346
+27100787,sonnet,claude-sonnet-4-6,1,Exclude,,"Cyberball ERP study examines social exclusion neural responses; no relevance to hoarding, inventory, loot boxes, or game collecting.",,,5.0,0.001822
+27100787,haiku,claude-haiku-4-5,0,Exclude,,"Social exclusion neuroscience study; unrelated to game hoarding, item retention, loss aversion, or collecting behaviors.",,,12.0,0.010008
+27100787,haiku,claude-haiku-4-5,2,Exclude,,"Studies social exclusion ERP mechanisms in Cyberball; no connection to hoarding, collecting, inventory management, completionism, or loss aversion behaviors.",,,14.01,0.010518
+27100787,haiku,claude-haiku-4-5,1,Exclude,,"Studies social exclusion ERP effects in Cyberball game; no hoarding, accumulation, or item-retention behaviors examined.",,,15.39,0.011068
+27100787,opus,claude-opus-4-7,0,Exclude,,"ERP study of social exclusion via Cyberball paradigm; no relevance to hoarding, collecting, or any in-game accumulation behavior.",,,3.89,0.103875
+27100787,sonnet,claude-sonnet-4-6,2,Exclude,,"Cyberball ERP study examines social exclusion neuroscience; no game hoarding, inventory, collecting, or loss-aversion behavioral domain addressed.",,,7.28,0.001852
+27100787,opus,claude-opus-4-7,1,Exclude,,"ERP study of social exclusion using Cyberball paradigm; unrelated to in-game hoarding, loot boxes, completionism, or any review domain.",,,3.67,0.013704
+27100787,opus,claude-opus-4-7,2,Exclude,,"ERP study of social exclusion via Cyberball paradigm; no relevance to hoarding, loot boxes, inventory, completionism, or game accumulation behaviors.",,,4.0,0.014154
+27942256,sonnet,claude-sonnet-4-6,0,Exclude,,"Commentary on shopping addiction scale validity; no game component, no relevant behavioral domain covered.",,,2.7,0.013705
+27942256,sonnet,claude-sonnet-4-6,1,Exclude,,Commentary on scale development for online shopping addiction; no game component or behavioral domain covered.,,,2.63,0.001557
+27942256,haiku,claude-haiku-4-5,0,Exclude,,Methodological commentary on shopping scales; no game context or empirical data on game hoarding behaviors.,,,11.18,0.008617
+27942256,sonnet,claude-sonnet-4-6,2,Exclude,,Commentary on scale overlap in shopping addiction measurement; no game component or game-related behavioral data.,,,3.32,0.001587
+27942256,opus,claude-opus-4-7,0,Exclude,,Commentary on shopping addiction scale development with no game component or hoarding-related game behavior.,,,3.13,0.098456
+27942256,opus,claude-opus-4-7,1,Exclude,,Commentary on shopping addiction scales with no game component or hoarding-related game behavior.,,,4.09,0.011804
+27942256,opus,claude-opus-4-7,2,Exclude,,Commentary on shopping addiction scales with no game or loot box component.,,,3.03,0.011279
+27942256,haiku,claude-haiku-4-5,1,Exclude,,"Opinion piece on shopping addiction scales, not games. Excludes per criterion 4 (editorials without original data).",,,15.39,0.012547
+27942256,haiku,claude-haiku-4-5,2,Exclude,,"Addresses shopping addiction scales, not game hoarding. No video game content. Fails inclusion criterion 3; meets exclusion criterion 4.",,,18.93,0.015032
+39307287,sonnet,claude-sonnet-4-6,0,Exclude,,"Studies Pavlovian conditioning and individual vulnerabilities in internet-use disorders; no game item hoarding, inventory, or collecting behavior examined.",,,3.89,0.014012
+39307287,sonnet,claude-sonnet-4-6,1,Exclude,,"Studies Pavlovian conditioning in internet-use disorders without examining in-game item retention, hoarding, inventory, or collecting behaviors.",,,4.0,0.001733
+39307287,sonnet,claude-sonnet-4-6,2,Exclude,,"Examines Pavlovian conditioning in internet-use disorders (gaming/shopping) without addressing hoarding, inventory, loot boxes, or related behavioral domains.",,,2.63,0.001822
+39307287,haiku,claude-haiku-4-5,0,Exclude,,"Examines Pavlovian conditioning in internet-use disorders but not game-specific hoarding, accumulation, or collection behaviors.",,,17.57,0.012646
+39307287,opus,claude-opus-4-7,0,Exclude,,"Pavlovian conditioning study on gaming and buying-shopping disorders; no hoarding, loot box, inventory, completionism, or collecting behavior examined.",,,3.27,0.103519
+39307287,opus,claude-opus-4-7,1,Exclude,,"Pavlovian conditioning study on gaming and buying-shopping disorders; does not address hoarding, collecting, loot boxes, inventory, completionism, or loss aversion in games.",,,3.33,0.014464
+39307287,opus,claude-opus-4-7,2,Exclude,,"Pavlovian conditioning study on gaming and buying-shopping disorders; no hoarding, loot box, inventory, or accumulation behavior examined.",,,3.08,0.013715
+39307287,haiku,claude-haiku-4-5,1,Exclude,,Examines Pavlovian conditioning in internet-use disorders but not specific hoarding-related game behaviors or clinical constructs required.,,,24.66,0.017036
+30110801,haiku,claude-haiku-4-5,1,Exclude,,"Mathematical analysis of virtual-item gambling using random walk theory; lacks behavioral or psychological measures of hoarding, collecting, or inventory behaviors.",,,14.07,0.010786
+30110801,sonnet,claude-sonnet-4-6,0,Exclude,,Statistical physics analysis of gambling logs with no behavioral/psychological measures and no game mechanic or loot box component.,,,3.39,0.013378
+30110801,haiku,claude-haiku-4-5,2,Exclude,,Mathematical analysis of gambling dynamics; lacks behavioral measures or item hoarding focus.,,,19.34,0.013031
+30110801,sonnet,claude-sonnet-4-6,1,Exclude,,Statistical physics analysis of gambling logs with no behavioral/psychological measures and no game mechanic component.,,,6.37,0.001554
+39307287,haiku,claude-haiku-4-5,2,Exclude,,Studies Pavlovian conditioning mechanisms in problematic gaming use; does not examine specified hoarding-related behaviors or clinical constructs.,,,46.71,0.032996
+30110801,sonnet,claude-sonnet-4-6,2,Exclude,,"Statistical physics analysis of gambling logs; no game mechanic, behavioral, or psychological hoarding construct examined.",,,3.5,0.001584
+30110801,opus,claude-opus-4-7,0,Exclude,,Statistical physics analysis of online lottery gambling logs without behavioral/psychological measures or loot box/gacha game mechanic connection.,,,3.62,0.0972
+30110801,opus,claude-opus-4-7,1,Exclude,,Statistical physics analysis of online lottery gambling logs without behavioral/psychological measures or loot box/gacha game mechanic connection.,,,3.68,0.012882
+30110801,opus,claude-opus-4-7,2,Exclude,,"Statistical physics analysis of gambling logs as random walks; no behavioral or psychological measures of hoarding, collecting, or loot box mechanics.",,,3.62,0.013182
+30110801,haiku,claude-haiku-4-5,0,Maybe,D1,Empirical gambling behavior analysis; unclear if addresses hoarding or loss-aversion psychological measures.,,,41.39,0.020896
