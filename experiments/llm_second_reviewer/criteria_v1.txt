@@ -1,0 +1,42 @@
+PRISMA inclusion/exclusion criteria — extracted verbatim from paper/main.tex §Method
+"Inclusion and Exclusion Criteria" at commit pinned 2026-05-21.
+
+INCLUSION CRITERIA:
+1. Peer-reviewed empirical studies (quantitative, qualitative, or mixed methods),
+   systematic reviews, or meta-analyses.
+2. Published in English or Japanese.
+3. Studies examining any of: in-game item retention, virtual item hoarding,
+   loot box or gacha collecting behavior, inventory management behavior,
+   game completionism or achievement hunting, game backlog accumulation,
+   psychological ownership of virtual game items, or loss aversion in game
+   contexts.
+4. Studies connecting game behavior to hoarding, OCD, compulsive buying,
+   loss aversion, or collecting constructs.
+5. No date restriction on publication year.
+
+EXCLUSION CRITERIA:
+1. Non-peer-reviewed sources (grey literature, conference abstracts without
+   full papers, game design practitioner articles).
+2. Studies examining digital hoarding (emails, files, photos) without a game
+   component.
+3. Studies examining gambling without a game mechanic component (pure
+   gambling studies with no loot box or gacha connection).
+4. Editorials, commentaries, and opinion pieces without original data.
+5. Studies focused exclusively on game monetization economics without
+   behavioral or psychological measures.
+
+VERDICT DEFINITIONS:
+- Include: clearly relevant to at least one of the five behavioral domains.
+- Maybe: tangentially relevant, or requires full-text review to determine
+  eligibility definitively.
+- Exclude: clearly outside scope per the exclusion criteria.
+
+DOMAIN CODES (a paper may match multiple, or none):
+- D1: Loss aversion in games
+- D2: Consumable hoarding (the "elixir problem"; e.g., unused potions)
+- D3: Gacha / loot box / microtransaction collecting
+- D4: Inventory paralysis / virtual possession / psychological ownership
+- D5: Completionism / achievement hunting
+- D6: Backlog accumulation / unplayed-library hoarding
+- Cross-domain: explicit hoarding-disorder, OCD, or compulsive-buying link
+  to game behavior
