@@ -1,12 +1,14 @@
-# elixir-review
+# The Elixir Problem
 
 [![License: CC BY 4.0](https://img.shields.io/badge/License-CC_BY_4.0-lightgrey.svg)](https://creativecommons.org/licenses/by/4.0/)
 
-**The Elixir Problem: A Systematic Review of Hoarding-Related Behaviors in Digital Games**
+Research Program: 4 (AI-Mediated Accumulation)
+Status: Reproducible artifact
+Relationship to other work: Companion to tidal (Program 4 anchor)
 
-Players routinely finish RPGs with inventories full of unused potions. They spend hundreds of dollars chasing complete gacha character rosters. They maintain elaborate storage systems rather than discard a single item. They accumulate libraries of hundreds of unplayed games during digital sales. These behaviors share core psychological mechanisms with clinical hoarding disorder -- loss aversion, emotional attachment, decision avoidance, and acquisition-driven positive affect -- yet the relevant evidence is scattered across behavioral economics, game studies, gambling research, consumer psychology, and HCI. No prior review has unified this evidence under a hoarding framework.
+---
 
-This repository contains the PRISMA systematic review, search automation scripts, and manuscript source for the paper.
+**A Systematic Review of Hoarding-Related Behaviors in Digital Games.** This PRISMA review maps in-game accumulation behaviors -- unused consumables, gacha rosters, inventory paralysis, completionism, backlog hoarding -- onto clinical hoarding disorder constructs (DSM-5; Frost-Hartl CBT model). Evidence is scattered across behavioral economics, game studies, gambling research, consumer psychology, and HCI; no prior review has unified it under a hoarding framework. The repository ships the search automation, the screened dataset (156 records), and the manuscript source.
 
 ## Repository Structure
 
@@ -36,7 +38,7 @@ The review follows PRISMA 2020 guidelines. Two complementary PubMed queries were
 
 Combined yield: **227 unique records**. After automated screening, **156 met eligibility criteria**.
 
-Evidence is mapped across five behavioral domains:
+Evidence is mapped across six behavioral domains:
 
 | Domain | Description | Eligible papers |
 |--------|-------------|-----------------|
@@ -59,15 +61,18 @@ python experiments/src/prisma_search.py
 python experiments/src/screening.py
 ```
 
-Raw records land in `experiments/data/raw/`; screening output goes to `data/processed/`; analyses to `results/`. The search is deterministic given the same PubMed database state, but results may vary over time as PubMed indexes new publications.
+Raw records land in `experiments/data/raw/`; screening output in `experiments/data/processed/`; analyses in `experiments/results/`. The search is deterministic given the same PubMed database state, but results may shift over time as PubMed indexes new publications.
 
 **Python >= 3.10 required.**
 
 ## Key Findings
 
-- The gacha/loot-box domain (D3) has the strongest evidence base, with 97 eligible papers linking spending to problem gambling and OCD/hoarding symptomatology.
-- Consumable hoarding (D2, "the elixir problem") and backlog accumulation (D6) are **complete evidence voids** -- robustly recognized in player communities and game design practice but absent from peer-reviewed literature.
-- The paper proposes a five-domain theoretical framework and maps available evidence onto DSM-5 hoarding disorder criteria and the Frost-Hartl cognitive-behavioral model.
+- **Currently implemented**: PRISMA search automation (Entrez E-utilities), automated screening on 227 records yielding 156 eligible, six-domain mapping with regenerable summaries in `experiments/results/`, and the manuscript in `paper/main.tex`.
+- **Planned**: extract inline `\begin{thebibliography}` to `references.bib` to enable a shared bib across Program 4 companions (see `planning/decisions.md`).
+- **Design intent**: DDD-style layout -- `paper/` is the single source of truth; `experiments/` regenerates evidence; `planning/` carries meta-work and rationale. Versioning is git's job, so filenames do not carry `_v2`/`_v3` suffixes; `experiments/archive/` retains the v1 pipeline as a reproducibility audit trail.
+- **Non-goals**: not a meta-analysis (effect sizes are not pooled across the heterogeneous designs); not a clinical instrument (no diagnostic claim about individual players); not a venue-locked artifact (venue adapters belong in `submissions/<venue>/`, not in `main.tex`).
+- The gacha/loot-box domain (D3) carries the strongest evidence base, with 97 eligible papers linking spending to problem-gambling and OCD/hoarding symptomatology.
+- Consumable hoarding (D2, "the elixir problem") and backlog accumulation (D6) are **complete evidence voids** -- robustly recognized in player communities and design practice but absent from peer-reviewed literature.
 
 ## Target Journal
 
