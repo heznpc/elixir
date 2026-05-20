@@ -151,3 +151,25 @@ All three: H0_2025 not rejected (κ ≤ 0.40 on the post-cutoff subset). Combine
 - `experiments/llm_second_reviewer/protocol.md` §6 amended
 
 **Why this counts as a meaningful follow-up rather than redundant computation**: protocol §6 was pre-registered as conditional on the §4 band being hit. The condition was hit. The SC run answers the specific challenge: "could a single-sample LLM verdict happen to disagree with the heuristic just by chance at this decoding setting?" The answer for 88 % of the high-confidence subset is no — the disagreement reproduces unanimously under independent resampling. This is the strongest IRR-tier statement the audit can make without human gold labels.
+
+---
+
+## 2026-05-21 (post-execution) — Qualitative reason extraction on 51-paper reaffirmed subset
+
+**Context**: User asked to extract value from the LLM "reason" field already captured in both the primary-run JSONLs and the self-consistency state file. No additional LLM calls.
+
+**Decision**: built `experiments/llm_second_reviewer/analyze_reasons.py` — pure stdlib analysis. Pulls ~600 reason strings (12 per paper × 51 papers) and reports per-axis lexical patterns (bigrams + trigrams), 3 representative example papers per axis with verbatim reasons from all 3 tiers × 4 samples each, and cross-LLM token-set jaccard similarity to characterise whether the models cite shared or distinct evidence for the same verdict.
+
+**Findings (committed to `experiments/results/llm_second_reviewer_reasons.md`)**:
+
+- **Axis Maybe → Exclude (n=36 papers, 432 reasons)**: top bigrams "loot boxes" (101), "loot box" (70), "behavioral addictions" (70), "virtual item" (48). Most informative trigrams are template fragments like "focus loot boxes" (26), "loot boxes inventory" (26) — the LLMs are uniformly explaining what the paper *isn't* about. Representative examples include an unrelated medical-education paper (PMID 18710846), a Harvard Business Review performance-measurement piece (PMID 19839446), and a German-language behavioral addiction conceptual paper (PMID 23604411). The heuristic's "Maybe" tier in this audit is mostly populated by clearly off-topic papers that the LLMs identify unanimously across 4 samples each.
+
+- **Axis Include → Exclude (n=13 papers, 172 reasons)**: dominant bigrams "original data" (55), "without original" (53), "behavioral psychological" (48), "psychological measures" (41). The LLMs uniformly diagnose the heuristic's misclassification as a violation of inclusion criterion 1 (peer-reviewed empirical studies) or 5 (excluded if monetization economics without behavioral measures). I.e. these 13 papers the heuristic admitted are commentaries / conceptual pieces, not empirical studies.
+
+- **Axis Include → Maybe (n=2 papers)**: too small for lexical analysis; reasons reported verbatim in the md.
+
+**Paper integration**: `paper/main.tex` §Limitations "Screening methodology" extended with one sentence summarising both failure modes (a) and (b) and quoting the "without original [data]" bigram count. The §4 verbal-claim band (`moderate IRR; disagreement set flagged for human triage`) is unchanged; the reason analysis sharpens *what* the heuristic gets wrong without claiming validity for the LLM screener.
+
+**No additional cost**: stdlib analysis only; 0 LLM API calls; ~3 s wall.
+
+**Outstanding**: the same 51-paper subset is the natural input for a future human-gold pass. Sample IDs and seed (20260521) for the stratified n=30 gold draw remain pinned in protocol §8.
