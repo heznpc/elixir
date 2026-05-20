@@ -1,0 +1,69 @@
+King et al. (2020) over-pathologization criteria for screening-tool face validity
+("Face validity evaluation of screening tools for gaming disorder: Scope, language,
+and overpathologizing issues", Journal of Behavioral Addictions, 9(1), 1-13).
+
+Each criterion is applied to a single candidate scale item. The model returns
+"violates" if the item is judged to fail the criterion, and "ok" if not.
+
+---
+
+CRITERION 1 - SCOPE
+The item must describe behavior that is plausibly outside the range of normal,
+healthy engagement with the medium. If a typical adult gamer with no clinical
+hoarding-related symptoms would, at a moderate level of agreement, endorse the
+item simply by virtue of being a typical engaged player, the item violates the
+SCOPE criterion. Concretely, the item violates SCOPE if it describes a behavior
+that is essentially universal among engaged players (e.g., "I sometimes save
+items in my inventory") with no marker of impairment, distress, frequency, or
+loss of control.
+
+The item does NOT violate SCOPE if it includes any of:
+- A frequency, duration, or escalation marker that distinguishes it from normal
+  play ("more than an hour in a single session", "more than I planned",
+  "even when the use was strategically sound").
+- An explicit distress / impairment marker (causes guilt, anxiety, interferes
+  with rent / food / bills, interferes with enjoyment of other games).
+- A loss-of-control marker ("continued spending", "cannot stop", "interferes
+  with").
+
+---
+
+CRITERION 2 - LANGUAGE
+The item's wording must not borrow clinical-disorder language (addiction,
+compulsion, withdrawal, craving, obsession, pathology) without empirical
+warrant. King et al. (2020) explicitly warn that importing substance-use
+language into game behavior pathologizes normal play. The item violates the
+LANGUAGE criterion if it uses such clinical-disorder vocabulary at the level
+of the stem itself, OR if its wording presupposes a disorder ("I am addicted
+to ...", "I obsessively ...", "I compulsively ...").
+
+The item does NOT violate LANGUAGE merely by describing strong feelings
+(anxiety, guilt, distress, loss) when those feelings are reported as
+consequences of behavior rather than diagnostic labels attached to the
+behavior itself.
+
+---
+
+CRITERION 3 - OVERPATHOLOGIZING
+The item must distinguish behavior that is normatively rational given the
+designed environment of the game from behavior that exceeds that environment.
+Saving consumables for harder fights is normatively rational when information
+about future challenges is incomplete. Buying a game during a sale is
+normatively rational when prices may rise later. The item violates the
+OVERPATHOLOGIZING criterion if a normatively rational behavior is framed as
+inherently problematic, OR if it asks the respondent to label adaptive
+behavior (sensible resource management, sale purchasing, achievement
+engagement) as a symptom.
+
+The item does NOT violate OVERPATHOLOGIZING if the symptom-like aspect of the
+behavior is itself the explicit subject (distress, impairment, loss of
+control, escalation beyond planned commitment).
+
+---
+
+VERDICT
+For each (item, criterion) pair, emit exactly one of:
+  - "violates"   if the item fails the criterion
+  - "ok"         if the item passes the criterion
+
+Plus a short, single-sentence rationale (<= 25 words).

@@ -1,0 +1,20 @@
+{
+  "queries": {
+    "D2": {
+      "search": "\"consumable hoarding\" OR \"potion hoarding\" OR \"elixir\" OR \"too good to use\" OR \"item retention\" OR \"resource hoarding\"",
+      "filter": "abstract.search:\"video game\" OR \"video games\" OR \"gaming\" OR \"gamer\" OR \"rpg\" OR \"mmorpg\" OR \"online game\""
+    },
+    "D6": {
+      "search": "\"backlog\" OR \"pile of shame\" OR \"unplayed games\" OR \"steam library\" OR \"game library\"",
+      "filter": "abstract.search:\"video game\" OR \"video games\" OR \"gaming\" OR \"gamer\" OR \"steam\" OR \"digital storefront\""
+    }
+  },
+  "queries_hash": "8b2dd4ac3192b08558ba6c49ba702fa067284699f655dfdf35769b82d6027676",
+  "counts": {
+    "D2": 200,
+    "D6": 200
+  },
+  "total_rows": 400,
+  "per_page": 25,
+  "max_per_query": 200
+}

@@ -173,3 +173,36 @@ All three: H0_2025 not rejected (κ ≤ 0.40 on the post-cutoff subset). Combine
 **No additional cost**: stdlib analysis only; 0 LLM API calls; ~3 s wall.
 
 **Outstanding**: the same 51-paper subset is the natural input for a future human-gold pass. Sample IDs and seed (20260521) for the stratified n=30 gold draw remain pinned in protocol §8.
+
+---
+
+## 2026-05-21 (second KST window, post-execution) — GHI face-validity audit and OpenAlex extension
+
+**Context**: After PR #5 merged, current quota window (08:10-13:10 KST) was fresh. User flagged that the previous design had no chain or monitoring — both fixed in this round: a single `chain.sh` runs GHI → analyze → OpenAlex search → dedup → analyze → LLM recheck → analyze, with a Monitor streaming each `phase=` line as a chat event. The chain inherits the same quota-resilience pattern as `run_self_consistency.py`; the runner sleeps until the next 5h KST window boundary if a quota error is hit, then retries.
+
+**Two pre-registered experiments executed:**
+
+### A. GHI face-validity audit (`experiments/ghi_face_validity/`)
+
+- 18-item GHI draft (frozen at `items_v1.json`) covering D2-D6 + cross-domain.
+- 3 criteria from King et al. (2020): SCOPE, LANGUAGE, OVERPATHOLOGIZING (frozen at `criteria_v1.txt`).
+- 3 models: Opus 4-7, Sonnet 4-6, Haiku 4-5. 162 judgments total.
+- Decision-rule outcome (protocol §4): **4 items REVISE** (GHI-01, GHI-03, GHI-15, GHI-18 — all flagged $\geq 6/9$, common failure mode = missing distress/impairment marker), **1 under review** (GHI-10), **13 provisionally retained**.
+- Cost: ~$7. Wall: ~6.5 min. 0 quota retries.
+- Paper integration: §Future Directions GHI subsection extended with the 18-item draft reference + the 4 REVISE items + the dominant failure mode summary.
+
+### B. OpenAlex evidence-void recheck (`experiments/openalex_extension/`)
+
+- One-sided extension: D2 + D6 queries against OpenAlex Works API (200 hits each, no API key).
+- Deduplication against PubMed corpus: 1 PMID match, 0 DOI/title-jaccard matches; 399 novel records.
+- Heuristic screening on novel records: D2 = 6 Include, D6 = 5 Include.
+- Per-domain pre-registered decision rule (§4): both in 3-9 band = "evidence sparse but void claim not supported."
+- Protocol §6 trigger condition met ($\geq 5$ Include per domain), so the LLM-recheck follow-up was filed and immediately executed: 11 records $\times$ 3 models = 33 calls, all 3 LLMs **unanimously Excluded all 11 records** (correctly identifying them as off-topic: an AI containment paper duplicated 4× on Zenodo, a free-to-play monetization dissertation, a virtual-goods trade-classification paper, a supply-chain hoarding paper, a game-development labour book duplicated twice, an indie-game value-crafting paper, and a disabled-gamer accessibility dissertation).
+- Net conclusion (load-bearing per protocol §6): D2 LLM-Include = 0, D6 LLM-Include = 0 $\rightarrow$ **evidence-void claims corroborated**. Paper §3.2 / §3.7 stand. The OpenAlex extension is reported as a supplementary footnote in each subsection.
+- Cost: search 0 USD (free OpenAlex API), LLM recheck ~$2.4. Wall: search ~30 s, dedup <1 s, LLM recheck ~3 min. 0 quota retries.
+
+**Failure recovered mid-execution**: the initial OpenAlex search failed at `search.py:102` with `AttributeError: 'NoneType' object has no attribute 'get'` because some OpenAlex records have `primary_location.source = null`. Fix applied (guard with `if isinstance(src, dict)`), search re-launched, completed cleanly. Failure + fix recorded in this entry rather than as a separate amendment because the bug was in pre-registered code rather than a protocol deviation.
+
+**Coverage caveat (carried forward from OpenAlex protocol §10)**: OpenAlex coverage of practitioner blogs (Bycer, Game Wisdom), TV Tropes / Pixiv Dictionary entries, and Japanese-language non-Crossref-registered work is incomplete. Absence of OpenAlex hits is therefore consistent with both "no evidence" and "evidence exists in venues OpenAlex does not index well." The extension is one-sided per protocol §1; it can falsify the void claim but cannot conclusively confirm it.
+
+**Total cost this window**: ~$9.4 (GHI $7 + OpenAlex search 0 + LLM recheck $2.4). Quota retries: 0 across both experiments. Both ran inside the single 08:10-13:10 KST window. Quota-resilience logic untested in production but retained for future cross-window runs.

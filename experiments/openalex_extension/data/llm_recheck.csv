@@ -1,0 +1,34 @@
+openalex_id,tier,model,verdict,domains,reason,parse_error,latency_s,cost_usd
+W3214209540,sonnet,claude-sonnet-4-6,Exclude,,Focuses on monetization economics and player retention strategy without behavioral or psychological measures of hoarding-related constructs.,,2.9,0.014136
+W3214209540,opus,claude-opus-4-7,Exclude,,"Thesis on monetization/retention economics without behavioral or psychological measures of hoarding, collecting, or loss aversion.",,3.34,0.102094
+W7115059379,sonnet,claude-sonnet-4-6,Exclude,,"AI containment framework paper; no game behavior, hoarding psychology, or digital game component.",,2.68,0.014098
+W7115059379,opus,claude-opus-4-7,Exclude,,AI containment framework paper unrelated to digital games or hoarding behaviors; outside review scope.,,2.9,0.102619
+W7115073252,sonnet,claude-sonnet-4-6,Exclude,,"AI containment framework unrelated to games, hoarding behavior, or any of the five behavioral domains.",,2.93,0.014129
+W7115059379,haiku,claude-haiku-4-5,Exclude,,"Preprint (Zenodo, not peer-reviewed) on AI safety, unrelated to digital game hoarding behavior.",,11.62,0.008869
+W7115073252,opus,claude-opus-4-7,Exclude,,AI containment framework paper unrelated to digital games or hoarding behaviors; outside review scope.,,3.06,0.102619
+W7115071661,sonnet,claude-sonnet-4-6,Exclude,,"AI containment framework unrelated to game behavior, hoarding constructs, or any inclusion criterion.",,2.35,0.014353
+W3214209540,haiku,claude-haiku-4-5,Exclude,,Thesis focused on monetization strategy and player retention mechanics; lacks behavioral/psychological measures related to hoarding constructs.,,15.14,0.011518
+W7115071661,opus,claude-opus-4-7,Exclude,,AI containment framework paper unrelated to digital games or hoarding behaviors.,,2.89,0.103744
+W7115073252,haiku,claude-haiku-4-5,Exclude,,"AI safety framework unrelated to games; 'resource hoarding' refers to AI systems, not player behavior.",,12.87,0.010359
+W7115071033,sonnet,claude-sonnet-4-6,Exclude,,AI containment framework paper; not a peer-reviewed empirical study on game behavior or hoarding constructs.,,2.85,0.014398
+W7115071661,haiku,claude-haiku-4-5,Exclude,,Off-topic: AI containment framework with no game component; grey literature venue (Zenodo preprint).,,10.09,0.007998
+W7115071033,opus,claude-opus-4-7,Exclude,,AI containment framework paper unrelated to digital games or hoarding behaviors; mentions 'resource hoarding' only as an AI attack vector.,,3.45,0.105394
+W7130820856,sonnet,claude-sonnet-4-6,Exclude,,Trade policy/tariff classification study with no behavioral or psychological measures of game behavior.,,2.93,0.01348
+W7130820856,opus,claude-opus-4-7,Exclude,,Trade policy paper on tariff classification of virtual goods; no behavioral or psychological measures of hoarding-related game behavior.,,2.87,0.098512
+W7115071033,haiku,claude-haiku-4-5,Exclude,,"AI safety paper unrelated to digital games; resource hoarding refers to AI containment, not game behavior.",,14.24,0.010543
+W4235707818,sonnet,claude-sonnet-4-6,Exclude,,"Focuses on labor and production economics of game development, not behavioral or psychological constructs related to hoarding.",,6.67,0.0133
+W4235707818,opus,claude-opus-4-7,Exclude,,Edited volume on game production industry and labor; not about player hoarding behaviors or related psychological constructs.,,3.12,0.09585
+W7130820856,haiku,claude-haiku-4-5,Exclude,,Trade policy and tariff classification framework; no behavioral or psychological examination of hoarding or game phenomena.,,14.6,0.011292
+W1428487783,opus,claude-opus-4-7,Exclude,,Supply chain Beer Distribution Game experiment on hoarding behavior; no digital game or video game context.,,3.03,0.102488
+W4235707818,haiku,claude-haiku-4-5,Exclude,,Production studies edited volume on game industry labor and development; no player behavior or hoarding psychology examined.,,15.96,0.011839
+W3135872807,sonnet,claude-sonnet-4-6,Exclude,,Edited volume on game production labor and industry; no behavioral or psychological measures of hoarding-related game behavior.,,3.65,0.013633
+W1428487783,haiku,claude-haiku-4-5,Exclude,,"Supply chain simulation game; studies ordering behavior, not video game item hoarding, collecting, inventory, or completionism.",,13.46,0.011216
+W1428487783,sonnet,claude-sonnet-4-6,Exclude,,Studies supply-chain hoarding/phantom ordering in Beer Distribution Game; no digital game behavioral or psychological ownership component.,,12.92,0.014072
+W3135872807,opus,claude-opus-4-7,Exclude,,Edited volume on game production labor and industry economics; no behavioral or psychological measures of player hoarding.,,3.69,0.098006
+W2904059041,sonnet,claude-sonnet-4-6,Exclude,,"Focuses on indie developer marketing and pricing practices; no behavioral or psychological measures of hoarding, collecting, or loss aversion.",,2.76,0.014192
+W2904059041,opus,claude-opus-4-7,Exclude,,"Focuses on indie developer pricing and marketing practices, not player hoarding behaviors or psychological constructs.",,3.22,0.101906
+W3135872807,haiku,claude-haiku-4-5,Exclude,,"Production-focused edited volume on game development labor; does not examine player hoarding, collecting, or behavioral outcomes.",,13.36,0.009789
+W2900459466,sonnet,claude-sonnet-4-6,Exclude,,"Focuses on disability accessibility in games; no behavioral or psychological measures of hoarding, collecting, or loss aversion.",,2.69,0.013461
+W2900459466,opus,claude-opus-4-7,Exclude,,"Paper concerns accessibility for disabled gamers, not hoarding, collecting, or loss aversion behaviors in any of the five domains.",,3.22,0.098081
+W2904059041,haiku,claude-haiku-4-5,Exclude,,"Examines developer pricing and marketing practices, not player hoarding or collecting behaviors; lacks behavioral or psychological measures.",,15.13,0.011346
+W2900459466,haiku,claude-haiku-4-5,Exclude,,"Paper addresses accessibility barriers for disabled gamers, not hoarding-related behaviors or psychological constructs.",,15.14,0.011524
