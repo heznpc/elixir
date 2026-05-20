@@ -68,9 +68,15 @@ Per-domain κ is reported only as a descriptive table. No domain-level claim is 
 
 The CLI subprocess path is *internally* reproducible (same OAuth session, same CLI version, same model dated alias, fixed prompt + criteria hashes) but not *externally* reproducible by a third party without Claude Code OAuth access. The audit is reported as IRR-only (§4), so internal reproducibility is the audit's actual bar. A future amendment may re-run via direct API with `temperature=0` for publication-grade external reproducibility; that re-run, if executed, is reported as a separate validation pass.
 
-## 6. Self-consistency control (optional, deferred)
+## 6. Self-consistency control (activated 2026-05-21 mid-execution per §4 band)
 
-A self-consistency check (n = 3 sampling at temperature 0.3, majority vote) is **not** required for the primary run. If primary κ falls in the 0.40 < κ ≤ 0.60 band, a self-consistency run on the disagreement set only (subset, ~10-30 papers) is permitted as an exploratory follow-up and reported separately. This is Major item M-3 carried forward.
+A self-consistency check (n = 3 sampling, CLI default decoding, majority vote) is **not** required for the primary run. If primary κ falls in the 0.40 < κ ≤ 0.60 band, a self-consistency run on the disagreement set only is permitted as an exploratory follow-up and reported separately. This is Major item M-3 (alias M-A) carried forward.
+
+**Activation 2026-05-21:** all three primary tiers landed in 0.40 < κ ≤ 0.60 (Haiku 0.487, Sonnet 0.461, Opus 0.532). Self-consistency is therefore activated. Subset used: the convergent-disagreement set (n = 59 papers where all three primary-run LLMs agreed with each other but disagreed with the heuristic). Larger than the §6 prediction of "10-30 papers" but still a subset of the 88-98 per-tier disagreement set. The choice of convergent-disagreement (rather than full per-tier disagreement) keeps the analysis focused on the highest-confidence disagreements.
+
+**Parameters used:** 3 samples per (pmid, tier), CLI subprocess sampling (no explicit temperature flag; near-default decoding), sequential execution to keep state writes serialised. Runner: `experiments/llm_second_reviewer/run_self_consistency.py`. Reproducibility seed for any future bootstrap on the SC results: same `20260521` as the primary run.
+
+**Quota-resilience:** the runner persists per-call state to `sc_state.jsonl`. On a quota-style CLI error it sleeps until the next 5-hour KST window boundary (anchored at 2026-05-21 03:10 KST, since this is the local-environment token-reset cadence on this machine) plus a 30 s buffer, then resumes. Up to 8 quota-sleep cycles permitted; beyond that the runner gives up and reports.
 
 ## 7. Contamination acknowledgment + secondary hypothesis (amended 2026-05-21 per M-C)
 

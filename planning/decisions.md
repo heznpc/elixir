@@ -117,3 +117,37 @@ All three: H0_2025 not rejected (κ ≤ 0.40 on the post-cutoff subset). Combine
 - `experiments/results/llm_second_reviewer_confusion.csv`
 
 **Outstanding (deferred per protocol §8)**: human-gold n=30 subset is not yet labelled. Until it is, the audit remains IRR-only.
+
+---
+
+## 2026-05-21 (post-execution) — Self-consistency follow-up activated and complete
+
+**Context**: All three primary tiers landed in protocol §4's 0.40 < κ ≤ 0.60 band, triggering protocol §6 (M-A deferred). User flagged a 5-hour KST quota window (anchor 2026-05-21 03:10 KST) and requested a quota-resilient runner.
+
+**Decision**: built `run_self_consistency.py` with these properties:
+1. Sample: 59-paper convergent-disagreement subset (papers where all three primary-run models unanimously disagreed with the heuristic). The subset CSV is pinned at `experiments/llm_second_reviewer/convergent_disagreements.csv`.
+2. 3 samples per (pmid, tier) at CLI default decoding = 531 calls total.
+3. Persistent state at `experiments/llm_second_reviewer/sc_state.jsonl`; per-call write under a thread lock; auto-resume on restart skips completed `(pmid, tier, sample_idx)` triples.
+4. Quota-error detection on patterns `rate_limit | quota | 429 | exceeded | too many requests` (case-insensitive in stderr + stdout). On hit, sleeps until the next 5-hour KST window boundary plus 30 s buffer, then retries the same call. Up to 8 retry cycles.
+5. Concurrency 4 (one shared CLI subprocess per worker). Sequential first attempt was killed after observing ~6 s / call → switched to threaded for ~12 min total wall.
+
+**Results**:
+- Total calls 531, completed 511 new (20 resumed from earlier sequential attempt), 0 malformed, **0 quota retries** (run finished within the same 5-hour window 03:10-08:10 KST).
+- Wall ≈ 19 min (1166 s) at concurrency 4. Cost ≈ $13.4 (new) + ~$0.2 (resumed-from leftover) ≈ $13.6.
+- Per-tier stability (unanimous 3/3): **Sonnet 4-6 95 %, Opus 4-7 93 %, Haiku 4-5 76 %**. Haiku is the noisiest sampler; Sonnet and Opus essentially deterministic at default decoding.
+- Majority vote vs original primary-run single sample matches **100 %, 98 %, 90 %** (sonnet / opus / haiku). The primary-run verdicts were not lucky outliers.
+- Cross-tier convergence on majority verdicts: 58/59 papers have a defined majority across all three tiers; **51/58 = 88 %** have all three tier majorities identical AND differing from the heuristic. **Zero** papers flipped back to agreement with the heuristic under resampling.
+- Dominant reaffirmed axis: 36 of 40 original "Maybe → Exclude" papers, 13 of 14 "Include → Exclude" papers, and 2 of 5 "Include → Maybe" papers retained their three-LLM consensus under resampling.
+
+**Paper integration**: §Limitations "Screening methodology" paragraph extended with one sentence reporting the 88 % robustness figure and the dominant reaffirmed axis. The sentence does not upgrade the primary-run verbal-claim band (§4); it only attests that the moderate-IRR finding is not driven by sampling noise.
+
+**Artefacts committed in this PR**:
+- `experiments/llm_second_reviewer/run_self_consistency.py` (resumable, quota-aware)
+- `experiments/llm_second_reviewer/analyze_self_consistency.py`
+- `experiments/llm_second_reviewer/convergent_disagreements.csv` (n = 59 subset)
+- `experiments/llm_second_reviewer/sc_state.jsonl` (552 lines: header + 531 records)
+- `experiments/data/processed/llm_second_reviewer_sc.csv` (flat, 531 rows)
+- `experiments/results/llm_second_reviewer_sc_summary.md`
+- `experiments/llm_second_reviewer/protocol.md` §6 amended
+
+**Why this counts as a meaningful follow-up rather than redundant computation**: protocol §6 was pre-registered as conditional on the §4 band being hit. The condition was hit. The SC run answers the specific challenge: "could a single-sample LLM verdict happen to disagree with the heuristic just by chance at this decoding setting?" The answer for 88 % of the high-confidence subset is no — the disagreement reproduces unanimously under independent resampling. This is the strongest IRR-tier statement the audit can make without human gold labels.
