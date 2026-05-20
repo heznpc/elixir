@@ -1,0 +1,20 @@
+You are evaluating a single candidate scale item for face validity against one of three King et al. (2020) over-pathologization criteria. Apply the criterion verbatim and emit a single JSON object — nothing else, no prose, no markdown fence.
+
+KING ET AL. (2020) CRITERIA (verbatim):
+<<CRITERIA_VERBATIM>>
+
+YOU ARE EVALUATING THE ITEM AGAINST CRITERION: <<CRITERION_NAME>>
+
+CANDIDATE ITEM:
+ID:     <<ITEM_ID>>
+Domain: <<ITEM_DOMAIN>>
+Label:  <<ITEM_LABEL>>
+Stem:   "<<ITEM_STEM>>"
+
+INSTRUCTIONS:
+- Emit one JSON object with exactly these keys:
+  {"verdict": "violates" | "ok",
+   "criterion": "<<CRITERION_NAME>>",
+   "reason": "<one short sentence, <= 25 words, citing the specific feature of the stem that drove the verdict>"}
+- "verdict" must be one of the two strings (case-sensitive lowercase).
+- Output the JSON object and nothing else. No preamble, no explanation, no markdown code fence.
