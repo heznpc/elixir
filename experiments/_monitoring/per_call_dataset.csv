@@ -1897,3 +1897,12 @@ d3_design,d3_design_audit/state.jsonl,claude-opus-4-7,opus,35604522,,,2026-05-21
 d3_design,d3_design_audit/state.jsonl,claude-haiku-4-5,haiku,35604522,,,2026-05-21T05:18:04.181778+00:00,2026-05-21T14:18:04,2,4084,14.41,0.009151,3171,0,0,1196,4367,,,,call_started_utc
 d3_design,d3_design_audit/state.jsonl,claude-opus-4-7,opus,37915884,,,2026-05-21T05:18:16.463525+00:00,2026-05-21T14:18:16,2,4096,3.75,0.089287,5,0,4490,67,4562,,,,call_started_utc
 d3_design,d3_design_audit/state.jsonl,claude-haiku-4-5,haiku,37915884,,,2026-05-21T05:18:09.994076+00:00,2026-05-21T14:18:09,2,4089,11.02,0.006638,3163,0,0,695,3858,,,,call_started_utc
+openalex_d5,openalex_d5/llm_recheck_state.jsonl,claude-opus-4-7,opus,W161555447,,,2026-05-21T09:17:34.092677+00:00,2026-05-21T18:17:34,3,454,5.03,0.096712,5,0,4854,75,4934,Maybe,,,call_started_utc
+openalex_d5,openalex_d5/llm_recheck_state.jsonl,claude-sonnet-4-6,sonnet,W161555447,,,2026-05-21T09:17:34.091163+00:00,2026-05-21T18:17:34,3,454,5.29,0.013311,2,0,3384,41,3427,Maybe,,,call_started_utc
+openalex_d5,openalex_d5/llm_recheck_state.jsonl,claude-sonnet-4-6,sonnet,W3096296182,,,2026-05-21T09:17:39.119743+00:00,2026-05-21T18:17:39,3,459,3.0,0.013296,2,0,3360,46,3408,Exclude,,,call_started_utc
+openalex_d5,openalex_d5/llm_recheck_state.jsonl,claude-opus-4-7,opus,W3096296182,,,2026-05-21T09:17:39.381243+00:00,2026-05-21T18:17:39,3,459,4.08,0.095681,5,0,4803,74,4882,Exclude,,,call_started_utc
+openalex_d5,openalex_d5/llm_recheck_state.jsonl,claude-haiku-4-5,haiku,W3096296182,,,2026-05-21T09:17:34.093089+00:00,2026-05-21T18:17:34,3,454,11.57,0.008376,3391,0,0,997,4388,Exclude,,,call_started_utc
+openalex_d5,openalex_d5/llm_recheck_state.jsonl,claude-sonnet-4-6,sonnet,W1847083306,,,2026-05-21T09:17:43.461099+00:00,2026-05-21T18:17:43,3,463,3.54,0.013547,2,0,3463,37,3502,Exclude,,,call_started_utc
+openalex_d5,openalex_d5/llm_recheck_state.jsonl,claude-opus-4-7,opus,W1847083306,,,2026-05-21T09:17:45.664468+00:00,2026-05-21T18:17:45,3,465,3.38,0.098606,5,0,4947,77,5029,Exclude,,,call_started_utc
+openalex_d5,openalex_d5/llm_recheck_state.jsonl,claude-haiku-4-5,haiku,W1847083306,,,2026-05-21T09:17:42.123026+00:00,2026-05-21T18:17:42,3,462,13.54,0.010754,3494,0,0,1452,4946,Exclude,,,call_started_utc
+openalex_d5,openalex_d5/llm_recheck_state.jsonl,claude-haiku-4-5,haiku,W161555447,,,2026-05-21T09:17:34.091047+00:00,2026-05-21T18:17:34,3,454,25.58,0.016025,3415,0,0,2522,5937,Exclude,,,call_started_utc

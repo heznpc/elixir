@@ -113,6 +113,7 @@ def main():
         "ghi_face":         list((ROOT/"ghi_face_validity").glob("state*.jsonl")),
         "openalex_recheck": [ROOT/"openalex_extension"/"llm_recheck_state.jsonl"],
         "d3_design":        [ROOT/"d3_design_audit"/"state.jsonl"],
+        "openalex_d5":      [ROOT/"openalex_d5"/"llm_recheck_state.jsonl"],
     }
     # Filter the primary-run list to exclude aborted/sidecar files
     exps["llm_2rev_primary"] = [

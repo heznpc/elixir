@@ -1,0 +1,10 @@
+openalex_id,tier,model,verdict,domains,reason,parse_error,latency_s,cost_usd
+W161555447,opus,claude-opus-4-7,Maybe,D5,"Framework paper on game achievements relevant to completionism domain, but lacks empirical behavioral/psychological measures; full-text review needed.",,5.03,0.096712
+W161555447,sonnet,claude-sonnet-4-6,Maybe,D5,Framework paper on achievement design with empirical basis; may support completionism domain but lacks behavioral/psychological outcome measures.,,5.29,0.013311
+W3096296182,sonnet,claude-sonnet-4-6,Exclude,,"Study examines misinformation inoculation via a game, with no relevance to hoarding, collecting, or loss aversion constructs.",,3.0,0.013296
+W3096296182,opus,claude-opus-4-7,Exclude,,"Game about inoculation against political misinformation; unrelated to hoarding, loot boxes, completionism, or any in-game accumulation behavior.",,4.08,0.095681
+W3096296182,haiku,claude-haiku-4-5,Exclude,,"Serious game about political misinformation literacy; no examination of hoarding, item collection, inventory, or completionism behaviors.",,11.57,0.008376
+W1847083306,sonnet,claude-sonnet-4-6,Exclude,,Focuses on commodification economics of DLC without behavioral or psychological measures of hoarding-related behavior.,,3.54,0.013547
+W1847083306,opus,claude-opus-4-7,Exclude,,Critical/theoretical essay on DLC commodification without empirical data or behavioral/psychological measures; fails peer-reviewed empirical criterion.,,3.38,0.098606
+W1847083306,haiku,claude-haiku-4-5,Exclude,,Grey literature (Scholarworks thesis); theoretical analysis of DLC commodification without empirical data or behavioral/psychological measures.,,13.54,0.010754
+W161555447,haiku,claude-haiku-4-5,Exclude,,Game design framework without behavioral or psychological examination of achievements.,,25.58,0.016025
