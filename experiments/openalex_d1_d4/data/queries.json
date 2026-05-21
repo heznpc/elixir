@@ -1,0 +1,20 @@
+{
+  "queries": {
+    "D1": {
+      "search": "\"loss aversion\" OR \"endowment effect\" OR \"sunk cost\" OR \"prospect theory\" OR \"status quo bias\" OR \"framing effect\"",
+      "filter": "abstract.search:\"video game\" OR \"video games\" OR \"gaming\" OR \"gamer\" OR \"rpg\" OR \"mmorpg\" OR \"online game\" OR \"gameplay\" OR \"in-game\""
+    },
+    "D4": {
+      "search": "\"inventory\" OR \"virtual item\" OR \"virtual good\" OR \"psychological ownership\" OR \"virtual ownership\" OR \"digital possession\" OR \"virtual possession\" OR \"extended self\"",
+      "filter": "abstract.search:\"video game\" OR \"video games\" OR \"gaming\" OR \"gamer\" OR \"rpg\" OR \"mmorpg\" OR \"online game\" OR \"in-game\""
+    }
+  },
+  "queries_hash": "8057c2b37790c2d6423feaf9c6d348b91489127e2f258cadf04cf05ff09a4d3d",
+  "counts": {
+    "D1": 200,
+    "D4": 200
+  },
+  "total_rows": 400,
+  "per_page": 25,
+  "max_per_query": 200
+}
