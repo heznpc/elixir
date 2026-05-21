@@ -70,6 +70,7 @@ def each_jsonl():
     yield "ghi_face",         ROOT/"ghi_face_validity"
     yield "openalex_recheck", ROOT/"openalex_extension"/"llm_recheck_state.jsonl"
     yield "d3_design",        ROOT/"d3_design_audit"/"state.jsonl"
+    yield "openalex_d5",      ROOT/"openalex_d5"/"llm_recheck_state.jsonl"
 
 
 def extract_item_key(d: dict) -> str:

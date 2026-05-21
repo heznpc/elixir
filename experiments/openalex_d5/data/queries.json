@@ -1,0 +1,15 @@
+{
+  "queries": {
+    "D5": {
+      "search": "\"completionism\" OR \"completionist\" OR \"achievement hunting\" OR \"achievement hunter\" OR \"100% completion\" OR \"platinum trophy\" OR \"collect them all\" OR \"collectathon\"",
+      "filter": "abstract.search:\"video game\" OR \"video games\" OR \"gaming\" OR \"gamer\" OR \"rpg\" OR \"mmorpg\" OR \"online game\" OR \"achievement\" OR \"trophy\""
+    }
+  },
+  "queries_hash": "80aacac1592fdf381e4b7b7879e1380fadb6c13f9357bf3767c1f3e82577204e",
+  "counts": {
+    "D5": 200
+  },
+  "total_rows": 200,
+  "per_page": 25,
+  "max_per_query": 200
+}

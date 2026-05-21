@@ -253,3 +253,33 @@ All three: H0_2025 not rejected (κ ≤ 0.40 on the post-cutoff subset). Combine
 **Total cost this window**: $11.12 / 306 calls / ~9 min. Quota retries: 0. Cumulative across 3 windows: 1,896 calls / ~$64.
 
 **Outstanding**: heuristic-derived 35 unspecified bucket could be narrowed by adding LLM classifications as a supplementary CSV column on the eligible-papers list. Filed as a paper-write-step follow-up rather than a re-audit.
+
+---
+
+## 2026-05-21 (third KST window, late) — D5 OpenAlex completionism recheck
+
+**Context**: After the D3 design audit (PR #10), 2nd half of the 13:10-18:10 KST window was idle. Window crossed to 18:10-23:10 KST. User said "이어서 진행" — D5 OpenAlex broader-database check launched on the same pattern as the D2/D6 extension (PR #6).
+
+**Decision**: pre-register a one-sided OpenAlex extension targeted at completionism / achievement hunting / platinum trophy / collectathon. Decision rule per §2:
+- 0 LLM-confirmed-Include → weak-evidence claim corroborated.
+- 1-2 → weak remains weak, add records to literature pool.
+- 3-9 → evidence rises to moderate, revise §3.6.
+- ≥ 10 → major revision.
+
+**Run summary**:
+- OpenAlex query returned 200 hits (cap).
+- Deduplication: 1 PMID match → 199 novel records.
+- Heuristic screening: 3 Heuristic-Include, 127 Maybe, 69 Exclude.
+- LLM recheck on the 3 Heuristic-Include records (3 papers × 3 models = 9 calls).
+- Cost: ~$0.37. Wall: 26 s. 0 quota retries.
+
+**LLM-recheck outcome**:
+- "Framework for Designing and Evaluating Game Achievements" (2011 conference paper) — Haiku Exclude, Sonnet Maybe, Opus Maybe → split.
+- "Breaking Harmony Square" (2020, political-misinformation inoculation game) — unanimous Exclude across all 3 tiers.
+- "DLC: Perpetual Commodification of the Video Game" (2012, commentary) — unanimous Exclude across all 3 tiers.
+
+**LLM-confirmed-Include (unanimous across 3 tiers): 0.**
+
+**Net conclusion**: D5 weak-evidence claim corroborated by the broader-database check. Paper §3.6 stands. The OpenAlex check is reported as a supplementary footnote at the end of §3.6.
+
+**Cumulative across 3 KST windows + this run**: 1,904 calls / ~$64.49.
