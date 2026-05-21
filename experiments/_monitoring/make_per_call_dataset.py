@@ -69,6 +69,7 @@ def each_jsonl():
     # ghi_face glob below; sentinel here is the dir
     yield "ghi_face",         ROOT/"ghi_face_validity"
     yield "openalex_recheck", ROOT/"openalex_extension"/"llm_recheck_state.jsonl"
+    yield "d3_design",        ROOT/"d3_design_audit"/"state.jsonl"
 
 
 def extract_item_key(d: dict) -> str:

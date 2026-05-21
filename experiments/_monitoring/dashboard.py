@@ -71,8 +71,8 @@ def scan_jsonl(path: pathlib.Path) -> dict:
                 if d.get("_header"):
                     s["header_started_utc"] = d.get("started_utc")
                     continue
-                # Success only:
-                ok = bool(d.get("verdict"))
+                # Success criterion: any of the known output fields populated.
+                ok = bool(d.get("verdict")) or bool(d.get("design"))
                 if not ok:
                     s["errored"] += 1
                     continue
@@ -112,6 +112,7 @@ def main():
         # picked up automatically without code edits.
         "ghi_face":         list((ROOT/"ghi_face_validity").glob("state*.jsonl")),
         "openalex_recheck": [ROOT/"openalex_extension"/"llm_recheck_state.jsonl"],
+        "d3_design":        [ROOT/"d3_design_audit"/"state.jsonl"],
     }
     # Filter the primary-run list to exclude aborted/sidecar files
     exps["llm_2rev_primary"] = [
