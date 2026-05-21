@@ -50,19 +50,22 @@ PY
     tokens=${tokens:-0}
     cost=${cost:-0}
 
-    # In-flight runners
-    inflight=$(ps -ef 2>/dev/null \
-        | grep -E "(run\.py|run_self_consistency\.py|llm_recheck\.py|search\.py|dedup\.py)" \
+    # In-flight runners — match experiments/<dir>/<file>.py in argv AND verify
+    # the process's cwd is under this repo (avoids picking up other repos with
+    # the same path layout, e.g. tidal's experiments/src/seed_variance.py).
+    inflight=$(ps -eo pid=,args= 2>/dev/null \
+        | grep -E "experiments/[a-z0-9_]+/[a-z0-9_]+\.py" \
         | grep -v grep \
-        | awk '{
-            for (i=8; i<=NF; i++) {
-                if ($i ~ /\.py$/) {
-                    split($i, p, "/")
-                    printf "%s ", p[length(p)]
-                    break
-                }
-            }
-        }')
+        | while read -r pid rest; do
+            cwd=$(lsof -p "$pid" -a -d cwd -F n 2>/dev/null | grep '^n' | head -1 | sed 's/^n//')
+            if echo "$cwd" | grep -q "/Paper/elixir"; then
+                script=$(echo "$rest" | grep -oE 'experiments/[a-z0-9_]+/[a-z0-9_]+\.py' | head -1)
+                if [ -n "$script" ]; then
+                    short="${script#experiments/}"
+                    printf "%s " "$short"
+                fi
+            fi
+          done)
     inflight=${inflight:-none}
 
     # Compute deltas (numeric — convert calls easily; tokens has k/M suffix so leave as is)

@@ -206,3 +206,50 @@ All three: H0_2025 not rejected (κ ≤ 0.40 on the post-cutoff subset). Combine
 **Coverage caveat (carried forward from OpenAlex protocol §10)**: OpenAlex coverage of practitioner blogs (Bycer, Game Wisdom), TV Tropes / Pixiv Dictionary entries, and Japanese-language non-Crossref-registered work is incomplete. Absence of OpenAlex hits is therefore consistent with both "no evidence" and "evidence exists in venues OpenAlex does not index well." The extension is one-sided per protocol §1; it can falsify the void claim but cannot conclusively confirm it.
 
 **Total cost this window**: ~$9.4 (GHI $7 + OpenAlex search 0 + LLM recheck $2.4). Quota retries: 0 across both experiments. Both ran inside the single 08:10-13:10 KST window. Quota-resilience logic untested in production but retained for future cross-window runs.
+
+---
+
+## 2026-05-21 (third KST window, post-execution) — D3 study-design audit
+
+**Context**: After GHI v2 (PR #8) and monitoring infra (PR #7, #9), the third KST quota window (13:10-18:10 KST) was used for a §3.3 robustness check. Question: are the heuristic-derived design-distribution counts in `paper/main.tex` §3.3 robust to an independent LLM re-classification of every D3-tagged paper?
+
+**Decision**: pre-register a 9-category taxonomy (cross_sectional, unspecified, longitudinal, systematic_review, scale_validation, review_commentary, experimental, qualitative, content_analysis), classify each of the 102 D3-tagged papers (heuristic Include + Maybe) with all three Claude models (Opus 4-7 / Sonnet 4-6 / Haiku 4-5), report majority verdicts, and apply a per-category 20%/50% deviation rule. The protocol is committed at `experiments/d3_design_audit/protocol.md`.
+
+**Note on the 102 vs 97 corpus discrepancy**: paper §3.3 reports n = 97 D3 eligible papers; the heuristic CSV at the pinned commit yields 102 (92 Include + 10 Maybe). The 5-paper gap is acknowledged in protocol §7 as a finding rather than reconciled; the audit runs on the 102 actually present.
+
+**Run summary**:
+- 306 calls (102 papers × 3 tiers); 305 successful, 1 timeout that did not retry.
+- Cost ~$11.12, wall ~9 min, 0 quota retries.
+- Inter-model consensus: 90 % unanimous (3/3 same design), 9 % majority (2/3), 1 % no-majority.
+
+**Findings**:
+
+| Category | Paper §3.3 | LLM majority | Δ | Band |
+|---|---|---|---|---|
+| cross_sectional | 43 | 53 | +10 | approximate (23 %) |
+| unspecified | 35 | 1 | −34 | revise (97 %) |
+| longitudinal | 9 | 9 | 0 | **survives (0 %)** |
+| systematic_review | 4 | 6 | +2 | approximate (50 %) |
+| scale_validation | 3 | 6 | +3 | revise (100 %) |
+| review_commentary | 3 | 13 | +10 | revise (333 %) |
+| experimental | 2 | 3 | +1 | approximate (50 %) |
+| qualitative | 2 | 2 | 0 | **survives (0 %)** |
+| content_analysis | 1 | 8 | +7 | revise (700 %) |
+
+**Load-bearing claim verified**: the *longitudinal n = 9* claim was reproduced exactly by LLM majority (9 of the 9 candidate papers classified longitudinal; 8 of those unanimous across all three tiers). This is the single most important §3.3 robustness check because the longitudinal subset of D3 carries the temporal-precedence evidence for the spending-distress link.
+
+**Headline-shifting findings (without changing primary numbers)**:
+- The 35 "unspecified" papers are mostly classifiable by the LLMs: only 1 of the 35 remains genuinely ambiguous from title + abstract. A full-text pass would compress this bucket dramatically.
+- The "reviews and commentaries" bucket rises from 3 to 13 under LLM re-classification. This is consistent with the LLM-second-reviewer audit finding (PR #5) that the heuristic admits commentary into Include at a non-trivial rate.
+
+**Paper integration**: `paper/main.tex` §3.3 amended with a "Design-distribution robustness audit (supplementary)" paragraph immediately after the Study design distribution sentence. The original heuristic-derived counts are retained as the primary numbers; the LLM re-classification is reported as a supplementary descriptive check (analogous to the OpenAlex extension's relationship to D2/D6).
+
+**Monitoring infra concurrently improved**:
+- Heartbeat in-flight detection now cwd-filters to this repo (avoids matching tidal's `experiments/src/seed_variance.py`).
+- Heartbeat regex now requires `experiments/<dir>/<file>.py` pattern, removing false matches from other repos' `run.py`-named scripts.
+- Heartbeat success criterion (`bool(verdict) or bool(design)`) now recognises the design-field output of the D3 audit.
+- `make_per_call_dataset.py` extended with d3_design experiment; refreshed CSV.
+
+**Total cost this window**: $11.12 / 306 calls / ~9 min. Quota retries: 0. Cumulative across 3 windows: 1,896 calls / ~$64.
+
+**Outstanding**: heuristic-derived 35 unspecified bucket could be narrowed by adding LLM classifications as a supplementary CSV column on the eligible-papers list. Filed as a paper-write-step follow-up rather than a re-audit.
