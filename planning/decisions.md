@@ -283,3 +283,45 @@ All three: H0_2025 not rejected (κ ≤ 0.40 on the post-cutoff subset). Combine
 **Net conclusion**: D5 weak-evidence claim corroborated by the broader-database check. Paper §3.6 stands. The OpenAlex check is reported as a supplementary footnote at the end of §3.6.
 
 **Cumulative across 3 KST windows + this run**: 1,904 calls / ~$64.49.
+
+---
+
+## 2026-05-21 (third KST window, late) — D1 + D4 OpenAlex broader-DB completion
+
+**Context**: After D5 OpenAlex check (PR #11), 5-domain broader-database audit was 3/5 complete (D2, D5, D6). Completing the pattern with D1 + D4 (D3 exempted — already strong evidence). Single combined chain run.
+
+**Run summary**:
+- OpenAlex hits: D1 = 200, D4 = 200 (total 400).
+- Dedup vs PubMed: 13 PMID matches dropped → 387 novel records.
+- Heuristic-Include: D1 = 13, D4 = 13 (total 26).
+- LLM recheck: 26 papers × 3 models = 78 calls.
+- Cost ~$3.27, wall ~4 min, 0 quota retries.
+
+**Per-domain LLM-recheck outcome**:
+
+**D1 (loss aversion):** 0 unanimous-Include. 5 of 13 unanimously Excluded by all three tiers, the rest split (mostly Maybe due to borderline behavioral-economics generality). The Heuristic-Include records were mostly general sunk-cost / endowment-effect papers from economics with no specific game-behavior component (Bertrand–Edgeworth duopoly, ambiguity-aversion theory, etc.). Per §2 decision rule: paper §3.1 moderate-evidence claim corroborated.
+
+**D4 (inventory paralysis):** **3 unanimous-Include**:
+- W2901570581 — Zendle & Cairns (2018, PLoS ONE) "Video game loot boxes are linked to problem gambling" (PMID 30462669).
+- W3185081605 — Spicer et al. (2021, New Media & Society) "Loot boxes, problem gambling and problem video gaming: A systematic review and meta-synthesis".
+- W4320340857 — Yu et al. (2023, Computers in Human Behavior) "Loot box purchases and their relationship with internet gaming disorder and online gambling disorder in adolescents: A prospective study".
+
+Manual verification: none of these three are present in the PubMed corpus by PMID or title-substring match (the dedup correctly did not flag them). They are genuine novel additions.
+
+All three are loot-box/gambling-overlap papers that PubMed did not surface under the D4 query terms. Per §2 decision rule (1-3 unanimous Includes): moderate evidence remains moderate. The §3.4 narrative is otherwise unchanged but the literature pool is extended by these three records.
+
+**Paper integration**: paper/main.tex §3.1 + §3.4 extended with "OpenAlex broader-database check (supplementary)" paragraphs. Mirrors the §3.2 / §3.6 / §3.7 paragraph pattern from PR #6, PR #11.
+
+**5-domain broader-DB audit summary**:
+
+| Domain | OpenAlex hits | Novel | Heur Include | LLM unanimous Include | Verdict |
+|---|---|---|---|---|---|
+| D1 loss aversion (mod) | 200 | 187 | 13 | 0 | corroborated |
+| D2 consumable (void) | 200 | 199 | 6 | 0 | corroborated |
+| D4 inventory (mod) | 200 | 200 | 13 | **3** | mod remains mod + literature pool +3 |
+| D5 completionism (weak) | 200 | 199 | 3 | 0 | corroborated |
+| D6 backlog (void) | 200 | 200 | 5 | 0 | corroborated |
+
+4 of 5 domains' evidence-strength claims corroborated. D4 is the only domain where the broader-DB extension surfaced novel papers, and even there the verdict only adds to the literature pool rather than changing the strength tier.
+
+**Cumulative across this session**: 1,982 calls / ~$67.77 / 12 PRs.

@@ -1,0 +1,79 @@
+openalex_id,tier,model,verdict,domains,reason,parse_error,latency_s,cost_usd
+W1997517742,opus,claude-opus-4-7,Exclude,,"Economics experiment on sunk cost fallacy in a treasure-digging task; not about hoarding, loot boxes, inventory, completionism, or game loss aversion constructs.",,4.3,0.09795
+W1997517742,sonnet,claude-sonnet-4-6,Maybe,D1,Laboratory game study on sunk cost fallacy; tangentially relevant to loss aversion in game contexts but no item/inventory hoarding.,,4.58,0.013439
+W161555447,sonnet,claude-sonnet-4-6,Maybe,D5,Framework paper on achievement system design; empirical basis present but no psychological or behavioral hoarding measures examined.,,3.61,0.013281
+W161555447,opus,claude-opus-4-7,Maybe,D5,Framework paper on achievement design; relevant to completionism domain but lacks behavioral/psychological measures of hoarding-related engagement.,,3.88,0.096712
+W3183566438,sonnet,claude-sonnet-4-6,Exclude,,"Focuses on monetization economics without behavioral or psychological measures, matching exclusion criterion 5.",,3.21,0.013315
+W3183566438,opus,claude-opus-4-7,Exclude,,Focuses on economic/business model of microtransactions without behavioral or psychological measures of hoarding-related constructs.,,3.35,0.096337
+W3183566438,haiku,claude-haiku-4-5,Exclude,,Purely economic analysis of microtransaction business models; no behavioral or psychological measures.,,11.4,0.008865
+W161555447,haiku,claude-haiku-4-5,Maybe,D5,Addresses D5 (achievement hunting) through empirical achievement system analysis; design focus requires full-text review for behavioral relevance.,,22.17,0.01512
+W2125674100,sonnet,claude-sonnet-4-6,Exclude,,"Pure decision-theory critique of ambiguity aversion; no game context, virtual items, or behavioral gaming constructs.",,3.37,0.013667
+W2125674100,opus,claude-opus-4-7,Exclude,,Theoretical economics critique of ambiguity aversion literature; no game context or hoarding-related behavioral measures.,,3.38,0.098738
+W2125674100,haiku,claude-haiku-4-5,Exclude,,"Economic decision theory critique on Ellsberg paradox. No mention of games, virtual items, or game behavior.",,13.24,0.010115
+W4318761566,sonnet,claude-sonnet-4-6,Exclude,,"Narrative review of gaming disorder aetiology without empirical data on hoarding, collecting, inventory, or loss-aversion constructs.",,4.16,0.013663
+W4318761566,opus,claude-opus-4-7,Maybe,D3,Narrative review of gaming disorder discussing monetization techniques including loot boxes; requires full-text to confirm peer-reviewed empirical/systematic status and depth of loot-box coverage.,,3.75,0.100275
+W3124127077,sonnet,claude-sonnet-4-6,Maybe,D1,Theoretical treatment of sunk cost effect may relate to loss aversion in games but lacks explicit game behavioral context.,,3.23,0.012974
+W3124127077,opus,claude-opus-4-7,Exclude,,Theoretical paper on sunk cost as self-management device; no game context or hoarding-related behavior examined.,,4.47,0.093131
+W1997517742,haiku,claude-haiku-4-5,Exclude,,Pure economics study of sunk costs; lacks digital game mechanics and hoarding behavior.,,43.99,0.028009
+W2123944148,sonnet,claude-sonnet-4-6,Exclude,,"Economic duopoly pricing experiment with no game mechanic, virtual items, or gaming behavioral context.",,3.03,0.013326
+W4318761566,haiku,claude-haiku-4-5,Exclude,,Narrative review rather than empirical study or systematic review; insufficient hoarding domain focus.,,27.43,0.020858
+W2123944148,opus,claude-opus-4-7,Exclude,,Economics experiment on Bertrand-Edgeworth duopoly pricing; no digital game or hoarding-related behavior component.,,3.49,0.097162
+W2123944148,haiku,claude-haiku-4-5,Exclude,,Economics pricing experiment without games or virtual items; unrelated to game-hoarding behaviors.,,11.73,0.009599
+W148591480,sonnet,claude-sonnet-4-6,Exclude,,Industry practitioner interviews on F2P monetization economics; no behavioral or psychological measures of hoarding/collecting constructs.,,3.43,0.013596
+W148591480,opus,claude-opus-4-7,Exclude,,Qualitative study of developer perspectives on free-to-play monetization ethics; no behavioral or psychological measures of player hoarding or collecting.,,3.45,0.098306
+W3124127077,haiku,claude-haiku-4-5,Exclude,,"Behavioral economics study on sunk cost and intertemporal choice, not digital game hoarding.",,27.76,0.01912
+W4236371823,sonnet,claude-sonnet-4-6,Exclude,,Book chapter (MIT Press eBook) is not peer-reviewed empirical research; it is a practitioner/design trade book without original data.,,3.24,0.014023
+W4236371823,opus,claude-opus-4-7,Maybe,D1|D4,"Book on loss aversion and endowment effect in game design; not peer-reviewed empirical study, but directly addresses D1/D4 constructs.",,3.28,0.101475
+W3125195420,sonnet,claude-sonnet-4-6,Exclude,,"Studies endowment effect for information in a business simulation, not game item retention or hoarding-related game behavior.",,3.16,0.013855
+W3125195420,opus,claude-opus-4-7,Exclude,,"Endowment effect study on information trading in a business simulation, not a digital game with hoarding-relevant behaviors.",,3.38,0.099506
+W148591480,haiku,claude-haiku-4-5,Exclude,,"Examines free-to-play revenue model ethics from professionals' perspective, not hoarding-related player behaviors.",,17.99,0.012971
+W4236371823,haiku,claude-haiku-4-5,Exclude,,"Game design practitioner book, not peer-reviewed empirical study. Fails Inclusion Criterion 1.",,15.95,0.01122
+W3013771817,opus,claude-opus-4-7,Exclude,,"Book by a game designer, not a peer-reviewed empirical study or systematic review; falls under practitioner literature excluded by criteria.",,4.8,0.102206
+W3013771817,haiku,claude-haiku-4-5,Exclude,,Non-peer-reviewed practitioner design guide; lacks original empirical data.,,15.62,0.010548
+W3013771817,sonnet,claude-sonnet-4-6,Exclude,,"Appears to be a practitioner game-design book with no original empirical data, fitting exclusion criteria 1 and 4.",,17.0,0.026485
+W2905109362,sonnet,claude-sonnet-4-6,Exclude,,"Pure game-theory mathematics on fuzzy payoffs; no digital game behavior, hoarding, or psychological constructs studied.",,3.71,0.013727
+W2905109362,haiku,claude-haiku-4-5,Exclude,,Pure mathematical game theory; no empirical data on digital games or hoarding behaviors.,,12.98,0.008886
+W2905109362,opus,claude-opus-4-7,Exclude,,Mathematical game-theory paper on bimatrix games with fuzzy payoffs; not about digital/video games or behavioral hoarding constructs.,,4.78,0.100144
+W1994737592,sonnet,claude-sonnet-4-6,Exclude,,"Operations research paper on chance-constrained game theory; no digital games, hoarding, or behavioral psychology content.",,3.26,0.01513
+W3125195420,haiku,claude-haiku-4-5,Maybe,D1,Examines loss aversion in game context but focuses on information trading not item hoarding; review needed.,,33.37,0.021544
+W1994737592,opus,claude-opus-4-7,Exclude,,Mathematical paper on chance-constrained game theory; no relation to digital games or hoarding behaviors.,,3.21,0.107775
+W2901570581,sonnet,claude-sonnet-4-6,Include,D3|Cross-domain,"Large-scale empirical survey linking loot box spending to problem gambling severity, directly relevant to D3 and compulsive behavior constructs.",,3.18,0.013885
+W2901570581,opus,claude-opus-4-7,Include,D3,"Large-scale survey directly links loot box spending to problem gambling severity, central to D3.",,3.02,0.098044
+W1994737592,haiku,claude-haiku-4-5,Exclude,,"Pure mathematical game theory (1968); no video games, hoarding, or behavioral content.",,10.81,0.008053
+W2106293368,sonnet,claude-sonnet-4-6,Exclude,,Focuses on purchase decision determinants using TAM/TPB without behavioral or psychological hoarding constructs.,,3.26,0.013784
+W2106293368,opus,claude-opus-4-7,Maybe,D3|D4,Studies purchase intent for virtual items; tangential to hoarding/psychological ownership but lacks direct behavioral/psychological hoarding measures—requires full-text review.,,3.78,0.101887
+W2015258583,sonnet,claude-sonnet-4-6,Maybe,D4,Examines psychological ownership in MMORPGs but focuses on loyalty/commitment rather than hoarding or inventory behavior directly.,,3.5,0.013956
+W2015258583,opus,claude-opus-4-7,Maybe,D4,"Examines psychological ownership of MMORPG characters, tangentially relevant to virtual possession attachment; full-text review needed to assess hoarding relevance.",,3.35,0.101962
+W2015258583,haiku,claude-haiku-4-5,Exclude,,"Studies MMORPG player loyalty via character ownership and social identity; does not address item retention, hoarding, or accumulation behaviors.",,16.69,0.011834
+W2901570581,haiku,claude-haiku-4-5,Include,D3,"Peer-reviewed empirical survey directly examining loot box spending linked to problem gambling, matching inclusion criteria and domain D3.",,27.46,0.020404
+W2135693853,sonnet,claude-sonnet-4-6,Exclude,,Focuses on monetization economics and consumer identity without behavioral or psychological measures of hoarding or collecting constructs.,,3.65,0.013367
+W2135693853,opus,claude-opus-4-7,Maybe,D3|D4,"Examines cash purchases of virtual items in free-to-play games; tangential to microtransaction collecting and virtual ownership, requires full-text review.",,4.26,0.098269
+W2620820165,sonnet,claude-sonnet-4-6,Exclude,,"Psychometric validation of an IGD scale; no examination of hoarding, collecting, loot boxes, or related behavioral domains.",,3.01,0.014384
+W2620820165,opus,claude-opus-4-7,Exclude,,"Psychometric validation of an IGD severity scale; no focus on hoarding, collecting, loot boxes, completionism, or loss aversion.",,6.03,0.104569
+W2620820165,haiku,claude-haiku-4-5,Exclude,,"Psychometric validation of IGD scale; lacks examination of hoarding, item retention, loot boxes, inventory, completionism, backlog, or loss aversion.",,13.21,0.010608
+W2906683871,sonnet,claude-sonnet-4-6,Exclude,,"Focuses on IGD severity and stress/resilience; no item retention, hoarding, loot box, inventory, completionism, or backlog behavior examined.",,3.12,0.014072
+W2906683871,opus,claude-opus-4-7,Exclude,,"Studies IGD and stress/resilience; no hoarding, loot box, completionism, or accumulation behavior examined.",,3.42,0.101813
+W2106293368,haiku,claude-haiku-4-5,Maybe,,Virtual item purchasing in games; full text needed to assess hoarding or compulsive-buying connections.,,45.12,0.028578
+W2135693853,haiku,claude-haiku-4-5,Exclude,,Emphasizes free-to-play monetization economics and consumer fairness; lacks focus on item retention or hoarding behaviors.,,32.08,0.021457
+W3208693143,sonnet,claude-sonnet-4-6,Exclude,,Focuses on monetisation ethics and consumer protection economics without behavioral or psychological hoarding/compulsive-buying measures.,,3.27,0.013664
+W3208693143,opus,claude-opus-4-7,Maybe,D3,Examines predatory monetisation techniques including microtransactions and pay-to-win from player perspective; loot box/gacha behavioral relevance requires full-text review.,,3.54,0.100069
+W2906683871,haiku,claude-haiku-4-5,Exclude,,"Studies Internet Gaming Disorder broadly via stress/resilience, not specific in-game hoarding, accumulation, or loot-box behaviors.",,14.27,0.010182
+W161555447,sonnet,claude-sonnet-4-6,Maybe,D5,Framework paper on achievement design; empirical basis but no behavioral/psychological measures linking achievements to completionism constructs.,,3.34,0.001636
+W161555447,opus,claude-opus-4-7,Maybe,D5,"Framework paper on achievement design; conceptual rather than empirical on completionism behavior, requires full-text review to confirm eligibility.",,3.08,0.012906
+W3185081605,sonnet,claude-sonnet-4-6,Include,D3|Cross-domain,Systematic review and meta-synthesis directly examining loot box engagement linked to problem gambling and problem gaming constructs.,,5.49,0.013746
+W3185081605,opus,claude-opus-4-7,Include,D3|Cross-domain,Systematic review and meta-synthesis of loot box purchasing associations with problem gambling and problem video gaming.,,3.55,0.098831
+W3185081605,haiku,claude-haiku-4-5,Include,D3|Cross-domain,Systematic review of loot box purchasing and associations with problem gambling and problem video gaming; directly addresses D3.,,15.69,0.01141
+W2996631257,sonnet,claude-sonnet-4-6,Exclude,,Commentary/opinion piece on loot box regulation without original empirical data; matches exclusion criterion 4.,,3.03,0.013648
+W161555447,haiku,claude-haiku-4-5,Maybe,D5,Achievement system framework from empirical game studies; behavioral relevance to completionism requires full-text examination.,,25.58,0.016475
+W2996631257,opus,claude-opus-4-7,Exclude,,Commentary/opinion piece on loot box regulation without original empirical data; excluded per criterion 4.,,3.14,0.098681
+W3125924051,sonnet,claude-sonnet-4-6,Exclude,,Focuses on game monetization economics and marketing without behavioral or psychological measures of hoarding or collecting.,,2.42,0.013686
+W2996631257,haiku,claude-haiku-4-5,Exclude,,Commentary without original empirical data examining player behavior or psychological constructs.,,15.53,0.011742
+W3125924051,opus,claude-opus-4-7,Exclude,,Conceptual marketing analysis of virtual goods monetization without behavioral or psychological measures; excluded per criterion 5.,,3.39,0.099562
+W3157054077,sonnet,claude-sonnet-4-6,Exclude,,"Theoretical political-economy framework on game monetization; no behavioral or psychological measures of hoarding, collecting, or loss aversion.",,3.51,0.0136
+W3157054077,opus,claude-opus-4-7,Exclude,,Political-economic analysis of game monetization as asset; no behavioral or psychological measures of hoarding-related constructs.,,3.87,0.097688
+W3157054077,haiku,claude-haiku-4-5,Exclude,,Focuses on industry monetization economics; lacks behavioral or psychological measures of player hoarding.,,16.86,0.011774
+W3125924051,haiku,claude-haiku-4-5,Exclude,,Game design marketing paper; lacks behavioral/psychological examination of hoarding-related behaviors and constructs.,,24.07,0.014995
+W4320340857,opus,claude-opus-4-7,Include,D3|Cross-domain,"Prospective study of loot box purchasing in adolescents linked to gaming and gambling disorder, directly relevant to D3 and compulsive-buying constructs.",,3.33,0.101944
+W4320340857,sonnet,claude-sonnet-4-6,Include,D3|Cross-domain,Prospective empirical study on loot box purchasing linked to disordered gambling and gaming disorder in adolescents.,,6.26,0.014009
+W3208693143,haiku,claude-haiku-4-5,Maybe,D3,Discusses loot box/gacha monetization techniques; full-text needed to confirm hoarding-construct relevance.,,61.56,0.041108
+W4320340857,haiku,claude-haiku-4-5,Include,D3,Prospective study directly examining loot box purchasing and its relationships to gaming and gambling disorder—core D3 domain.,,20.03,0.014372
