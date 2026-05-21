@@ -66,7 +66,8 @@ def each_jsonl():
     """Yield (experiment_name, file_path) tuples."""
     yield "llm_2rev_primary", ROOT/"llm_second_reviewer"   # dir; glob below
     yield "llm_2rev_sc",      ROOT/"llm_second_reviewer"/"sc_state.jsonl"
-    yield "ghi_face",         ROOT/"ghi_face_validity"/"state.jsonl"
+    # ghi_face glob below; sentinel here is the dir
+    yield "ghi_face",         ROOT/"ghi_face_validity"
     yield "openalex_recheck", ROOT/"openalex_extension"/"llm_recheck_state.jsonl"
 
 
@@ -102,8 +103,12 @@ def collect_files():
         if "aborted" in p.name:
             continue
         files.append(("llm_2rev_primary", p))
+    # ghi_face: glob every state*.jsonl
+    ghi_dir = ROOT / "ghi_face_validity"
+    for p in sorted(ghi_dir.glob("state*.jsonl")):
+        files.append(("ghi_face", p))
     for exp, target in each_jsonl():
-        if exp == "llm_2rev_primary":
+        if exp in ("llm_2rev_primary", "ghi_face"):
             continue
         if target.is_file():
             files.append((exp, target))

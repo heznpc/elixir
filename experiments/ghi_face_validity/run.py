@@ -33,6 +33,7 @@ import zoneinfo
 
 SCRIPT_DIR = pathlib.Path(__file__).resolve().parent
 EXP_DIR    = SCRIPT_DIR.parent
+# Defaults; can be overridden via --items / --state / --out-csv
 ITEMS_JSON = SCRIPT_DIR / "items_v1.json"
 CRIT_TXT   = SCRIPT_DIR / "criteria_v1.txt"
 PROMPT_TXT = SCRIPT_DIR / "prompt_v1.txt"
@@ -161,13 +162,28 @@ def load_done(state_path: pathlib.Path) -> set:
 
 
 def main():
+    global ITEMS_JSON, STATE_JSONL, OUT_CSV
     ap = argparse.ArgumentParser()
     ap.add_argument("--fresh", action="store_true")
     ap.add_argument("--max-quota-retries", type=int, default=8)
     ap.add_argument("--concurrency", type=int, default=4)
+    ap.add_argument("--items", default=str(ITEMS_JSON),
+                    help="Path to items JSON (default: items_v1.json).")
+    ap.add_argument("--state", default=str(STATE_JSONL),
+                    help="Path to state JSONL (default: state.jsonl).")
+    ap.add_argument("--out-csv", default=str(OUT_CSV),
+                    help="Path to flat CSV output.")
     args = ap.parse_args()
 
-    items_doc = json.loads(ITEMS_JSON.read_text())
+    items_path = pathlib.Path(args.items)
+    state_path = pathlib.Path(args.state)
+    out_csv = pathlib.Path(args.out_csv)
+    # Reassign module globals so the helper closures pick up the override
+    ITEMS_JSON = items_path
+    STATE_JSONL = state_path
+    OUT_CSV = out_csv
+
+    items_doc = json.loads(items_path.read_text())
     items = items_doc["items"]
     criteria_text = CRIT_TXT.read_text()
     template = PROMPT_TXT.read_text()

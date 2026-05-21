@@ -108,7 +108,9 @@ def main():
     exps = {
         "llm_2rev_primary": list((ROOT/"llm_second_reviewer").glob("run_*.jsonl")),
         "llm_2rev_sc":      [ROOT/"llm_second_reviewer"/"sc_state.jsonl"],
-        "ghi_face":         [ROOT/"ghi_face_validity"/"state.jsonl"],
+        # Glob ghi_face state files so future versioned re-audits (state_v2.jsonl, ...) are
+        # picked up automatically without code edits.
+        "ghi_face":         list((ROOT/"ghi_face_validity").glob("state*.jsonl")),
         "openalex_recheck": [ROOT/"openalex_extension"/"llm_recheck_state.jsonl"],
     }
     # Filter the primary-run list to exclude aborted/sidecar files
