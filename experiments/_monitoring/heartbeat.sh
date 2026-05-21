@@ -1,18 +1,21 @@
 #!/bin/bash
-# Persistent monitor heartbeat. Emits one compact line every TICK_S seconds.
-# Format:
-#   HH:MM:SS KST  win=<idx> rem=<m>m  calls=<n>(<Δ>) tokens=<sum>k(<Δ>) cost=$<sum>(+$<Δ>)  inflight: <list>
+# Persistent monitor heartbeat. Emits a compact line either:
+#   - on any change to calls / cost / inflight set        (fast feedback while active)
+#   - or every HEARTBEAT_EVERY_N ticks                    (still-alive signal while idle)
+# Tick period is TICK_S seconds. Default: TICK_S=30, HEARTBEAT_EVERY_N=10 (5 min).
 #
-# Δ shows growth since the previous tick — so a quiet tick (Δ=0) tells you
-# whether nothing is running, not whether the runner crashed silently.
+# Idle period: 1 line per HEARTBEAT_EVERY_N*TICK_S seconds.
+# Active period: up to 1 line per TICK_S seconds.
 
 set -u
 cd /Users/ren/IdeaProjects/Paper/elixir
-TICK_S=${TICK_S:-120}
+TICK_S=${TICK_S:-30}
+HEARTBEAT_EVERY_N=${HEARTBEAT_EVERY_N:-10}
 
 prev_calls=0
-prev_tokens=0
 prev_cost=0
+prev_inflight=""
+ticks_since_emit=0
 
 while true; do
     # Window position
@@ -74,10 +77,21 @@ PY
     fi
 
     now_kst=$(TZ=Asia/Seoul date +%H:%M:%S)
-    echo "$now_kst KST  $win_txt  calls=${calls}(+${d_calls}) tokens=${tokens} cost=\$${cost}(${d_cost})  inflight:${inflight}"
+
+    # Emit if any of the meaningful fields changed, OR if HEARTBEAT_EVERY_N
+    # ticks have passed since the last emit (still-alive signal).
+    ticks_since_emit=$((ticks_since_emit + 1))
+    if [ "$calls" != "$prev_calls" ] || [ "$cost" != "$prev_cost" ] || [ "$inflight" != "$prev_inflight" ] || [ "$ticks_since_emit" -ge "$HEARTBEAT_EVERY_N" ]; then
+        marker=""
+        if [ "$calls" = "$prev_calls" ] && [ "$cost" = "$prev_cost" ] && [ "$inflight" = "$prev_inflight" ]; then
+            marker=" (idle-heartbeat)"
+        fi
+        echo "$now_kst KST  $win_txt  calls=${calls}(+${d_calls}) tokens=${tokens} cost=\$${cost}(${d_cost})  inflight:${inflight}${marker}"
+        ticks_since_emit=0
+    fi
 
     prev_calls=$calls
-    prev_tokens=$tokens
     prev_cost=$cost
+    prev_inflight=$inflight
     sleep "$TICK_S"
 done
