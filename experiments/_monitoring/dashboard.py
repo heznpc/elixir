@@ -42,8 +42,25 @@ def window_state(now_kst: dt.datetime | None = None):
     return idx, in_w, WINDOW_S - in_w
 
 
+def _call_key(d: dict) -> tuple:
+    """Identify a unique call across the runner families. Falls back on id() so
+    records with no matching key still count as one row each."""
+    pmid = d.get("pmid")
+    if pmid is not None:
+        return ("pmid", pmid, d.get("tier"), d.get("sample_idx"))
+    if d.get("openalex_id") is not None:
+        return ("oa", d.get("openalex_id"), d.get("tier"))
+    if d.get("item_id") is not None:
+        return ("ghi", d.get("item_id"), d.get("criterion"), d.get("tier"))
+    return ("anon", id(d))
+
+
 def scan_jsonl(path: pathlib.Path) -> dict:
-    """Aggregate one JSONL file: total calls (with verdict), token sums, cost, latency range."""
+    """Aggregate one JSONL file: total calls (with verdict), token sums, cost, latency range.
+
+    Dedups on a call-key so a retry that produced both an error and a success
+    record for the same key is counted ONCE (preferring the success record).
+    """
     s = {
         "path": str(path.relative_to(ROOT)),
         "calls": 0,
@@ -60,6 +77,10 @@ def scan_jsonl(path: pathlib.Path) -> dict:
         "verdicts": defaultdict(int),
     }
     try:
+        # First pass: dedup per call-key, preferring successful records.
+        latest_by_key: dict[tuple, dict] = {}
+        succ_by_key: dict[tuple, dict] = {}
+        order: list[tuple] = []
         with path.open() as f:
             for line in f:
                 if not line.strip():
@@ -71,26 +92,34 @@ def scan_jsonl(path: pathlib.Path) -> dict:
                 if d.get("_header"):
                     s["header_started_utc"] = d.get("started_utc")
                     continue
-                # Success criterion: any of the known output fields populated.
-                ok = bool(d.get("verdict")) or bool(d.get("design"))
-                if not ok:
-                    s["errored"] += 1
-                    continue
-                s["calls"] += 1
-                u = d.get("usage") or {}
-                s["input_tokens"]      += int(u.get("input_tokens", 0) or 0)
-                s["cache_read_tokens"] += int(u.get("cache_read_input_tokens", 0) or 0)
-                s["cache_create_tokens"] += int(u.get("cache_creation_input_tokens", 0) or 0)
-                s["output_tokens"]     += int(u.get("output_tokens", 0) or 0)
-                s["cost_usd"]          += float(d.get("cost_usd", 0.0) or 0)
-                s["latency_sum_s"]     += float(d.get("latency_s", 0.0) or 0)
-                if d.get("call_started_utc"):
-                    s["started_utcs"].append(d["call_started_utc"])
-                if d.get("model"):
-                    s["models"][d["model"]] += 1
-                v = d.get("verdict", "")
-                if v:
-                    s["verdicts"][v] += 1
+                k = _call_key(d)
+                if k not in latest_by_key:
+                    order.append(k)
+                latest_by_key[k] = d
+                if bool(d.get("verdict")) or bool(d.get("design")):
+                    succ_by_key[k] = d
+        # Second pass: aggregate one record per key, preferring success.
+        for k in order:
+            d = succ_by_key.get(k, latest_by_key[k])
+            ok = bool(d.get("verdict")) or bool(d.get("design"))
+            if not ok:
+                s["errored"] += 1
+                continue
+            s["calls"] += 1
+            u = d.get("usage") or {}
+            s["input_tokens"]      += int(u.get("input_tokens", 0) or 0)
+            s["cache_read_tokens"] += int(u.get("cache_read_input_tokens", 0) or 0)
+            s["cache_create_tokens"] += int(u.get("cache_creation_input_tokens", 0) or 0)
+            s["output_tokens"]     += int(u.get("output_tokens", 0) or 0)
+            s["cost_usd"]          += float(d.get("cost_usd", 0.0) or 0)
+            s["latency_sum_s"]     += float(d.get("latency_s", 0.0) or 0)
+            if d.get("call_started_utc"):
+                s["started_utcs"].append(d["call_started_utc"])
+            if d.get("model"):
+                s["models"][d["model"]] += 1
+            v = d.get("verdict", "")
+            if v:
+                s["verdicts"][v] += 1
     except OSError:
         pass
     return s

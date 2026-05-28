@@ -118,10 +118,28 @@ def collect_files():
     return files
 
 
+def _call_key(d: dict) -> tuple:
+    """Identify a unique call across the runner families."""
+    pmid = d.get("pmid")
+    if pmid is not None:
+        return ("pmid", pmid, d.get("tier"), d.get("sample_idx"))
+    if d.get("openalex_id") is not None:
+        return ("oa", d.get("openalex_id"), d.get("tier"))
+    if d.get("item_id") is not None:
+        return ("ghi", d.get("item_id"), d.get("criterion"), d.get("tier"))
+    return ("anon", id(d))
+
+
 def main():
     rows = []
     for exp_name, path in collect_files():
         mt = file_mtime_utc(path)
+        # Per-file dedup: a retry produces two records for the same key (error
+        # then success). Keep the most recent successful record per key; if
+        # none succeeded, keep the latest record (preserves last error context).
+        latest_by_key: dict[tuple, dict] = {}
+        succ_by_key: dict[tuple, dict] = {}
+        order: list[tuple] = []
         with path.open() as f:
             for line in f:
                 if not line.strip():
@@ -132,36 +150,56 @@ def main():
                     continue
                 if d.get("_header"):
                     continue
-                kst_iso, w_idx, w_off = window_info(d.get("call_started_utc"), mt)
-                u = d.get("usage") or {}
-                in_t = int(u.get("input_tokens", 0) or 0)
-                cr_t = int(u.get("cache_read_input_tokens", 0) or 0)
-                cc_t = int(u.get("cache_creation_input_tokens", 0) or 0)
-                out_t = int(u.get("output_tokens", 0) or 0)
-                rows.append({
-                    "experiment": exp_name,
-                    "file": str(path.relative_to(ROOT)),
-                    "model": d.get("model", ""),
-                    "tier": d.get("tier", ""),
-                    "item_key": extract_item_key(d),
-                    "criterion": extract_criterion(d),
-                    "sample_idx": d.get("sample_idx", ""),
-                    "call_started_utc": d.get("call_started_utc", ""),
-                    "call_started_kst": kst_iso,
-                    "kst_window_idx": w_idx,
-                    "kst_window_offset_s": w_off,
-                    "latency_s": d.get("latency_s", ""),
-                    "cost_usd": d.get("cost_usd", 0.0),
-                    "input_tokens": in_t,
-                    "cache_read_input_tokens": cr_t,
-                    "cache_creation_input_tokens": cc_t,
-                    "output_tokens": out_t,
-                    "total_tokens": in_t + cr_t + cc_t + out_t,
-                    "verdict": d.get("verdict", ""),
-                    "parse_error": d.get("parse_error") or "",
-                    "error_short": (d.get("error") or "")[:120] if d.get("error") else "",
-                    "timestamp_source": "call_started_utc" if d.get("call_started_utc") else "file_mtime_fallback",
-                })
+                k = _call_key(d)
+                if k not in latest_by_key:
+                    order.append(k)
+                latest_by_key[k] = d
+                if bool(d.get("verdict")) or bool(d.get("design")):
+                    succ_by_key[k] = d
+        for k in order:
+            d = succ_by_key.get(k, latest_by_key[k])
+            kst_iso, w_idx, w_off = window_info(d.get("call_started_utc"), mt)
+            u = d.get("usage") or {}
+            in_t = int(u.get("input_tokens", 0) or 0)
+            cr_t = int(u.get("cache_read_input_tokens", 0) or 0)
+            cc_t = int(u.get("cache_creation_input_tokens", 0) or 0)
+            out_t = int(u.get("output_tokens", 0) or 0)
+            ts_src = "call_started_utc" if d.get("call_started_utc") else "file_mtime_fallback"
+            # When backfilling from mtime, blank the window-position columns to
+            # avoid suggesting that every pre-patch row landed at the same
+            # window offset. timestamp_source still records that mtime was used.
+            if ts_src == "file_mtime_fallback":
+                kst_iso_out = ""
+                w_idx_out = ""
+                w_off_out = ""
+            else:
+                kst_iso_out = kst_iso
+                w_idx_out = w_idx
+                w_off_out = w_off
+            rows.append({
+                "experiment": exp_name,
+                "file": str(path.relative_to(ROOT)),
+                "model": d.get("model", ""),
+                "tier": d.get("tier", ""),
+                "item_key": extract_item_key(d),
+                "criterion": extract_criterion(d),
+                "sample_idx": d.get("sample_idx", ""),
+                "call_started_utc": d.get("call_started_utc", ""),
+                "call_started_kst": kst_iso_out,
+                "kst_window_idx": w_idx_out,
+                "kst_window_offset_s": w_off_out,
+                "latency_s": d.get("latency_s", ""),
+                "cost_usd": d.get("cost_usd", 0.0),
+                "input_tokens": in_t,
+                "cache_read_input_tokens": cr_t,
+                "cache_creation_input_tokens": cc_t,
+                "output_tokens": out_t,
+                "total_tokens": in_t + cr_t + cc_t + out_t,
+                "verdict": d.get("verdict", "") or d.get("design", ""),
+                "parse_error": d.get("parse_error") or "",
+                "error_short": (d.get("error") or "")[:120] if d.get("error") else "",
+                "timestamp_source": ts_src,
+            })
 
     fields = ["experiment","file","model","tier","item_key","criterion","sample_idx",
               "call_started_utc","call_started_kst","kst_window_idx","kst_window_offset_s",

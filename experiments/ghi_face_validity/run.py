@@ -132,11 +132,14 @@ def call_cli_once(model: str, prompt: str) -> tuple[dict | None, str, int]:
 
 
 def parse_verdict(text: str, criterion: str) -> dict:
-    m = re.search(r"\{.*\}", text or "", re.DOTALL)
-    if not m:
+    import sys as _sys, pathlib as _p
+    _sys.path.insert(0, str(_p.Path(__file__).resolve().parent.parent))
+    from _lib.parse_json import extract_first_balanced_object
+    raw = extract_first_balanced_object(text or "")
+    if not raw:
         return {"verdict": "", "criterion": criterion, "reason": "", "parse_error": "no_json"}
     try:
-        obj = json.loads(m.group(0))
+        obj = json.loads(raw)
     except json.JSONDecodeError as e:
         return {"verdict": "", "criterion": criterion, "reason": "", "parse_error": f"json_decode:{e}"}
     v = obj.get("verdict", "")
@@ -312,14 +315,21 @@ def main():
     print(f"[done] new calls={n_done[0]} skipped={n_skip} total_target={n_total} "
           f"cost(new)=${total_cost[0]:.3f} quota_retries={quota_retries[0]}")
 
-    rows = []
+    # Build flat CSV. Dedup on (item_id, criterion, tier) so a retry after an
+    # error doesn't produce two rows for the same call.
+    import sys as _sys, pathlib as _p
+    _sys.path.insert(0, str(_p.Path(__file__).resolve().parent.parent))
+    from _lib.jsonl_dedup import dedup_state_records, is_success_verdict, key_item_criterion_tier
+
+    rows_raw = []
     with STATE_JSONL.open() as f:
         for line in f:
             if not line.strip(): continue
             try: d = json.loads(line)
             except json.JSONDecodeError: continue
             if d.get("_header"): continue
-            rows.append(d)
+            rows_raw.append(d)
+    rows = dedup_state_records(rows_raw, key_item_criterion_tier, is_success_verdict)
     OUT_CSV.parent.mkdir(parents=True, exist_ok=True)
     with OUT_CSV.open("w", newline="") as f:
         w = csv.writer(f)

@@ -29,9 +29,13 @@ PUBMED_CSV = EXP_DIR / "data" / "raw" / "pubmed_results.csv"
 NOVEL_CSV  = SCRIPT_DIR / "data" / "novel_records.csv"
 LOG_CSV    = SCRIPT_DIR / "data" / "dedup_log.csv"
 
-# Pull the heuristic classifier from the existing screening pipeline
-sys.path.insert(0, str(EXP_DIR / "src"))
-from screening import classify_paper  # type: ignore
+# Pull the heuristic classifier from the existing screening pipeline. Use a
+# path-anchored import so the binding can never be shadowed by another module
+# named 'screening' on sys.path (the previous sys.path.insert + "from screening
+# import" was order-dependent on cwd).
+sys.path.insert(0, str(EXP_DIR))
+from _lib.import_screening import get_classify_paper  # type: ignore
+classify_paper = get_classify_paper()
 
 
 def norm_doi(s: str) -> str:
