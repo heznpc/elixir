@@ -53,19 +53,35 @@ PY
     # In-flight runners — match experiments/<dir>/<file>.py in argv AND verify
     # the process's cwd is under this repo (avoids picking up other repos with
     # the same path layout, e.g. tidal's experiments/src/seed_variance.py).
-    inflight=$(ps -eo pid=,args= 2>/dev/null \
+    #
+    # lsof was previously called once per matched PID (200-500 ms each on
+    # macOS) which made each heartbeat tick slow under load. Now: collect all
+    # matched PIDs first, then call lsof ONCE with -p comma-list. ~30x faster.
+    matches=$(ps -eo pid=,args= 2>/dev/null \
         | grep -E "experiments/[a-z0-9_]+/[a-z0-9_]+\.py" \
-        | grep -v grep \
-        | while read -r pid rest; do
-            cwd=$(lsof -p "$pid" -a -d cwd -F n 2>/dev/null | grep '^n' | head -1 | sed 's/^n//')
+        | grep -v grep)
+    if [ -z "$matches" ]; then
+        inflight=""
+    else
+        pids=$(echo "$matches" | awk '{print $1}' | tr '\n' ',' | sed 's/,$//')
+        # lsof -p p1,p2,...  -a -d cwd -F pn  emits  p<pid>\nn<cwd> blocks.
+        cwd_map=$(lsof -p "$pids" -a -d cwd -F pn 2>/dev/null)
+        inflight=$(echo "$matches" | awk '{print $1}' | while read -r pid; do
+            cwd=$(echo "$cwd_map" | awk -v target="p$pid" '
+                $0==target {flag=1; next}
+                flag && /^p/ {flag=0}
+                flag && /^n/ {sub(/^n/,""); print; exit}')
             if echo "$cwd" | grep -q "/Paper/elixir"; then
-                script=$(echo "$rest" | grep -oE 'experiments/[a-z0-9_]+/[a-z0-9_]+\.py' | head -1)
+                # Extract experiments/<dir>/<file>.py from the matching ps line
+                line=$(echo "$matches" | awk -v p="$pid" '$1==p')
+                script=$(echo "$line" | grep -oE 'experiments/[a-z0-9_]+/[a-z0-9_]+\.py' | head -1)
                 if [ -n "$script" ]; then
                     short="${script#experiments/}"
                     printf "%s " "$short"
                 fi
             fi
-          done)
+        done)
+    fi
     inflight=${inflight:-none}
 
     # Compute deltas (numeric — convert calls easily; tokens has k/M suffix so leave as is)

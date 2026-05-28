@@ -150,11 +150,14 @@ def call_one(model, prompt):
 
 
 def parse(text):
-    m = re.search(r"\{.*\}", text or "", re.DOTALL)
-    if not m:
+    import sys as _sys, pathlib as _p
+    _sys.path.insert(0, str(_p.Path(__file__).resolve().parent.parent))
+    from _lib.parse_json import extract_first_balanced_object
+    raw = extract_first_balanced_object(text or "")
+    if not raw:
         return {"design": "", "confidence": "", "reason": "", "parse_error": "no_json"}
     try:
-        o = json.loads(m.group(0))
+        o = json.loads(raw)
     except json.JSONDecodeError as e:
         return {"design": "", "confidence": "", "reason": "", "parse_error": f"json:{e}"}
     d = o.get("design", "")
@@ -255,9 +258,21 @@ def main():
                 return
             text = resp.get("result", "") or ""
             if resp.get("is_error"):
-                e = json.dumps(resp.get("error") or {}).lower()
+                err_obj = resp.get("error") or {}
+                e = json.dumps(err_obj).lower()
                 if any(p in e for p in QUOTA_PATTERNS) and maybe_qsleep(f"is_err {e[:80]}"):
                     continue
+                rec = {"pmid": paper["pmid"], "tier": tier, "model": model,
+                       "prompt_hash": prompt_hash,
+                       "design": "", "confidence": "", "reason": "",
+                       "parse_error": "is_error_true",
+                       "error": json.dumps(err_obj)[:300],
+                       "latency_s": round(lat,2),
+                       "cost_usd": float(resp.get("total_cost_usd",0.0)),
+                       "call_started_utc": call_started_utc,
+                       "usage": resp.get("usage", {})}
+                write_state(rec)
+                return
             parsed = parse(text)
             cost = round(float(resp.get("total_cost_usd",0.0)), 6)
             rec = {"pmid": paper["pmid"], "tier": tier, "model": model,
@@ -284,14 +299,19 @@ def main():
     sf.close()
     print(f"[done] new calls={n_done[0]} skipped={n_skip}  cost(new)=${total_cost[0]:.3f}  qretries={qretries[0]}")
 
-    # Flat CSV
-    rows = []
+    # Flat CSV. Dedup on (pmid, tier) so retries don't produce two rows.
+    import sys as _sys, pathlib as _p
+    _sys.path.insert(0, str(_p.Path(__file__).resolve().parent.parent))
+    from _lib.jsonl_dedup import dedup_state_records, is_success_design, key_pmid_tier
+
+    rows_raw = []
     for line in STATE_JSONL.read_text().splitlines():
         if not line.strip(): continue
         try: d = json.loads(line)
         except json.JSONDecodeError: continue
         if d.get("_header"): continue
-        rows.append(d)
+        rows_raw.append(d)
+    rows = dedup_state_records(rows_raw, key_pmid_tier, is_success_design)
     OUT_CSV.parent.mkdir(parents=True, exist_ok=True)
     with OUT_CSV.open("w", newline="") as f:
         w = csv.writer(f)

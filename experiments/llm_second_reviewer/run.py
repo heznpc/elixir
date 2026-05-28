@@ -206,15 +206,16 @@ _VERDICTS = {"Include", "Maybe", "Exclude"}
 _DOMAINS  = {"D1", "D2", "D3", "D4", "D5", "D6", "Cross-domain"}
 
 def parse_verdict(text: str) -> dict:
-    """Extract {verdict, domains, reason} from model output text. Robust to code fences."""
-    # Strip code fences if present
-    m = re.search(r"\{[^{}]*\"verdict\".*?\}", text, re.DOTALL)
-    if not m:
-        # try greedy
-        m = re.search(r"\{.*\}", text, re.DOTALL)
-    if not m:
+    """Extract {verdict, domains, reason} from model output text. Robust to
+    code fences and to nested JSON values (the previous regex lazy-matched up
+    to the first '}', producing unbalanced fragments when the value itself
+    contained an inner object)."""
+    import sys as _sys, pathlib as _p
+    _sys.path.insert(0, str(_p.Path(__file__).resolve().parent.parent))
+    from _lib.parse_json import extract_first_balanced_object
+    raw = extract_first_balanced_object(text)
+    if not raw:
         return {"verdict": "", "domains": [], "reason": "", "parse_error": "no_json_object"}
-    raw = m.group(0)
     try:
         obj = json.loads(raw)
     except json.JSONDecodeError as e:
@@ -378,6 +379,15 @@ def run_one_cli(model: str, paper: dict, criteria: str, prompt_template: str) ->
         text = j.get("result", "") or ""
         usage = j.get("usage", {})
         cost = float(j.get("total_cost_usd", 0.0))
+        # If the CLI itself reports is_error, capture the error context
+        # rather than letting parse_verdict mask it as "no_json".
+        if j.get("is_error"):
+            err_obj = j.get("error") or {}
+            rec.update(verdict="", domains=[], reason="",
+                       parse_error="cli_is_error_true",
+                       error=json.dumps(err_obj)[:300],
+                       cost_usd=round(cost, 6), raw=text[:500], usage=usage)
+            return rec
         parsed = parse_verdict(text)
         rec.update(parsed)
         rec["cost_usd"] = round(cost, 6)
@@ -467,7 +477,13 @@ def main():
     started     = time.time()
     all_records = []
 
+    stopped_for_budget = False
     for tier in tiers:
+        if stopped_for_budget:
+            # The previous tier already exceeded cost/wall budget; do not start
+            # a new tier that would re-submit a fresh batch and continue billing.
+            print(f"[stop §11.4] skipping tier={tier} (budget already exceeded)", file=sys.stderr)
+            break
         model = resolved[tier]
         jsonl_path = SCRIPT_DIR / f"run_{ts}_{tier}.jsonl"
         print(f"[run] tier={tier} model={model} -> {jsonl_path.name}")
@@ -510,24 +526,31 @@ def main():
                     if total_cost > args.cost_ceiling:
                         print(f"[stop §11.4] cost ceiling exceeded: ${total_cost:.2f} > ${args.cost_ceiling}", file=sys.stderr)
                         pool.shutdown(wait=False, cancel_futures=True)
+                        stopped_for_budget = True
                         break
                     if time.time() - started > WALL_BUDGET_S:
                         print(f"[stop §11.3] wall budget exceeded", file=sys.stderr)
                         pool.shutdown(wait=False, cancel_futures=True)
+                        stopped_for_budget = True
                         break
         malformed_rate = malformed / max(1, len(all_records))
         if malformed_rate > 0.05:
             print(f"[stop §11.2] malformed rate {malformed_rate:.1%} > 5%", file=sys.stderr)
             break
 
-    # Flat CSV merge
-    print(f"[done] total_cost=${total_cost:.3f}  n_records={len(all_records)}  malformed={malformed}")
+    # Flat CSV merge. Dedup on (pmid, tier) so retries don't produce two rows.
+    import sys as _sys, pathlib as _p
+    _sys.path.insert(0, str(_p.Path(__file__).resolve().parent.parent))
+    from _lib.jsonl_dedup import dedup_state_records, is_success_verdict, key_pmid_tier
+    deduped_records = dedup_state_records(all_records, key_pmid_tier, is_success_verdict)
+    print(f"[done] total_cost=${total_cost:.3f}  n_records={len(deduped_records)}  "
+          f"(raw {len(all_records)})  malformed={malformed}")
     OUT_CSV.parent.mkdir(parents=True, exist_ok=True)
     with OUT_CSV.open("w", newline="") as f:
         w = csv.writer(f)
         w.writerow(["pmid", "tier", "model", "heuristic_verdict", "llm_verdict",
                     "llm_domains", "agreement", "parse_error", "error", "latency_s", "cost_usd"])
-        for rec in all_records:
+        for rec in deduped_records:
             hv = heur.get(rec["pmid"], {}).get("Screening_Decision", "")
             lv = rec.get("verdict", "")
             agreement = "yes" if hv == lv and hv else ("no" if (hv and lv) else "missing")
