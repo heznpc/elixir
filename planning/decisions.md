@@ -325,3 +325,28 @@ All three are loot-box/gambling-overlap papers that PubMed did not surface under
 4 of 5 domains' evidence-strength claims corroborated. D4 is the only domain where the broader-DB extension surfaced novel papers, and even there the verdict only adds to the literature pool rather than changing the strength tier.
 
 **Cumulative across this session**: 1,982 calls / ~$67.77 / 12 PRs.
+
+---
+
+## 2026-06-04 — Opus 4-8 cross-generation robustness (Tier A)
+
+**Context**: Opus 4-8 released ~2 weeks after the 2026-05-21 primary audit. User asked whether it affects the experiments. Assessment: completed runs are pinned + dated → not invalidated (mirror image of the Sonnet 4.5→4.6 bump: new model arrived AFTER the run, nothing to switch). Reviewer-facing answer stands: "4-8 not public at run time." The one place a re-run adds value is the cross-model-agreement finding — does a newer-generation Claude join the convergence?
+
+**Design review before running** (user requested): surfaced 5 issues — C1 (no pre-registered cutoff → HARKing), C2 (4-8's later cutoff confounds contamination), M2 (framing must be cross-GENERATION-within-Claude, not cross-vendor), M3 (provenance isolation — don't regenerate the original summary), M4 (single-sample decoding). Plus "Tier A" refinements over the naive 4th-κ design: A1 (reuse the 59-paper convergent-disagreement subset as the primary discriminator), A2 (disagreement-set Jaccard, not just aggregate κ), A3 (contamination as difference-in-differences vs 4-7), A4 (state capability/contamination confound as a structural limit), A5 (pre-register null reporting). All folded into `experiments/opus48_crossgen/protocol.md` before any 4-8 call.
+
+**Validation before spend**: analyzer dry-tested with a stub (4-8 := 4-7 verdicts) → produced known values (κ(4-8,opus)=1.000, κ(4-8,heur)=0.532, A1=59/59, DiD=0.000). Confirmed the math, then deleted the stub and ran live.
+
+**Results** (claude-opus-4-8, 227 papers, frozen prompt 6ba4ab67e4de + criteria 1b467a5dce41, 0 malformed):
+- κ(4-8, heuristic) = 0.465 (95% CI [0.39, 0.54]) — in the [0.40, 0.60] band, same as the trio (0.461-0.532). 4-8 does NOT agree with the heuristic more than the trio.
+- κ(4-8, each trio model): haiku 0.857, sonnet 0.877, opus 0.847 — all ≥ 0.75 (generation-stable), matching/exceeding the trio's own internal 0.812-0.857.
+- A1 (primary discriminator): 4-8 matches the trio consensus on **59/59 (100%)** convergent-disagreement papers.
+- A2: disagreement-set Jaccard = 0.845 (disagreement on the same papers → real shared signal, not coincidence).
+- A3: DiD = +0.077 (< 0.15) → no contamination signature; 4-8's later cutoff does not inflate heuristic agreement.
+
+**Verdict**: the cross-model-agreement finding is **generation-stable**. A newer-generation Claude independently reproduces the convergence. **Caveat (A4 + §2 inferential target)**: 4-8 shares training lineage + identical prompt with the other three → joining the convergence is consistent with both real-signal and shared-method-variance. This strengthens *robustness* but does NOT establish *correctness*. Resolving that is Tier B (cross-vendor or human adjudication).
+
+**Cost honesty**: the run cost **$40.15**, overrunning the pre-registered $30 ceiling (protocol §11) by 34%. Two causes: (1) my $20-22 estimate was wrong — Opus 4-8 ran ~1.9× the per-call cost of 4-7's 2026-05-21 run ($21.2 for the same 227); (2) the runner declared `--cost-ceiling` but did NOT enforce it in the worker loop. The run completed cleanly (227/227, 0 malformed) so no harm, but the ceiling was not actually active. Enforcement (stop-flag checked at top of do_one, bounding overrun to in-flight calls) was added to `run.py` **post-hoc** so the committed code matches the protocol; the live run predates the fix. Recorded here rather than silently corrected.
+
+**Provenance**: original `llm_second_reviewer_summary.md` untouched. 4-8 reported in separate `experiments/results/opus48_crossgen_summary.md` + one §Limitations footnote in `paper/main.tex`.
+
+**Next**: Tier B re-evaluation (per user) — whether to pursue the correctness question via a different model family or skeptical adjudication, with the circularity caveat that an LLM adjudicator sharing Claude lineage leans toward the LLM-consensus by construction.

@@ -144,6 +144,7 @@ def main():
         "d3_design":        [ROOT/"d3_design_audit"/"state.jsonl"],
         "openalex_d5":      [ROOT/"openalex_d5"/"llm_recheck_state.jsonl"],
         "openalex_d1_d4":   [ROOT/"openalex_d1_d4"/"llm_recheck_state.jsonl"],
+        "opus48_crossgen":  [ROOT/"opus48_crossgen"/"state.jsonl"],
     }
     # Filter the primary-run list to exclude aborted/sidecar files
     exps["llm_2rev_primary"] = [

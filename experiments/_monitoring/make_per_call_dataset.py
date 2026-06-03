@@ -72,6 +72,7 @@ def each_jsonl():
     yield "d3_design",        ROOT/"d3_design_audit"/"state.jsonl"
     yield "openalex_d5",      ROOT/"openalex_d5"/"llm_recheck_state.jsonl"
     yield "openalex_d1_d4",   ROOT/"openalex_d1_d4"/"llm_recheck_state.jsonl"
+    yield "opus48_crossgen",  ROOT/"opus48_crossgen"/"state.jsonl"
 
 
 def extract_item_key(d: dict) -> str:
