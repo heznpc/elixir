@@ -371,3 +371,19 @@ All three are loot-box/gambling-overlap papers that PubMed did not surface under
 **Tier B status after this**: the feasible slice (prompt half) is done. The residual — shared training-lineage artifact — remains untestable without a non-Claude rater (cross-vendor: blocked by Claude-only decision + no GPT/Gemini keys) or human gold (deferred, seed 20260521). Recorded as the honest stopping point for Tier B.
 
 **Paper integration**: a §Limitations footnote sentence was drafted but the edit was DECLINED by the owner on 2026-06-04 (held pending owner direction — the "Screening methodology" paragraph is already very long; the footnote wording/placement is the owner's call). The experiment artifacts + this entry are committed regardless; the paper change is deferred to owner.
+
+---
+
+## 2026-06-04 — Eligible-count recount (heuristic 156 vs LLM-majority 82) + tex
+
+**Context**: The headline "156 eligible" rests on the rule-based heuristic. The primary IRR audit already holds 3-model verdicts on all 227 records, so the LLM-eligible count is a free re-analysis (zero new API calls).
+
+**Result** (`experiments/eligible_recount/recount.py` → `experiments/results/eligible_recount_summary.md`):
+- heuristic eligible = 156 (102 Include + 54 Maybe) — reproduced exactly, validates the data load.
+- 3-model LLM-majority eligible = **82** (drop of 74, −47%). Strict (all-3) = 73; lenient (≥1) = 106; 4-model incl Opus 4-8 = 72 (more ties).
+- Drop source: 47 of 54 heuristic-"Maybe" → "Exclude", plus 24 heuristic-"Include" → "Exclude".
+- **Caveat (load-bearing)**: the prompt-robustness experiment showed ~half of these LLM exclusions reverse under a lenient prompt, so 82 is a strict-prompt lower bound. The framing-neutral eligible count lies between 82 and 156; neither endpoint is unambiguously correct.
+
+**Decision**: this materially qualifies the headline number, so — unlike the prompt-robustness footnote (owner chose supplementary-only) — it is surfaced in `paper/main.tex`. Added ONE sentence-block to the §Limitations "Screening methodology" paragraph, right after the existing "rests on a single automated heuristic ... preliminary" sentence: reports the 82 vs 156, the Maybe-tier concentration, and the [82, 156] framing-neutral bracket. The reported 156 is NOT changed (it is correctly the heuristic result); the addition quantifies its sensitivity to screener choice. pdflatex compiles clean (318 KB).
+
+**Why in main.tex when prompt-robustness was supplementary-only**: the recount touches the paper's HEADLINE number (abstract / §Method / §Results / §Conclusion all cite 156), so disclosure belongs in the main text; prompt-robustness is a second-order methodological detail that the recount sentence references but does not restate.
