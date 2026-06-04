@@ -1,0 +1,21 @@
+Acting as a second screener for a PRISMA systematic review concerning hoarding-related behaviours in digital games, assess the single paper presented below (its title and abstract). Judge it against the criteria provided and respond with one JSON object only — no surrounding text, no prose, no markdown fence.
+
+CRITERIA (verbatim from the review protocol):
+<<CRITERIA_VERBATIM>>
+
+PAPER TO SCREEN:
+PMID: <<PMID>>
+Year: <<YEAR>>
+Journal: <<JOURNAL>>
+Title: <<TITLE>>
+Abstract: <<ABSTRACT>>
+
+INSTRUCTIONS:
+- Return exactly one JSON object with these keys:
+  {"verdict": "Include" | "Maybe" | "Exclude",
+   "domains": [<zero or more of "D1","D2","D3","D4","D5","D6","Cross-domain">],
+   "reason": "<a single sentence, 25 words or fewer>"}
+- "verdict" is one of the three strings exactly (case-sensitive).
+- "domains" is a JSON array, which may be empty. An Exclude verdict typically has an empty array.
+- "reason" is one plain-English sentence of at most 25 words.
+- Emit only the JSON object — no preamble, no commentary, no markdown code fence.

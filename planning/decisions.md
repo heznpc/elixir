@@ -350,3 +350,24 @@ All three are loot-box/gambling-overlap papers that PubMed did not surface under
 **Provenance**: original `llm_second_reviewer_summary.md` untouched. 4-8 reported in separate `experiments/results/opus48_crossgen_summary.md` + one §Limitations footnote in `paper/main.tex`.
 
 **Next**: Tier B re-evaluation (per user) — whether to pursue the correctness question via a different model family or skeptical adjudication, with the circularity caveat that an LLM adjudicator sharing Claude lineage leans toward the LLM-consensus by construction.
+
+---
+
+## 2026-06-04 — Prompt-robustness of the cross-model convergence (Tier B, feasible slice)
+
+**Context**: Tier A (Opus 4-8, PR #15) showed the cross-model convergence is generation-stable but flagged it cannot separate (a) real signal from (b) shared method variance. Tier B re-evaluation: B1/B2 (Claude-as-adjudicator) are now known-circular (Tier A proved all Claudes converge); the decisive variants (cross-vendor, human-gold) are blocked by the Claude-only decision + missing non-Anthropic keys + human-effort. The one feasible slice: test the PROMPT half of (b).
+
+**Design** (`experiments/prompt_robustness/protocol.md`, pre-registered before any call): re-screen the 59 convergent-disagreement papers under two perturbed prompt framings — V_reword (meaning-preserving paraphrase = noise floor) and V_lenient (adversarial pro-inclusion) — holding criteria_v1.txt byte-identical, on haiku-4-5 + sonnet-4-6 (opus dropped, cost-driven, pre-registered). 59 × 2 × 2 = 236 calls. Primary statistic Δ = flip_rate(lenient) − flip_rate(reword); bands <0.15 robust / 0.15-0.40 partial / ≥0.40 substantially prompt-induced. Analyzer validated with a stub (reword=orig→flip 0, lenient=Include→flip 1.0, dir 118/118, survive 0/59) before live spend.
+
+**Results** (236 calls, 0 malformed, $5.81, within $12 ceiling):
+- flip_rate(V_reword) = 0.051 (noise floor low — comparison valid).
+- flip_rate(V_lenient) = 0.339; **Δ = +0.288 → PARTIAL prompt-sensitivity**.
+- Directional: 40/40 (100%) lenient flips move toward inclusion — a genuine leniency response, not noise.
+- Survival: 28/59 (47%) keep their off-heuristic verdict on BOTH models under the adversarial prompt.
+- Model-dependent: Haiku flips 46% under lenient, Sonnet only 22% — the stronger model is more anchored to the criteria.
+
+**Verdict**: the convergence is **partly, not mostly, prompt-induced**. ~Half the off-heuristic exclusions are framing-robust (credible real signal — clearly off-topic medical/business papers stay excluded under any framing); ~half are framing-dependent (borderline papers a lenient prompt returns toward the heuristic's more-inclusive verdict). This honestly qualifies Tier A's "generation-stable" — the cross-generation agreement partly reflects the shared prompt — and reframes the heuristic-vs-LLM disagreement on borderline papers as a framing-dependent call, not a case of one screener being unambiguously right.
+
+**Tier B status after this**: the feasible slice (prompt half) is done. The residual — shared training-lineage artifact — remains untestable without a non-Claude rater (cross-vendor: blocked by Claude-only decision + no GPT/Gemini keys) or human gold (deferred, seed 20260521). Recorded as the honest stopping point for Tier B.
+
+**Paper integration**: a §Limitations footnote sentence was drafted but the edit was DECLINED by the owner on 2026-06-04 (held pending owner direction — the "Screening methodology" paragraph is already very long; the footnote wording/placement is the owner's call). The experiment artifacts + this entry are committed regardless; the paper change is deferred to owner.
